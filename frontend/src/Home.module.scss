@@ -31,10 +31,14 @@
 	}
 
 	:global(.details-list-row) {
-		padding: 1rem 0;
+		padding: 1rem;
 
 		&:not(:last-child) {
 			border-bottom: 1px solid var(--border-color);
+		}
+
+		:global(.CircularProgressbar) {
+			width: 60px;
 		}
 	}
 }

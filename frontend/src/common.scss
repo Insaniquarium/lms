@@ -13,6 +13,8 @@
 	--link-visited-color: #8948c4;
 	--success-color: #1b8057;
 	--neutral-color: #6a6e75;
+	--gray-color: #d5dae3;
+	--blue-color: #0073c4;
 }
 
 body {
@@ -91,5 +93,20 @@ a:visited {
 			font-weight: 500;
 			text-decoration: none;
 		}
+	}
+}
+
+.CircularProgressbar {
+	.CircularProgressbar-trail {
+		stroke: var(--gray-color);
+	}
+
+	.CircularProgressbar-path {
+		stroke: var(--blue-color);
+	}
+
+	.CircularProgressbar-text {
+		fill: var(--blue-color);
+		font-weight: 500;
 	}
 }

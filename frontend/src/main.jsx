@@ -1,6 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router";
+import "react-circular-progressbar/dist/styles.css";
 import "./common.scss";
 import MainLayout from "./MainLayout.jsx";
 import Home from "./Home.jsx";

@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import { Activity, GraduationCap, Award } from "lucide-react";
+import { CircularProgressbar } from "react-circular-progressbar";
 import * as dummy from "./dummy.js";
 import style from "./Home.module.scss";
 
@@ -34,6 +35,7 @@ function MyCoursesCard() {
 							<Link to="/course">{course.name}</Link>
 							<p>{course.description.short}</p>
 						</div>
+						<CircularProgressbar value={course.progress} text={course.progress + "%"}/>
 					</li>
 				)}
 			</ul>
