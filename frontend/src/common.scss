@@ -6,10 +6,13 @@
 
 :root {
 	--body-bg-color: #fafbfc;
+	--component-bg-color: #fff;
 	--text-color: #222325;
 	--border-color: #afb6c2;
 	--link-color: #0073c4;
 	--link-visited-color: #8948c4;
+	--success-color: #1b8057;
+	--neutral-color: #6a6e75;
 }
 
 body {
@@ -22,10 +25,38 @@ h1, h2, h3, h4, h5, h6 {
 	font-weight: 600;
 }
 
+h1 {
+	margin-block: 1em;
+}
+
 a:link {
 	color: var(--link-color);
 }
 
 a:visited {
 	color: var(--link-visited-color);
+}
+
+.success {
+	color: var(--success-color);
+}
+
+.neutral {
+	color: var(--neutral-color);
+}
+
+.text-right {
+	text-align: right;
+}
+
+.card {
+	padding: 1rem;
+	background: var(--component-bg-color);
+	border-radius: 16px;
+	box-shadow: 0 0 5px 0 rgb(0 0 0 / 16%);
+}
+
+.card h2 {
+	font-size: 1.25em;
+	margin-block-end: 1rem;
 }

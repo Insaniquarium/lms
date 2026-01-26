@@ -1,0 +1,24 @@
+.RecentActivityCard {
+	ul {
+		list-style: none;
+	}
+
+	li {
+		display: flex;
+		margin-block: 1rem;
+
+		a {
+			flex: 1;
+			font-weight: 500;
+			text-decoration: none;
+		}
+	}
+
+	a {
+		color: var(--link-color);
+	}
+}
+
+:global(.card) {
+	margin-block: 1rem;
+}
