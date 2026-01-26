@@ -32,7 +32,7 @@ function MyCoursesCard() {
 				{dummy.myCourses.map(course => <CourseInfoRow course={course}/> )}
 			</ul>
 			<div className="text-right">
-				<Link to="/courses">See all courses</Link>
+				<Link to="/my-courses">See all courses</Link>
 			</div>
 		</Card>
 	);

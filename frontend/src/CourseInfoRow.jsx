@@ -6,7 +6,7 @@ export default function CourseInfoRow({ course }) {
 		<div className="CourseInfoRow details-list-row">
 			<img src={course.image}/>
 			<div className="content">
-				<Link to="/course">{course.name}</Link>
+				<Link to="/courses/0">{course.name}</Link>
 				<p>{course.description.short}</p>
 			</div>
 			<CircularProgressbar value={course.progress} text={course.progress + "%"}/>

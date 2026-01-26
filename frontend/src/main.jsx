@@ -6,7 +6,9 @@ import "./common.scss";
 import "./components.scss";
 import MainLayout from "./MainLayout";
 import Home from "./Home";
-import Courses from "./Courses";
+import Library from "./Library";
+import Course from "./Course";
+import MyCourses from "./MyCourses";
 import NotFound from "./NotFound";
 
 createRoot(document.getElementById("root")).render(
@@ -16,7 +18,11 @@ createRoot(document.getElementById("root")).render(
 				<Route element={<MainLayout/>}>
 					<Route index element={<Navigate to="/home"/>}/>
 					<Route path="home" element={<Home/>}/>
-					<Route path="courses" element={<Courses/>}/>
+					<Route path="courses">
+						<Route index element={<Library/>}/>
+						<Route path=":id" element={<Course/>}/>
+					</Route>
+					<Route path="my-courses" element={<MyCourses/>}/>
 				</Route>
 				<Route path="*" element={<NotFound/>}/>
 			</Routes>

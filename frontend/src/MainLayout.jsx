@@ -4,8 +4,8 @@ import style from "./MainLayout.module.scss";
 
 const topLinks = [
 	["/home", <House/>, "Home"],
-	["/library", <Library/>, "Library"],
-	["/courses", <GraduationCap/>, "My Courses"]
+	["/courses", <Library/>, "Library"],
+	["/my-courses", <GraduationCap/>, "My Courses"]
 ];
 
 const bottomLinks = [
