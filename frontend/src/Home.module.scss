@@ -1,4 +1,4 @@
-.Home :global(.card) {
+.Home :global(.Card) {
 	margin: 1rem 0;
 }
 
@@ -30,15 +30,11 @@
 		margin: 0;
 	}
 
-	:global(.details-list-row) {
+	:global(.CourseInfoRow) {
 		padding: 1rem;
 
 		&:not(:last-child) {
 			border-bottom: 1px solid var(--border-color);
-		}
-
-		:global(.CircularProgressbar) {
-			width: 60px;
 		}
 	}
 }

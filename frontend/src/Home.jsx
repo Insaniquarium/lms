@@ -1,12 +1,13 @@
 import { Link } from "react-router";
 import { Activity, GraduationCap, Award } from "lucide-react";
-import { CircularProgressbar } from "react-circular-progressbar";
-import * as dummy from "./dummy.js";
+import * as dummy from "./dummy";
+import Card from "./Card";
+import CourseInfoRow from "./CourseInfoRow";
 import style from "./Home.module.scss";
 
 function RecentActivityCard() {
 	return (
-		<div className={`card ${style.RecentActivityCard}`}>
+		<Card className={style.RecentActivityCard}>
 			<h2><Activity/>Recent Activity</h2>
 			<ul>
 				{dummy.recentActivity.map(a =>
@@ -19,38 +20,29 @@ function RecentActivityCard() {
 			<div className="text-right">
 				<Link to="/activity">See all activity</Link>
 			</div>
-		</div>
+		</Card>
 	);
 }
 
 function MyCoursesCard() {
 	return (
-		<div className={`card ${style.MyCoursesCard}`}>
+		<Card className={style.MyCoursesCard}>
 			<h2><GraduationCap/>My Courses</h2>
 			<ul>
-				{dummy.myCourses.map(course =>
-					<li className="details-list-row">
-						<img src={course.image}/>
-						<div className="content">
-							<Link to="/course">{course.name}</Link>
-							<p>{course.description.short}</p>
-						</div>
-						<CircularProgressbar value={course.progress} text={course.progress + "%"}/>
-					</li>
-				)}
+				{dummy.myCourses.map(course => <CourseInfoRow course={course}/> )}
 			</ul>
 			<div className="text-right">
 				<Link to="/courses">See all courses</Link>
 			</div>
-		</div>
+		</Card>
 	);
 }
 
 function AchievementsCard() {
 	return (
-		<div className={`card ${style.AchievementsCard}`}>
+		<Card className={style.AchievementsCard}>
 			<h2><Award/>Achievements</h2>
-		</div>
+		</Card>
 	);
 }
 

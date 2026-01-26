@@ -1,0 +1,31 @@
+.Card {
+	padding: 1rem;
+	background: var(--component-bg-color);
+	border-radius: 16px;
+	box-shadow: 0 0 5px 0 rgb(0 0 0 / 16%);
+
+	h2 {
+		font-size: 1.25em;
+		margin-bottom: 1rem;
+
+		.lucide {
+			vertical-align: bottom;
+			margin-right: 0.5rem;
+		}
+	}
+}
+
+.CircularProgressbar {
+	.CircularProgressbar-trail {
+		stroke: var(--gray-color);
+	}
+
+	.CircularProgressbar-path {
+		stroke: var(--blue-color);
+	}
+
+	.CircularProgressbar-text {
+		fill: var(--blue-color);
+		font-weight: 500;
+	}
+}

@@ -47,25 +47,12 @@ a:visited {
 	color: var(--neutral-color);
 }
 
-.text-right {
-	text-align: right;
+.text-center {
+	text-align: center;
 }
 
-.card {
-	padding: 1rem;
-	background: var(--component-bg-color);
-	border-radius: 16px;
-	box-shadow: 0 0 5px 0 rgb(0 0 0 / 16%);
-
-	h2 {
-		font-size: 1.25em;
-		margin-bottom: 1rem;
-
-		.lucide {
-			vertical-align: bottom;
-			margin-right: 8px;
-		}
-	}
+.text-right {
+	text-align: right;
 }
 
 .details-list-row {
@@ -94,19 +81,8 @@ a:visited {
 			text-decoration: none;
 		}
 	}
-}
 
-.CircularProgressbar {
-	.CircularProgressbar-trail {
-		stroke: var(--gray-color);
-	}
-
-	.CircularProgressbar-path {
-		stroke: var(--blue-color);
-	}
-
-	.CircularProgressbar-text {
-		fill: var(--blue-color);
-		font-weight: 500;
+	.CircularProgressbar {
+		width: 60px;
 	}
 }
