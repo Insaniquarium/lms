@@ -1,0 +1,31 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+:root {
+	--body-bg-color: #fafbfc;
+	--text-color: #222325;
+	--border-color: #afb6c2;
+	--link-color: #0073c4;
+	--link-visited-color: #8948c4;
+}
+
+body {
+	background: var(--body-bg-color);
+	color: var(--text-color);
+	font-family: Roboto, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 600;
+}
+
+a:link {
+	color: var(--link-color);
+}
+
+a:visited {
+	color: var(--link-visited-color);
+}
