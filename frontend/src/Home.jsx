@@ -1,11 +1,12 @@
 import { Link } from "react-router";
+import { Activity, GraduationCap, Award } from "lucide-react";
 import * as dummy from "./dummy.js";
 import style from "./Home.module.scss";
 
 function RecentActivityCard() {
 	return (
 		<div className={`card ${style.RecentActivityCard}`}>
-			<h2>Recent Activity</h2>
+			<h2><Activity/>Recent Activity</h2>
 			<ul>
 				{dummy.recentActivity.map(a =>
 					<li>
@@ -24,7 +25,7 @@ function RecentActivityCard() {
 function MyCoursesCard() {
 	return (
 		<div className={`card ${style.MyCoursesCard}`}>
-			<h2>My Courses</h2>
+			<h2><GraduationCap/>My Courses</h2>
 		</div>
 	);
 }
@@ -32,7 +33,7 @@ function MyCoursesCard() {
 function AchievementsCard() {
 	return (
 		<div className={`card ${style.AchievementsCard}`}>
-			<h2>Achievements</h2>
+			<h2><Award/>Achievements</h2>
 		</div>
 	);
 }

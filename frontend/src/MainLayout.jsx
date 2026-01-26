@@ -21,10 +21,10 @@ function NavBar() {
 	return (
 		<nav className={style.navbar}>
 			<ul>
-				{ topLinks.map(l => <li><NavBarLink data={l}/></li>) }
+				{ topLinks.map(l => <li key={l[0]}><NavBarLink data={l}/></li>) }
 			</ul>
 			<ul>
-				{ bottomLinks.map(l => <li><NavBarLink data={l}/></li>) }
+				{ bottomLinks.map(l => <li key={l[0]}><NavBarLink data={l}/></li>) }
 			</ul>
 		</nav>
 	);

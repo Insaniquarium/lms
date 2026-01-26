@@ -54,9 +54,14 @@ a:visited {
 	background: var(--component-bg-color);
 	border-radius: 16px;
 	box-shadow: 0 0 5px 0 rgb(0 0 0 / 16%);
-}
 
-.card h2 {
-	font-size: 1.25em;
-	margin-block-end: 1rem;
+	h2 {
+		font-size: 1.25em;
+		margin-block-end: 1rem;
+
+		.lucide {
+			vertical-align: bottom;
+			margin-right: 8px;
+		}
+	}
 }
