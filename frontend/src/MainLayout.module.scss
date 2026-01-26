@@ -43,5 +43,13 @@
 			background: #383850;
 			color: #fff;
 		}
+
+		* {
+			vertical-align: middle;
+		}
+
+		:global(.lucide) {
+			margin-right: 8px;
+		}
 	}
 }

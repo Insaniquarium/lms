@@ -1,17 +1,30 @@
 import { NavLink, Outlet } from "react-router";
+import { House, Library, GraduationCap, MessageCircleQuestionMark, Settings } from "lucide-react";
 import style from "./MainLayout.module.scss";
+
+const topLinks = [
+	["/home", <House/>, "Home"],
+	["/library", <Library/>, "Library"],
+	["/courses", <GraduationCap/>, "My Courses"]
+];
+
+const bottomLinks = [
+	["/help", <MessageCircleQuestionMark/>, "Help"],
+	["/settings", <Settings/>, "Settings"]
+];
+
+function NavBarLink({ data }) {
+	return <NavLink to={data[0]}>{data[1]}<span>{data[2]}</span></NavLink>;
+}
 
 function NavBar() {
 	return (
 		<nav className={style.navbar}>
 			<ul>
-				<li><NavLink to="/home">Home</NavLink></li>
-				<li><NavLink to="/library">Library</NavLink></li>
-				<li><NavLink to="/courses">My Courses</NavLink></li>
+				{ topLinks.map(l => <li><NavBarLink data={l}/></li>) }
 			</ul>
 			<ul>
-				<li><NavLink to="/help">Help</NavLink></li>
-				<li><NavLink to="/settings">Settings</NavLink></li>
+				{ bottomLinks.map(l => <li><NavBarLink data={l}/></li>) }
 			</ul>
 		</nav>
 	);
