@@ -1,17 +1,10 @@
-.RecentActivityCard {
+.Home :global(.card) {
+	margin: 1rem 0;
+}
+
+.RecentActivityCard, .MyCoursesCard {
 	ul {
 		list-style: none;
-	}
-
-	li {
-		display: flex;
-		margin-block: 1rem;
-
-		a {
-			flex: 1;
-			font-weight: 500;
-			text-decoration: none;
-		}
 	}
 
 	a {
@@ -19,6 +12,29 @@
 	}
 }
 
-:global(.card) {
-	margin-block: 1rem;
+.RecentActivityCard {
+	li {
+		display: flex;
+		margin: 1rem 0;
+
+		a {
+			flex: 1;
+			font-weight: 500;
+			text-decoration: none;
+		}
+	}
+}
+
+.MyCoursesCard {
+	h2 {
+		margin: 0;
+	}
+
+	:global(.details-list-row) {
+		padding: 1rem 0;
+
+		&:not(:last-child) {
+			border-bottom: 1px solid var(--border-color);
+		}
+	}
 }

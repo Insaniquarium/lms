@@ -26,6 +26,20 @@ function MyCoursesCard() {
 	return (
 		<div className={`card ${style.MyCoursesCard}`}>
 			<h2><GraduationCap/>My Courses</h2>
+			<ul>
+				{dummy.myCourses.map(course =>
+					<li className="details-list-row">
+						<img src={course.image}/>
+						<div className="content">
+							<Link to="/course">{course.name}</Link>
+							<p>{course.description.short}</p>
+						</div>
+					</li>
+				)}
+			</ul>
+			<div className="text-right">
+				<Link to="/courses">See all courses</Link>
+			</div>
 		</div>
 	);
 }
@@ -40,7 +54,7 @@ function AchievementsCard() {
 
 export default function Home() {
 	return (
-		<div className={style.home}>
+		<div className={style.Home}>
 			<h1>Welcome back, Joseph!</h1>
 			<RecentActivityCard/>
 			<MyCoursesCard/>

@@ -57,11 +57,39 @@ a:visited {
 
 	h2 {
 		font-size: 1.25em;
-		margin-block-end: 1rem;
+		margin-bottom: 1rem;
 
 		.lucide {
 			vertical-align: bottom;
 			margin-right: 8px;
+		}
+	}
+}
+
+.details-list-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+
+	> img {
+		flex-shrink: 0;
+		border: 1px solid var(--border-color);
+		border-radius: 8px;
+		width: 160px;
+		height: 90px;
+		object-fit: cover;
+	}
+
+	> .content {
+		flex: 1 350px;
+		color: var(--neutral-color);
+
+		a {
+			display: block;
+			color: var(--link-color);
+			margin-bottom: 0.5em;
+			font-weight: 500;
+			text-decoration: none;
 		}
 	}
 }
