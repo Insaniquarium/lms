@@ -12,7 +12,7 @@ export default function MyCourses() {
 			<ul>
 				{dummy.myCourses.map(course => <li><Card><CourseInfoRow course={course}/></Card></li> )}
 			</ul>
-			<p class="text-center neutral">You can enrol in more courses from the <Link to="/courses">library</Link>.</p>
+			<p className="text-center neutral">You can enrol in more courses from the <Link to="/courses">library</Link>.</p>
 		</div>
 	);
 }

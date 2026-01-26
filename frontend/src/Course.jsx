@@ -6,7 +6,7 @@ export default function Course() {
 	const course = dummy.myCourses[0];
 
 	return (
-		<div class={style.Course}>
+		<div className={style.Course}>
 			<h1>{course.name}</h1>
 		</div>
 	);
