@@ -4,7 +4,7 @@ import style from "./MainLayout.module.scss";
 
 const topLinks = [
 	["/home", <House/>, "Home"],
-	["/courses", <Library/>, "Library"],
+	["/courses", <Library/>, "Library", { end: true }], // misleading otherwise
 	["/my-courses", <GraduationCap/>, "My Courses"]
 ];
 
@@ -14,7 +14,7 @@ const bottomLinks = [
 ];
 
 function NavBarLink({ data }) {
-	return <NavLink to={data[0]}>{data[1]}<span>{data[2]}</span></NavLink>;
+	return <NavLink to={data[0]} {...data[3]}>{data[1]}<span>{data[2]}</span></NavLink>;
 }
 
 function NavBar() {
