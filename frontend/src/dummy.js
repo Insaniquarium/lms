@@ -56,26 +56,26 @@ export const courses = [
 export const recentActivity = [
 	{
 		course_id: 0,
-		module_id: 4,
-		name: "Semantic HTML",
-		status: "Completed"
-	},
-	{
-		course_id: 0,
 		module_id: 3,
 		name: "HTML Forms",
-		status: "Started"
+		status: "Completed"
 	},
 	{
 		course_id: 0,
 		module_id: 2,
 		name: "HTML Tables",
-		status: "Completed"
+		status: "Started"
 	},
 	{
 		course_id: 0,
 		module_id: 1,
 		name: "HTML Document Standards",
+		status: "Completed"
+	},
+	{
+		course_id: 0,
+		module_id: 0,
+		name: "Introduction to HTML",
 		status: "Completed"
 	}
 ];
@@ -108,6 +108,5 @@ export const moduleProgress = [
 	{ course_id: 0, module_id: 0, completed: true },
 	{ course_id: 0, module_id: 1, completed: true },
 	{ course_id: 0, module_id: 2, completed: true },
-	{ course_id: 0, module_id: 3, completed: false },
-	{ course_id: 0, module_id: 4, completed: true }
+	{ course_id: 0, module_id: 3, completed: false }
 ];

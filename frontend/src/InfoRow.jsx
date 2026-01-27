@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import { CircularProgressbar } from "react-circular-progressbar";
+import * as dummy from "./dummy";
 
 // This probably needs a refactor the most
 
@@ -18,6 +19,11 @@ export function CourseInfoRow({ course }) {
 
 // 'module' is used by node
 export function ModuleInfoRow({ courseId, mod }) {
+	// Once an API is implemented, this data would be included as part as the response
+	const progress = dummy.moduleProgress.find(p => p.course_id == courseId && p.module_id == mod.id);
+	const progressText = progress ? (progress.completed ? "Completed" : "Started") : "Not Started";
+	const progressClass = progress ? (progress.completed ? "completed" : "started") : "";
+
 	return (
 		<div className="ModuleInfoRow details_list_row">
 			<img src={mod.image}/>
@@ -25,6 +31,7 @@ export function ModuleInfoRow({ courseId, mod }) {
 				<Link to={`/courses/${courseId}/modules/${mod.id}`}>{mod.name}</Link>
 				<p>{mod.description}</p>
 			</div>
+			<span className={`progress ${progressClass}`}>{progressText}</span>
 		</div>
 	);
 }

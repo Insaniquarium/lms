@@ -15,6 +15,25 @@
 	}
 }
 
+.ModuleInfoRow {
+	.progress {
+		color: var(--neutral-color);
+		align-content: center;
+
+		&.started, &.completed {
+			font-weight: 500;
+		}
+
+		&.started {
+			color: var(--text-color);
+		}
+
+		&.completed {
+			color: var(--success-color);
+		}
+	}
+}
+
 .CircularProgressbar {
 	.CircularProgressbar-trail {
 		stroke: var(--gray-color);
