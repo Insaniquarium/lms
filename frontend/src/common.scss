@@ -55,6 +55,28 @@ a:visited {
 	text-align: right;
 }
 
+.heading_section {
+	h2 {
+		border-bottom: 1px solid var(--border-color);
+		margin: 1rem 0;
+		padding-bottom: 0.5em;
+	}
+}
+
+.text_section {
+	p {
+		margin-block: 1em;
+	}
+
+	li {
+		margin-block: 0.5em;
+	}
+}
+
+.heading_section, .text_section {
+	margin: 2rem 0;
+}
+
 .details_list_row {
 	display: flex;
 	flex-wrap: wrap;

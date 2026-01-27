@@ -8,32 +8,32 @@ export const courses = [
 			{
 				id: 0,
 				name: "Introduction to HTML",
-				image: "",
-				description: ""
+				image: "https://unsplash.com/photos/uyfohHiTxho/download?w=640",
+				description: "Discover HTML syntax, how to write elements, and set their attributes."
 			},
 			{
 				id: 1,
 				name: "HTML Document Standards",
-				image: "",
-				description: ""
+				image: "https://unsplash.com/photos/r2_uBsnR-dY/download?w=640",
+				description: "Learn best practices for structuring well-organized HTML documents, how to link to other pages, and ensuring clear document formatting."
 			},
 			{
 				id: 2,
 				name: "HTML Tables",
-				image: "",
-				description: ""
+				image: "https://unsplash.com/photos/1IW4HQuauSU/download?w=640",
+				description: "Develop the ability to efficiently organize and present tabular data in HTML."
 			},
 			{
 				id: 3,
 				name: "HTML Forms",
-				image: "",
-				description: ""
+				image: "https://unsplash.com/photos/uyfohHiTxho/download?w=640",
+				description: "Learn how to create and utilize HTML forms, along with essential form elements."
 			},
 			{
 				id: 4,
 				name: "Semantic HTML",
-				image: "",
-				description: ""
+				image: "https://unsplash.com/photos/r2_uBsnR-dY/download?w=640",
+				description: "Master the use of semantic HTML elements to build websites that are understandable and easy to navigate."
 			}
 		]
 	},

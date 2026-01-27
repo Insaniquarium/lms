@@ -1,0 +1,34 @@
+.modules_section {
+	ul {
+		list-style: none;
+	}
+
+	li {
+		margin: 1rem 0;
+	}
+}
+
+.name_box {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+	align-items: center;
+	margin: 2rem 0;
+	padding: 2rem 2rem;
+	color: #fff;
+	background: #141c36;
+	border-radius: 16px;
+
+	h1 {
+		flex: 1;
+		margin: 0;
+	}
+
+	:global(.CircularProgressbar) {
+		width: 60px;
+	}
+
+	:global(.CircularProgressbar-text) {
+		fill: #fff;
+	}
+}

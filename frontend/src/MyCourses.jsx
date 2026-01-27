@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import * as dummy from "./dummy";
 import Card from "./Card";
-import CourseInfoRow from "./CourseInfoRow";
+import { CourseInfoRow } from "./InfoRow";
 import style from "./MyCourses.module.scss";
 
 export default function MyCourses() {
