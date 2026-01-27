@@ -1,48 +1,113 @@
+export const courses = [
+	{
+		id: 0,
+		name: "Coding Essentials",
+		image: "https://unsplash.com/photos/1IW4HQuauSU/download?w=640",
+		description: "Learn to use HTML and CSS to create and style web pages, and utilise JavaScript to make them interactive.",
+		modules: [
+			{
+				id: 0,
+				name: "Introduction to HTML",
+				image: "",
+				description: ""
+			},
+			{
+				id: 1,
+				name: "HTML Document Standards",
+				image: "",
+				description: ""
+			},
+			{
+				id: 2,
+				name: "HTML Tables",
+				image: "",
+				description: ""
+			},
+			{
+				id: 3,
+				name: "HTML Forms",
+				image: "",
+				description: ""
+			},
+			{
+				id: 4,
+				name: "Semantic HTML",
+				image: "",
+				description: ""
+			}
+		]
+	},
+	{
+		id: 1,
+		name: "Front End Development",
+		image: "https://unsplash.com/photos/uyfohHiTxho/download?w=640",
+		description: "Utilise React to develop single page applications, collaborate and track changes with GitHub, and learn to manage software development projects.",
+		modules: []
+	},
+	{
+		id: 2,
+		name: "Back End Development",
+		image: "https://unsplash.com/photos/r2_uBsnR-dY/download?w=640",
+		description: "Study programming in Python, writing and managing a SQL database, and developing APIs.",
+		modules: []
+	}
+];
+
 export const recentActivity = [
 	{
-		name: "JavaScript: Arrays",
+		course_id: 0,
+		module_id: 4,
+		name: "Semantic HTML",
 		status: "Completed"
 	},
 	{
-		name: "User Interactions and Flows",
+		course_id: 0,
+		module_id: 3,
+		name: "HTML Forms",
 		status: "Started"
 	},
 	{
-		name: "CSS: Box Model",
+		course_id: 0,
+		module_id: 2,
+		name: "HTML Tables",
 		status: "Completed"
 	},
 	{
-		name: "CSS: Display and Positioning",
+		course_id: 0,
+		module_id: 1,
+		name: "HTML Document Standards",
 		status: "Completed"
 	}
 ];
 
 export const myCourses = [
 	{
+		id: 0,
+		progress: 50,
 		name: "Coding Essentials",
 		image: "https://unsplash.com/photos/1IW4HQuauSU/download?w=640",
-		description: {
-			short: "Learn to use HTML and CSS to create and style web pages, and utilise JavaScript to make them interactive.",
-			long: ""
-		},
-		progress: 50
+		description: "Learn to use HTML and CSS to create and style web pages, and utilise JavaScript to make them interactive."
 	},
 	{
+		id: 1,
+		progress: 15,
 		name: "Front End Development",
 		image: "https://unsplash.com/photos/uyfohHiTxho/download?w=640",
-		description: {
-			short: "Utilise React to develop single page applications, collaborate and track changes with GitHub, and learn to manage software development projects.",
-			long: ""
-		},
-		progress: 15
+		description: "Utilise React to develop single page applications, collaborate and track changes with GitHub, and learn to manage software development projects."
 	},
 	{
+		id: 2,
+		progress: 0,
 		name: "Back End Development",
 		image: "https://unsplash.com/photos/r2_uBsnR-dY/download?w=640",
-		description: {
-			short: "Study programming in Python, writing and managing a SQL database, and developing APIs.",
-			long: ""
-		},
-		progress: 0
+		description: "Study programming in Python, writing and managing a SQL database, and developing APIs.",
 	}
+];
+
+export const moduleProgress = [
+	{ course_id: 0, module_id: 0, completed: true },
+	{ course_id: 0, module_id: 1, completed: true },
+	{ course_id: 0, module_id: 2, completed: true },
+	{ course_id: 0, module_id: 3, completed: false },
+	{ course_id: 0, module_id: 4, completed: true }
 ];
