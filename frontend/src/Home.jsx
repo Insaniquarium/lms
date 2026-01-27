@@ -17,7 +17,7 @@ function RecentActivityCard() {
 					</li>
 				)}
 			</ul>
-			<div className="text-right">
+			<div className="text_right">
 				<Link to="/activity">See all activity</Link>
 			</div>
 		</Card>
@@ -31,7 +31,7 @@ function MyCoursesCard() {
 			<ul>
 				{dummy.myCourses.map(course => <CourseInfoRow course={course}/> )}
 			</ul>
-			<div className="text-right">
+			<div className="text_right">
 				<Link to="/my-courses">See all courses</Link>
 			</div>
 		</Card>

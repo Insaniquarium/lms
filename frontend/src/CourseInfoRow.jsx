@@ -3,7 +3,7 @@ import { CircularProgressbar } from "react-circular-progressbar";
 
 export default function CourseInfoRow({ course }) {
 	return (
-		<div className="CourseInfoRow details-list-row">
+		<div className="CourseInfoRow details_list_row">
 			<img src={course.image}/>
 			<div className="content">
 				<Link to="/courses/0">{course.name}</Link>
