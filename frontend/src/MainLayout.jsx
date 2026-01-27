@@ -1,5 +1,5 @@
 import { NavLink, Outlet } from "react-router";
-import { House, Library, GraduationCap, MessageCircleQuestionMark, Settings } from "lucide-react";
+import { House, Library, GraduationCap, MessageCircleQuestionMark, Settings, LogOut } from "lucide-react";
 import style from "./MainLayout.module.scss";
 
 const topLinks = [
@@ -10,7 +10,8 @@ const topLinks = [
 
 const bottomLinks = [
 	["/help", <MessageCircleQuestionMark/>, "Help"],
-	["/settings", <Settings/>, "Settings"]
+	["/settings", <Settings/>, "Settings"],
+	["/", <LogOut/>, "Log Out"]
 ];
 
 function NavBarLink({ data }) {
