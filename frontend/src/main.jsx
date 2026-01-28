@@ -9,6 +9,8 @@ import Home from "./Home";
 import Library from "./Library";
 import Course from "./Course";
 import MyCourses from "./MyCourses";
+import Help from "./Help";
+import Settings from "./Settings";
 import NotFound from "./NotFound";
 
 createRoot(document.getElementById("root")).render(
@@ -23,6 +25,8 @@ createRoot(document.getElementById("root")).render(
 						<Route path=":id" element={<Course/>}/>
 					</Route>
 					<Route path="my-courses" element={<MyCourses/>}/>
+					<Route path="help" element={<Help/>}/>
+					<Route path="settings" element={<Settings/>}/>
 				</Route>
 				<Route path="*" element={<NotFound/>}/>
 			</Routes>
