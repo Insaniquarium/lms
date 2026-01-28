@@ -16,12 +16,12 @@
 
 .NavBar {
 	flex-basis: 250px;
+	padding: 1rem;
 	background: var(--component-bg-color);
 	border-right: 1px solid var(--border-color);
 
 	.mobile {
 		display: none;
-		padding: 0.5rem 1rem;
 		gap: 1rem;
 
 		button {
@@ -30,13 +30,16 @@
 			border: unset;
 			padding: unset;
 		}
+
+		img {
+			vertical-align: middle;
+		}
 	}
 
 	.links {
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
-		padding: 1rem;
 		height: 100%;
 
 		ul {
@@ -86,8 +89,10 @@
 
 		.links {
 			display: none;
+			margin-top: 1rem;
 
-			&:global(.active) {
+			// It seems we can't do a smooth transition unless we do hacks with positioning or heights
+			&.active {
 				display: block;
 			}
 		}

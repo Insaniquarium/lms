@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { NavLink, Link, Outlet } from "react-router";
 import * as Lucide from "lucide-react";
 import style from "./MainLayout.module.scss";
@@ -19,7 +20,15 @@ function NavBarLink({ data }) {
 }
 
 function NavBar() {
+	const [showLinks, setShowLinks] = useState(false);
+
+	/**
+	 * Storing our own state is a bit redundant, because we could just use the DOM's
+	 * classList toggle method to avoid storing anything. This way is the more React
+	 * way to do it though
+	 */
 	function handleMobileMenuClick() {
+		setShowLinks(!showLinks);
 	}
 
 	return (
@@ -29,7 +38,7 @@ function NavBar() {
 				<Link to="/home"><img src="/logo.png"/></Link>
 			</div>
 
-			<div className={style.links}>
+			<div className={`${style.links} ${showLinks ? style.active : ""}`}>
 				<ul>
 					{ topLinks.map(l => <li key={l[0]}><NavBarLink data={l}/></li>) }
 				</ul>
