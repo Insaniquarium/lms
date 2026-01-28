@@ -1,17 +1,17 @@
-import { NavLink, Outlet } from "react-router";
-import { House, Library, GraduationCap, MessageCircleQuestionMark, Settings, LogOut } from "lucide-react";
+import { NavLink, Link, Outlet } from "react-router";
+import * as Lucide from "lucide-react";
 import style from "./MainLayout.module.scss";
 
 const topLinks = [
-	["/home", <House/>, "Home"],
-	["/courses", <Library/>, "Library", { end: true }], // misleading otherwise
-	["/my-courses", <GraduationCap/>, "My Courses"]
+	["/home", <Lucide.House/>, "Home"],
+	["/courses", <Lucide.Library/>, "Library", { end: true }], // misleading otherwise
+	["/my-courses", <Lucide.GraduationCap/>, "My Courses"]
 ];
 
 const bottomLinks = [
-	["/help", <MessageCircleQuestionMark/>, "Help"],
-	["/settings", <Settings/>, "Settings"],
-	["/", <LogOut/>, "Log Out"]
+	["/help", <Lucide.MessageCircleQuestionMark/>, "Help"],
+	["/settings", <Lucide.Settings/>, "Settings"],
+	["/", <Lucide.LogOut/>, "Log Out"]
 ];
 
 function NavBarLink({ data }) {
@@ -19,21 +19,31 @@ function NavBarLink({ data }) {
 }
 
 function NavBar() {
+	function handleMobileMenuClick() {
+	}
+
 	return (
-		<nav className={style.navbar}>
-			<ul>
-				{ topLinks.map(l => <li key={l[0]}><NavBarLink data={l}/></li>) }
-			</ul>
-			<ul>
-				{ bottomLinks.map(l => <li key={l[0]}><NavBarLink data={l}/></li>) }
-			</ul>
+		<nav className={style.NavBar}>
+			<div className={style.mobile}>
+				<button onClick={handleMobileMenuClick}><Lucide.Menu/></button>
+				<Link to="/home"><img src="/logo.png"/></Link>
+			</div>
+
+			<div className={style.links}>
+				<ul>
+					{ topLinks.map(l => <li key={l[0]}><NavBarLink data={l}/></li>) }
+				</ul>
+				<ul>
+					{ bottomLinks.map(l => <li key={l[0]}><NavBarLink data={l}/></li>) }
+				</ul>
+			</div>
 		</nav>
 	);
 }
 
 export default function MainLayout() {
 	return (
-		<div className={style.layout}>
+		<div className={style.MainLayout}>
 			<NavBar/>
 			<main>
 				<div className={style.container}>

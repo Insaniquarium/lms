@@ -1,4 +1,4 @@
-.layout {
+.MainLayout {
 	display: flex;
 	height: 100vh;
 
@@ -11,45 +11,85 @@
 .container {
 	max-width: 1100px;
 	margin: 0 auto;
-	padding: 0 16px;
+	padding: 0 2rem;
 }
 
-.navbar {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	width: 280px;
-	padding: 1em;
+.NavBar {
+	flex-basis: 250px;
 	background: var(--component-bg-color);
 	border-right: 1px solid var(--border-color);
 
-	ul {
-		list-style: none;
+	.mobile {
+		display: none;
+		padding: 0.5rem 1rem;
+		gap: 1rem;
+
+		button {
+			background: unset;
+			color: unset;
+			border: unset;
+			padding: unset;
+		}
 	}
 
-	li a {
+	.links {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		padding: 1rem;
+		height: 100%;
+
+		ul {
+			list-style: none;
+		}
+
+		li a {
+			display: block;
+			color: inherit;
+			text-decoration: none;
+			font-weight: 500;
+			padding: 1rem;
+			border-radius: 8px;
+
+			&:hover {
+				background: #eee;
+			}
+
+			&:global(.active) {
+				background: #383850;
+				color: #fff;
+			}
+
+			* {
+				vertical-align: middle;
+			}
+
+			:global(.lucide) {
+				margin-right: 8px;
+			}
+		}
+	}
+}
+
+@media (max-width: 950px) {
+	.MainLayout {
 		display: block;
-		color: inherit;
-		text-decoration: none;
-		font-weight: 500;
-		padding: 1em;
-		border-radius: 8px;
+	}
 
-		&:hover {
-			background: #eee;
+	.NavBar {
+		border-right: none;
+		border-bottom: 1px solid var(--border-color);
+
+		.mobile {
+			display: flex;
 		}
 
-		&:global(.active) {
-			background: #383850;
-			color: #fff;
-		}
+		.links {
+			display: none;
 
-		* {
-			vertical-align: middle;
-		}
-
-		:global(.lucide) {
-			margin-right: 8px;
+			&:global(.active) {
+				display: block;
+			}
 		}
 	}
 }
