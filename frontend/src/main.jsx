@@ -8,6 +8,7 @@ import MainLayout from "./MainLayout";
 import Home from "./Home";
 import Library from "./Library";
 import Course from "./Course";
+import Module from "./Module";
 import MyCourses from "./MyCourses";
 import Help from "./Help";
 import Settings from "./Settings";
@@ -22,7 +23,8 @@ createRoot(document.getElementById("root")).render(
 					<Route path="home" element={<Home/>}/>
 					<Route path="courses">
 						<Route index element={<Library/>}/>
-						<Route path=":id" element={<Course/>}/>
+						<Route path=":courseID" element={<Course/>}/>
+						<Route path=":courseID/modules/:moduleID" element={<Module/>}/>
 					</Route>
 					<Route path="my-courses" element={<MyCourses/>}/>
 					<Route path="help" element={<Help/>}/>
