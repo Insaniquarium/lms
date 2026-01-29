@@ -32,9 +32,9 @@
 
 	:global(.CourseInfoRow) {
 		padding: 1rem;
+	}
 
-		&:not(:last-child) {
-			border-bottom: 1px solid var(--border-color);
-		}
+	li:not(:last-child) {
+		border-bottom: 1px solid var(--border-color);
 	}
 }

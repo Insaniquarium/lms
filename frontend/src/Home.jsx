@@ -29,7 +29,7 @@ function MyCoursesCard() {
 		<Card className={style.MyCoursesCard}>
 			<h2><GraduationCap/>My Courses</h2>
 			<ul>
-				{dummy.myCourses.map(course => <CourseInfoRow course={course}/> )}
+				{dummy.myCourses.map(course => <li><CourseInfoRow course={course}/></li> )}
 			</ul>
 			<div className="text_right">
 				<Link to="/my-courses">See all courses</Link>
