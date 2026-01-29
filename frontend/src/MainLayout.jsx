@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { NavLink, Link, Outlet } from "react-router";
+import { useState, useEffect } from "react";
+import { NavLink, Link, Outlet, useLocation } from "react-router";
 import * as Lucide from "lucide-react";
 import style from "./MainLayout.module.scss";
 
@@ -21,6 +21,7 @@ function NavBarLink({ data }) {
 
 function NavBar() {
 	const [showLinks, setShowLinks] = useState(false);
+	const location = useLocation();
 
 	/**
 	 * Storing our own state is a bit redundant, because we could just use the DOM's
@@ -30,6 +31,11 @@ function NavBar() {
 	function handleMobileMenuClick() {
 		setShowLinks(!showLinks);
 	}
+
+	// Hide mobile navbar whenever link has been pressed
+	useEffect(() => {
+		setShowLinks(false);
+	}, [location]);
 
 	return (
 		<nav className={style.NavBar}>
