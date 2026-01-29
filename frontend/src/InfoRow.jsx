@@ -5,11 +5,13 @@ import * as dummy from "./dummy";
 // This probably needs a refactor the most
 
 export function CourseInfoRow({ course }) {
+	const link = `/courses/${course.id}`;
+
 	return (
 		<div className="CourseInfoRow details_list_row">
-			<img src={course.image}/>
+			<Link className="img" to={link}><img src={course.image}/></Link>
 			<div className="content">
-				<Link to={`/courses/${course.id}`}>{course.name}</Link>
+				<Link to={link}>{course.name}</Link>
 				<p>{course.description}</p>
 			</div>
 			<CircularProgressbar value={course.progress} text={course.progress + "%"}/>
@@ -24,11 +26,13 @@ export function ModuleInfoRow({ courseId, mod }) {
 	const progressText = progress ? (progress.completed ? "Completed" : "Started") : "Not Started";
 	const progressClass = progress ? (progress.completed ? "completed" : "started") : "";
 
+	const link = `/courses/${courseId}/modules/${mod.id}`;
+
 	return (
 		<div className="ModuleInfoRow details_list_row">
-			<img src={mod.image}/>
+			<Link className="img" to={link}><img src={mod.image}/></Link>
 			<div className="content">
-				<Link to={`/courses/${courseId}/modules/${mod.id}`}>{mod.name}</Link>
+				<Link to={link}>{mod.name}</Link>
 				<p>{mod.description}</p>
 			</div>
 			<span className={`progress ${progressClass}`}>{progressText}</span>
