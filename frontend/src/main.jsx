@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router";
 import "react-circular-progressbar/dist/styles.css";
 import "./common.scss";
 import "./components.scss";
+import Login from "./Login";
 import MainLayout from "./MainLayout";
 import Home from "./Home";
 import Library from "./Library";
@@ -18,6 +19,7 @@ createRoot(document.getElementById("root")).render(
 	<StrictMode>
 		<BrowserRouter>
 			<Routes>
+				<Route path="login" element={<Login/>}/>
 				<Route element={<MainLayout/>}>
 					<Route index element={<Navigate to="/home"/>}/>
 					<Route path="home" element={<Home/>}/>

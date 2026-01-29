@@ -1,0 +1,19 @@
+.Login {
+	height: 100vh;
+	overflow: auto;
+	background: url(https://unsplash.com/photos/FHnnjk1Yj7Y/download?w=1280) center / cover no-repeat;
+	padding: 2rem;
+
+	h1 {
+		margin: 0;
+		font-weight: 500;
+		font-size: 1.75em;
+	}
+
+	:global(.Card) {
+		max-width: 500px;
+		height: 100%;
+		margin-left: auto;
+		padding: 1.5rem;
+	}
+}
