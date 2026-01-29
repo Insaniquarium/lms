@@ -33,7 +33,7 @@ function NavBar() {
 
 	return (
 		<nav className={style.NavBar}>
-			<div className={style.mobile}>
+			<div className={style.top}>
 				<button onClick={handleMobileMenuClick}><Lucide.Menu/></button>
 				<Link to="/home"><img src="/logo.png"/></Link>
 			</div>
