@@ -12,6 +12,7 @@ export default function Course() {
 	return (
 		<div className={style.Course}>
 			<div className={style.name_box}>
+				<img src={course.image}/>
 				<h1>{course.name}</h1>
 				<CircularProgressbar value={progress} text={progress + "%"}/>
 			</div>
