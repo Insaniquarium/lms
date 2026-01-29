@@ -10,7 +10,11 @@ export default function MyCourses() {
 			<h1>My Courses</h1>
 			<p>You are enrolled in <b>{dummy.myCourses.length}</b> courses.</p>
 			<ul>
-				{dummy.myCourses.map(course => <li><Card><CourseInfoRow course={course}/></Card></li> )}
+				{dummy.myCourses.map(course =>
+					<li key={course.id}>
+						<Card><CourseInfoRow course={course}/></Card>
+					</li>
+				)}
 			</ul>
 			<p className="text_center neutral">You can enrol in more courses from the <Link to="/courses">library</Link>.</p>
 		</div>

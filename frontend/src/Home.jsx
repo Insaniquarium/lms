@@ -11,7 +11,7 @@ function RecentActivityCard() {
 			<h2><Activity/>Recent Activity</h2>
 			<ul>
 				{dummy.recentActivity.map(a =>
-					<li>
+					<li key={`${a.course_id}:${a.module_id}`}>
 						<Link to={`/courses/${a.course_id}/modules/${a.module_id}`}>{a.name}</Link>
 						<span className={a.status == "Completed" ? "success" : "neutral"}>{a.status}</span>
 					</li>
@@ -29,7 +29,11 @@ function MyCoursesCard() {
 		<Card className={style.MyCoursesCard}>
 			<h2><GraduationCap/>My Courses</h2>
 			<ul>
-				{dummy.myCourses.map(course => <li><CourseInfoRow course={course}/></li> )}
+				{dummy.myCourses.map(course =>
+					<li key={course.id}>
+						<CourseInfoRow course={course}/>
+					</li>
+				)}
 			</ul>
 			<div className="text_right">
 				<Link to="/my-courses">See all courses</Link>
