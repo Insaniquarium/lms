@@ -39,6 +39,10 @@ a:visited {
 	color: var(--link-visited-color);
 }
 
+iframe {
+	border: none;
+}
+
 .success {
 	color: var(--success-color);
 }
