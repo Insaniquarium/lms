@@ -2,12 +2,28 @@
 	height: 100vh;
 	overflow: auto;
 	background: url(https://unsplash.com/photos/FHnnjk1Yj7Y/download?w=1280) center / cover no-repeat;
-	padding: 2rem;
+	padding: 1rem;
 
 	h1 {
 		margin: 0;
-		font-weight: 500;
 		font-size: 1.75em;
+		margin-bottom: 1rem;
+	}
+
+	label, input {
+		margin: 0.5rem 0;
+	}
+
+	input {
+		display: block;
+
+		&:not([type=submit]) {
+			width: 100%;
+		}
+
+		&[type=submit] {
+			margin: 1rem 0;
+		}
 	}
 
 	:global(.Card) {
