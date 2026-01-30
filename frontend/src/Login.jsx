@@ -1,13 +1,20 @@
 import { useId } from "react";
+import { useNavigate, useLocation } from "react-router";
+import { useAuth } from "./auth";
 import Card from "./Card"
 import style from "./Login.module.scss";
 
 export default function Login() {
+	const navigate = useNavigate();
+	const location = useLocation();
+	const auth = useAuth();
 	const emailId = useId();
 	const passwordId = useId();
 
 	function login(formData) {
-
+		auth.login(() => {
+			navigate(location.state?.from?.pathname || "/", { replace: true });
+		});
 	}
 
 	return (
