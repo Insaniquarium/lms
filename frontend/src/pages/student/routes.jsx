@@ -1,4 +1,4 @@
-import { Route } from "react-router";
+import { Route, Navigate } from "react-router";
 import { RequireAuth } from "#/auth";
 import StudentLayout from "#/layouts/StudentLayout";
 import Home from "./Home";
@@ -9,19 +9,23 @@ import MyCourses from "./MyCourses";
 import Help from "./Help";
 import Settings from "./Settings";
 
-export function StudentRoutes() {
-	return (<>
-		<Route element={<RequireAuth role="student"><StudentLayout/></RequireAuth>}>
-			<Route index element={<Navigate to="/home"/>}/>
-			<Route path="home" element={<Home/>}/>
-			<Route path="courses">
-				<Route index element={<Library/>}/>
-				<Route path=":courseID" element={<Course/>}/>
-				<Route path=":courseID/modules/:moduleID" element={<Module/>}/>
-			</Route>
-			<Route path="my-courses" element={<MyCourses/>}/>
-			<Route path="help" element={<Help/>}/>
-			<Route path="settings" element={<Settings/>}/>
-		</Route>
-	</>);
-}
+export const studentRoutes = [
+	{
+		Component: () => <RequireAuth role="student"><StudentLayout/></RequireAuth>,
+		children: [
+			{ index: true, Component: () => <Navigate to="/home"/> },
+			{ path: "/home", Component: Home },
+			{
+				path: "/courses",
+				children: [
+					{ index: true, Component: Library },
+					{ path: ":courseID", Component: Course },
+					{ path: ":courseID/modules/:moduleID", Component: Module }
+				]
+			},
+			{ path: "my-courses", Component: MyCourses },
+			{ path: "help", Component: Help},
+			{ path: "settings", Component: Settings }
+		]
+	}
+];

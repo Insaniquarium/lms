@@ -1,4 +1,4 @@
-import { NavLink, Outlet } from "react-router";
+import { Outlet } from "react-router";
 import { House, Library, GraduationCap, MessageCircleQuestionMark, Settings, LogOut } from "lucide-react";
 import { NavBar, TopBar, BottomBar, NavBarLink } from "#/components/NavBar";
 import { BaseLayout } from "./BaseLayout";

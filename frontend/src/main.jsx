@@ -1,26 +1,26 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router";
+import { RouterProvider, createBrowserRouter } from "react-router";
 import "react-circular-progressbar/dist/styles.css";
 import "#/common.scss";
 import "#/components/components.scss";
 import { AuthProvider } from "#/auth";
-import { StudentRoutes } from "#/pages/student/routes";
-/*import { AdminRoutes } from "#/pages/admin/routes";*/
+import { studentRoutes } from "#/pages/student/routes";
+import { adminRoutes } from "#/pages/admin/routes";
 import Login from "#/pages/Login";
 import NotFound from "#/pages/NotFound";
 
+const router = createBrowserRouter([
+	{ path: "/login", Component: Login },
+	...studentRoutes,
+	...adminRoutes,
+	{ path: "*", Component: NotFound }
+]);
+
 createRoot(document.getElementById("root")).render(
 	<StrictMode>
-		<BrowserRouter>
-			<AuthProvider>
-				<Routes>
-					<Route path="login" element={<Login/>}/>
-					<StudentRoutes/>
-					{/*<AdminRoutes/>*/}
-					<Route path="*" element={<NotFound/>}/>
-				</Routes>
-			</AuthProvider>
-		</BrowserRouter>
+		<AuthProvider>
+			<RouterProvider router={router}/>
+		</AuthProvider>
 	</StrictMode>
 );

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router";
+import { NavLink, Link, useLocation } from "react-router";
+import { Menu } from "lucide-react";
 import style from "./NavBar.module.scss";
 
 export function NavBarLink(props) {

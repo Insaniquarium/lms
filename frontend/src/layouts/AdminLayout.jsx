@@ -1,4 +1,4 @@
-import { NavLink, Outlet } from "react-router";
+import { Outlet } from "react-router";
 import { Menu, House, Library, GraduationCap, MessageCircleQuestionMark, Settings, LogOut } from "lucide-react";
 import { NavBar, TopBar, BottomBar, NavBarLink } from "#/components/NavBar";
 import { BaseLayout } from "./BaseLayout";
@@ -22,5 +22,5 @@ export default function AdminLayout() {
 				<Outlet/>
 			</main>
 		</BaseLayout>
-	);	
+	);
 }
