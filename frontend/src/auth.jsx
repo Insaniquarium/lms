@@ -1,14 +1,14 @@
 import { createContext, useContext, useState } from "react";
 import { Navigate, useLocation } from "react-router";
 
-let AuthContext = createContext(null);
+let AuthContext = createContext(true);
 
 export function useAuth() {
 	return useContext(AuthContext);
 }
 
 export function AuthProvider({ children }) {
-	let [user, setUser] = useState(null);
+	let [user, setUser] = useState(true);
 
 	function login(callback) {
 		// of course the value will be different once backend exists

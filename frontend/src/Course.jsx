@@ -1,5 +1,6 @@
 import { Link, useParams } from "react-router";
 import { CircularProgressbar } from "react-circular-progressbar";
+import { useTitle } from "./hooks";
 import Card from "./Card";
 import { ModuleInfoRow } from "./InfoRow";
 import * as dummy from "./dummy";
@@ -9,6 +10,8 @@ export default function Course() {
 	const {courseID} = useParams();
 	const course = dummy.courses.find(c => c.id == courseID);
 	const progress = dummy.myCourses.find(c => c.id == course.id)?.progress;
+
+	useTitle(() => course.name, [course]);
 
 	return (
 		<div className={`${style.Course} page`}>

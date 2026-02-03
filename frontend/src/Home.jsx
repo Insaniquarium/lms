@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import { Activity, GraduationCap, Award } from "lucide-react";
+import { useTitle } from "./hooks";
 import * as dummy from "./dummy";
 import Card from "./Card";
 import { CourseInfoRow } from "./InfoRow";
@@ -51,6 +52,8 @@ function AchievementsCard() {
 }
 
 export default function Home() {
+	useTitle(() => "Home");
+
 	return (
 		<div className={`${style.Home} page`}>
 			<h1>Welcome back, Joseph!</h1>

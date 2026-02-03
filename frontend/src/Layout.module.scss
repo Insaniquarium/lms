@@ -1,4 +1,4 @@
-.MainLayout {
+.StudentLayout, .AdminLayout {
 	display: flex;
 	height: 100vh;
 
@@ -73,7 +73,7 @@
 }
 
 @media (max-width: 950px) {
-	.MainLayout {
+	.StudentLayout, .AdminLayout {
 		display: block;
 	}
 
@@ -97,7 +97,8 @@
 }
 
 @media (max-width: 550px) {
-	.MainLayout :global(.page) {
+	.StudentLayout :global(.page),
+	.AdminLayout :global(.page) {
 		padding: 0 1rem;
 	}
 }

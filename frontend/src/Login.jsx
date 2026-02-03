@@ -1,5 +1,6 @@
 import { useId } from "react";
 import { useNavigate, useLocation } from "react-router";
+import { useTitle } from "./hooks";
 import { useAuth } from "./auth";
 import Card from "./Card"
 import style from "./Login.module.scss";
@@ -10,6 +11,8 @@ export default function Login() {
 	const auth = useAuth();
 	const emailId = useId();
 	const passwordId = useId();
+
+	useTitle(() => "Login");
 
 	function login(formData) {
 		auth.login(() => {

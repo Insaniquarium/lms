@@ -6,7 +6,7 @@ import "./common.scss";
 import "./components.scss";
 import { AuthProvider, RequireAuth } from "./auth";
 import Login from "./Login";
-import MainLayout from "./MainLayout";
+import { StudentLayout } from "./Layout";
 import Home from "./Home";
 import Library from "./Library";
 import Course from "./Course";
@@ -23,7 +23,7 @@ createRoot(document.getElementById("root")).render(
 				<Routes>
 					<Route path="login" element={<Login/>}/>
 
-					<Route element={<RequireAuth><MainLayout/></RequireAuth>}>
+					<Route element={<RequireAuth><StudentLayout/></RequireAuth>}>
 						<Route index element={<Navigate to="/home"/>}/>
 						<Route path="home" element={<Home/>}/>
 						<Route path="courses">
