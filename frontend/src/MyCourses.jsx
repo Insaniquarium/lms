@@ -6,7 +6,7 @@ import style from "./MyCourses.module.scss";
 
 export default function MyCourses() {
 	return (
-		<div className={style.MyCourses}>
+		<div className={`${style.MyCourses} page`}>
 			<h1>My Courses</h1>
 			<p>You are enrolled in <b>{dummy.myCourses.length}</b> courses.</p>
 			<ul>

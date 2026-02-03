@@ -11,7 +11,7 @@ export default function Course() {
 	const progress = dummy.myCourses.find(c => c.id == course.id)?.progress;
 
 	return (
-		<div className={style.Course}>
+		<div className={`${style.Course} page`}>
 			<div className={style.name_box}>
 				<img src={course.image}/>
 				<h1>{course.name}</h1>

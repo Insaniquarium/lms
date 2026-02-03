@@ -52,7 +52,7 @@ function AchievementsCard() {
 
 export default function Home() {
 	return (
-		<div className={style.Home}>
+		<div className={`${style.Home} page`}>
 			<h1>Welcome back, Joseph!</h1>
 			<RecentActivityCard/>
 			<MyCoursesCard/>

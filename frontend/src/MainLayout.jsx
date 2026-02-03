@@ -16,7 +16,7 @@ const bottomLinks = [
 ];
 
 function NavBarLink({ data }) {
-	return <NavLink to={data[0]} {...data[3]}>{data[1]}<span>{data[2]}</span></NavLink>;
+	return <NavLink to={data[0]} {...data[3]}>{data[1]}{data[2]}</NavLink>;
 }
 
 function NavBar() {
@@ -61,9 +61,7 @@ export default function MainLayout() {
 		<div className={style.MainLayout}>
 			<NavBar/>
 			<main>
-				<div className={style.container}>
-					<Outlet/>
-				</div>
+				<Outlet/>
 			</main>
 		</div>
 	);

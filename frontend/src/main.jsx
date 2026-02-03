@@ -22,6 +22,7 @@ createRoot(document.getElementById("root")).render(
 			<AuthProvider>
 				<Routes>
 					<Route path="login" element={<Login/>}/>
+
 					<Route element={<RequireAuth><MainLayout/></RequireAuth>}>
 						<Route index element={<Navigate to="/home"/>}/>
 						<Route path="home" element={<Home/>}/>
@@ -34,6 +35,7 @@ createRoot(document.getElementById("root")).render(
 						<Route path="help" element={<Help/>}/>
 						<Route path="settings" element={<Settings/>}/>
 					</Route>
+
 					<Route path="*" element={<NotFound/>}/>
 				</Routes>
 			</AuthProvider>
