@@ -1,3 +1,4 @@
+import { useTitle } from "#/hooks";
 import style from "./Module.module.scss";
 
 export default function Module() {

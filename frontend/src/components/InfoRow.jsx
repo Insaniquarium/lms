@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import { CircularProgressbar } from "react-circular-progressbar";
-import * as dummy from "./dummy";
+import * as dummy from "#/dummy";
 
 // This probably needs a refactor the most
 

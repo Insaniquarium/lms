@@ -1,9 +1,9 @@
-import { Link, useParams } from "react-router";
+import { useParams } from "react-router";
 import { CircularProgressbar } from "react-circular-progressbar";
-import { useTitle } from "./hooks";
-import Card from "./Card";
-import { ModuleInfoRow } from "./InfoRow";
-import * as dummy from "./dummy";
+import { useTitle } from "#/hooks";
+import Card from "#/components/Card";
+import { ModuleInfoRow } from "#/components/InfoRow";
+import * as dummy from "#/dummy";
 import style from "./Course.module.scss";
 
 export default function Course() {

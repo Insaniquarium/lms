@@ -2,19 +2,13 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router";
 import "react-circular-progressbar/dist/styles.css";
-import "./common.scss";
-import "./components.scss";
-import { AuthProvider, RequireAuth } from "./auth";
-import Login from "./Login";
-import { StudentLayout } from "./Layout";
-import Home from "./Home";
-import Library from "./Library";
-import Course from "./Course";
-import Module from "./Module";
-import MyCourses from "./MyCourses";
-import Help from "./Help";
-import Settings from "./Settings";
-import NotFound from "./NotFound";
+import "#/common.scss";
+import "#/components/components.scss";
+import { AuthProvider } from "#/auth";
+import { StudentRoutes } from "#/pages/student/routes";
+/*import { AdminRoutes } from "#/pages/admin/routes";*/
+import Login from "#/pages/Login";
+import NotFound from "#/pages/NotFound";
 
 createRoot(document.getElementById("root")).render(
 	<StrictMode>
@@ -22,20 +16,8 @@ createRoot(document.getElementById("root")).render(
 			<AuthProvider>
 				<Routes>
 					<Route path="login" element={<Login/>}/>
-
-					<Route element={<RequireAuth><StudentLayout/></RequireAuth>}>
-						<Route index element={<Navigate to="/home"/>}/>
-						<Route path="home" element={<Home/>}/>
-						<Route path="courses">
-							<Route index element={<Library/>}/>
-							<Route path=":courseID" element={<Course/>}/>
-							<Route path=":courseID/modules/:moduleID" element={<Module/>}/>
-						</Route>
-						<Route path="my-courses" element={<MyCourses/>}/>
-						<Route path="help" element={<Help/>}/>
-						<Route path="settings" element={<Settings/>}/>
-					</Route>
-
+					<StudentRoutes/>
+					{/*<AdminRoutes/>*/}
 					<Route path="*" element={<NotFound/>}/>
 				</Routes>
 			</AuthProvider>

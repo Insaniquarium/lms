@@ -1,0 +1,27 @@
+.BaseLayout {
+	display: flex;
+	height: 100vh;
+
+	main {
+		flex: auto;
+		overflow: auto;
+	}
+
+	:global(.page) {
+		max-width: 1100px;
+		margin: 0 auto;
+		padding: 0 2rem;
+	}
+}
+
+@media (max-width: 950px) {
+	.BaseLayout {
+		display: block;
+	}
+}
+
+@media (max-width: 550px) {
+	.BaseLayout :global(.page) {
+		padding: 0 1rem;
+	}
+}

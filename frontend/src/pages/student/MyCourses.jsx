@@ -1,10 +1,13 @@
 import { Link } from "react-router";
-import * as dummy from "./dummy";
-import Card from "./Card";
-import { CourseInfoRow } from "./InfoRow";
+import { useTitle } from "#/hooks";
+import * as dummy from "#/dummy";
+import Card from "#/components/Card";
+import { CourseInfoRow } from "#/components/InfoRow";
 import style from "./MyCourses.module.scss";
 
 export default function MyCourses() {
+	useTitle(() => "My Courses");
+
 	return (
 		<div className={`${style.MyCourses} page`}>
 			<h1>My Courses</h1>

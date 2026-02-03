@@ -1,6 +1,16 @@
+import { dirname, join, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const root = resolve(join(__dirname, "src/"));
+
 export default defineConfig({
-	plugins: [react()]
+	plugins: [react()],
+	resolve: {
+		alias: {
+			"#": root
+		}
+	}
 });
