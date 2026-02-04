@@ -9,7 +9,7 @@ export default function StudentLayout() {
 			<NavBar>
 				<TopBar>
 					<NavBarLink to="/home"><House/> Home</NavBarLink>
-					<NavBarLink to="/courses"><Library/> Library</NavBarLink>
+					<NavBarLink to="/courses" end><Library/> Library</NavBarLink>
 					<NavBarLink to="/my-courses"><GraduationCap/> My Courses</NavBarLink>
 				</TopBar>
 				<BottomBar>

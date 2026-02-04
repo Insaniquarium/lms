@@ -1,0 +1,28 @@
+table {
+	width: 100%;
+}
+
+th {
+	text-align: left;
+}
+
+.heading_row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.created {
+	white-space: nowrap;
+}
+
+.delete {
+	display: flex;
+	margin-left: auto;
+	background: #ad2a2a;
+	padding: 0.5em;
+
+	&:hover {
+		background: #7a1e1e;
+	}
+}

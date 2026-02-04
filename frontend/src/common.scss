@@ -67,6 +67,23 @@ button, input[type=submit] {
 	}
 }
 
+table {
+	background: var(--component-bg-color);
+	border-radius: 8px;
+	border-collapse: collapse;
+	box-shadow: 0 0 0 1px var(--border-color);
+	margin-bottom: 1px;
+
+	td, th {
+		padding: 1em;
+	}
+
+	thead th,
+	tr:not(:last-child) td {
+		border-bottom: 1px solid var(--border-color);
+	}
+}
+
 iframe {
 	border: none;
 }

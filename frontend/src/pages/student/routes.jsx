@@ -11,12 +11,12 @@ import Settings from "./Settings";
 
 export const studentRoutes = [
 	{
-		Component: () => <RequireAuth role="student"><StudentLayout/></RequireAuth>,
+		Component: () => <RequireAuth role={["student", "teacher", "admin"]}><StudentLayout/></RequireAuth>,
 		children: [
-			{ index: true, Component: () => <Navigate to="/home"/> },
-			{ path: "/home", Component: Home },
+			{ index: true, Component: () => <Navigate to="home"/> },
+			{ path: "home", Component: Home },
 			{
-				path: "/courses",
+				path: "courses",
 				children: [
 					{ index: true, Component: Library },
 					{ path: ":courseID", Component: Course },
