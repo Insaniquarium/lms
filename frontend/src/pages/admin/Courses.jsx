@@ -8,16 +8,17 @@ export function Courses() {
 	useTitle(() => "Courses");
 
 	return (
-		<div className={`${style.Courses} page`}>
+		<div className="page">
 			<header className={style.heading_row}>
 				<h1>Courses</h1>
-				<button>New Course</button>
+				<Link to="new" className="button">New Course</Link>
 			</header>
 			<table>
 				<thead>
 					<tr>
 						<th style={{width: "90%"}}>Name</th>
-						<th>Enrollments</th>
+						<th>Enrolments</th>
+						<th>Visibility</th>
 						<th>Created</th>
 						<th style={{width: "10%"}}></th>
 					</tr>
@@ -25,8 +26,9 @@ export function Courses() {
 				<tbody>
 					{dummy.courses.map(course =>
 						<tr>
-							<td><Link to="#">{course.name}</Link></td>
-							<td>1</td>
+							<td><Link to={`${course.id}`}>{course.name}</Link></td>
+							<td className="text_right">{course.enrolments}</td>
+							<td>Public</td>
 							<td className={style.created}>1 day ago</td>
 							<td className={style.actions}>
 								<button className={style.delete}><Trash size={16}/></button>

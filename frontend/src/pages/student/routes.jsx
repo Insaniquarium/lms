@@ -6,6 +6,7 @@ import Library from "./Library";
 import Course from "./Course";
 import Module from "./Module";
 import MyCourses from "./MyCourses";
+import Activity from "./Activity";
 import Help from "./Help";
 import Settings from "./Settings";
 
@@ -24,7 +25,8 @@ export const studentRoutes = [
 				]
 			},
 			{ path: "my-courses", Component: MyCourses },
-			{ path: "help", Component: Help},
+			{ path: "activity", Component: Activity },
+			{ path: "help", Component: Help },
 			{ path: "settings", Component: Settings }
 		]
 	}

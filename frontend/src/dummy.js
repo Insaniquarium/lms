@@ -4,6 +4,7 @@ export const courses = [
 		name: "Coding Essentials",
 		image: "https://unsplash.com/photos/1IW4HQuauSU/download?w=640",
 		description: "Learn to use HTML and CSS to create and style web pages, and utilise JavaScript to make them interactive.",
+		enrolments: 100,
 		modules: [
 			{
 				id: 0,
@@ -42,6 +43,7 @@ export const courses = [
 		name: "Front End Development",
 		image: "https://unsplash.com/photos/uyfohHiTxho/download?w=640",
 		description: "Utilise React to develop single page applications, collaborate and track changes with GitHub, and learn to manage software development projects.",
+		enrolments: 50,
 		modules: []
 	},
 	{
@@ -49,6 +51,7 @@ export const courses = [
 		name: "Back End Development",
 		image: "https://unsplash.com/photos/r2_uBsnR-dY/download?w=640",
 		description: "Study programming in Python, writing and managing a SQL database, and developing APIs.",
+		enrolments: 40,
 		modules: []
 	}
 ];
