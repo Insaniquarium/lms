@@ -11,7 +11,7 @@
 	--border-color: #afb6c2;
 	--link-color: #0073c4;
 	--link-visited-color: #8948c4;
-	--img-bg-color: #d3d3d4;
+	--img-bg-color: #e0e0e1;
 	--success-color: #1b8057;
 	--neutral-color: #6a6e75;
 	--gray-color: #d5dae3;
@@ -51,6 +51,7 @@ input[type=text],
 input[type=email],
 input[type=password],
 textarea {
+	background: var(--component-bg-color);
 	border: 1px solid var(--border-color);
 	border-radius: 0.25em;
 	padding: 0.5em;
