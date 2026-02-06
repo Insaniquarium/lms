@@ -17,6 +17,7 @@ export function Courses() {
 				<thead>
 					<tr>
 						<th style={{width: "90%"}}>Name</th>
+						<th>Modules</th>
 						<th>Enrolments</th>
 						<th>Visibility</th>
 						<th>Created</th>
@@ -27,6 +28,7 @@ export function Courses() {
 					{dummy.courses.map(course =>
 						<tr>
 							<td><Link to={`${course.id}`}>{course.name}</Link></td>
+							<td className="text_right">{course.modules.length}</td>
 							<td className="text_right">{course.enrolments}</td>
 							<td>Public</td>
 							<td className={style.created}>1 day ago</td>
