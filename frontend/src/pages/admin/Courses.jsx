@@ -8,7 +8,7 @@ export function Courses() {
 	useTitle(() => "Courses");
 
 	return (
-		<div className="page">
+		<div className={`${style.Courses} page`}>
 			<header className={style.heading_row}>
 				<h1>Courses</h1>
 				<Link to="new" className="button">New Course</Link>

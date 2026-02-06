@@ -39,15 +39,17 @@ a:visited {
 	color: var(--link-visited-color);
 }
 
-button, .button, input {
+button, .button, input, textarea {
 	font: inherit;
 	color: inherit;
 	background: none;
 	border: none;
 }
 
+input[type=text],
 input[type=email],
-input[type=password] {
+input[type=password],
+textarea {
 	border: 1px solid var(--border-color);
 	border-radius: 0.25em;
 	padding: 0.5em;

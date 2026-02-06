@@ -1,0 +1,41 @@
+.NewCourse {
+	input, textarea {
+		display: block;
+		margin: 0.5rem 0;
+	}
+
+	textarea {
+		resize: vertical;
+	}
+
+	input:not([type=submit]), textarea {
+		width: 100%;
+	}
+
+	p {
+		margin: 1em 0;
+	}
+
+	input[type=submit] {
+		margin-left: auto;
+	}
+}
+
+.input_row {
+	display: flex;
+	gap: 2rem;
+	flex-wrap: wrap;
+
+	img {
+		display: block;
+		background: gray;
+		border-radius: 16px;
+		width: 250px;
+		height: 150px;
+	}
+
+	> div:last-child {
+		flex: auto;
+		flex-basis: 450px;
+	}
+}
