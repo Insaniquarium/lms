@@ -1,7 +1,8 @@
 import { useParams } from "react-router";
 import { CircularProgressbar } from "react-circular-progressbar";
 import { useTitle } from "#/hooks";
-import Card from "#/components/Card";
+import { NameBox } from "#/components/NameBox";
+import { Card } from "#/components/Card";
 import { ModuleInfoRow } from "#/components/InfoRow";
 import * as dummy from "#/dummy";
 import style from "./Course.module.scss";
@@ -15,11 +16,11 @@ export default function Course() {
 
 	return (
 		<div className={`${style.Course} page`}>
-			<div className={style.name_box}>
+			<NameBox>
 				<img src={course.image}/>
 				<h1>{course.name}</h1>
 				<CircularProgressbar value={progress} text={progress + "%"}/>
-			</div>
+			</NameBox>
 
 			<div className="heading_section text_section">
 				<h2>About</h2>

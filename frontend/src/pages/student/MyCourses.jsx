@@ -1,8 +1,8 @@
 import { Link } from "react-router";
 import { useTitle } from "#/hooks";
-import * as dummy from "#/dummy";
-import Card from "#/components/Card";
+import { Card } from "#/components/Card";
 import { CourseInfoRow } from "#/components/InfoRow";
+import * as dummy from "#/dummy";
 import style from "./MyCourses.module.scss";
 
 export default function MyCourses() {

@@ -2,7 +2,7 @@ import { useId } from "react";
 import { useNavigate, useLocation } from "react-router";
 import { useTitle } from "#/hooks";
 import { useAuth } from "#/auth";
-import Card from "#/components/Card"
+import { Card } from "#/components/Card"
 import style from "./Login.module.scss";
 
 export default function Login() {
