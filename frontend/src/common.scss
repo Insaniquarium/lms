@@ -85,10 +85,12 @@ table {
 
 	td, th {
 		padding: 1em;
+		text-align: left;
 	}
 
 	thead th,
-	tr:not(:last-child) td {
+	tr:not(:last-child) td,
+	tr:not(:last-child) th {
 		border-bottom: 1px solid var(--border-color);
 	}
 }
