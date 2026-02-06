@@ -1,5 +1,6 @@
 import { useId } from "react";
 import { useTitle } from "#/hooks";
+import { ImageUploadInput } from "#/components/ImageUploadInput";
 import style from "./NewCourse.module.scss";
 
 export function NewCourse() {
@@ -17,15 +18,13 @@ export function NewCourse() {
 			<h1>New Course</h1>
 			<form action={create}>
 				<div className={style.input_row}>
-					<div>
-						<img src=""/>
-					</div>
+					<ImageUploadInput name="image" accept="image/png, image/jpeg, image/webp"/>
 					<div>
 						<label htmlFor={nameId}>Name:</label>
-						<input type="text" name="name" id={nameId} placeholder="My Course"/>
+						<input type="text" name="name" id={nameId} placeholder="My Course" required/>
 
 						<label htmlFor={descriptionId}>Description:</label>
-						<textarea name="description" id={descriptionId} rows="10" placeholder="In this course, you will learn..."></textarea>
+						<textarea name="description" id={descriptionId} rows="10" placeholder="In this course, you will learn..." required></textarea>
 
 						<p className="neutral">Course visibility is hidden by default and should be changed after creation.</p>
 					</div>
