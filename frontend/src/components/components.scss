@@ -48,3 +48,45 @@
 		font-weight: 500;
 	}
 }
+
+.ImageUploadInput {
+	button {
+		background: none;
+		color: inherit;
+		border: 2px dashed var(--border-color);
+		border-radius: 16px;
+		width: 250px;
+		height: 150px;
+		position: relative;
+		overflow: hidden;
+
+		* {
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			margin: 0;
+		}
+
+		span {
+			top: 50%;
+			text-align: center;
+			transform: translateY(-50%);
+		}
+
+		img {
+			background: var(--img-bg-color);
+			height: 100%;
+			object-fit: cover;
+
+			&:hover {
+				filter: brightness(92%);
+			}
+		}
+	}
+
+	input[type=file] {
+		display: none;
+	}
+}
