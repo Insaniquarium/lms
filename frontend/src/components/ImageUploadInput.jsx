@@ -1,7 +1,5 @@
 import { useRef, useState, useEffect } from "react";
 
-const blankImage = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
-
 export function ImageUploadInput({ name, accept }) {
 	const inputRef = useRef(null);
 	const [image, setImage] = useState(null);
@@ -18,8 +16,11 @@ export function ImageUploadInput({ name, accept }) {
 	return (
 		<div className="ImageUploadInput">
 			<button onClick={() => inputRef.current.click()}>
-				<img src={image ? image : blankImage}/>
-				{ !image && <span>Click to upload image</span> }
+				{ image ? (
+					<img src={image ? image : blankImage}/>
+				) : (
+					<span>Click to upload image</span>
+				)}
 			</button>
 			<input type="file" name={name} ref={inputRef} accept={accept} onChange={change}/>
 		</div>

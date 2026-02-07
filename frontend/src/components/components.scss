@@ -51,7 +51,7 @@
 
 .ImageUploadInput {
 	button {
-		background: none;
+		background: var(--img-bg-color);
 		color: inherit;
 		border: 2px dashed var(--border-color);
 		border-radius: 16px;
@@ -77,13 +77,12 @@
 		}
 
 		img {
-			background: var(--img-bg-color);
 			height: 100%;
 			object-fit: cover;
+		}
 
-			&:hover {
-				filter: brightness(92%);
-			}
+		&:hover {
+			filter: brightness(92%);
 		}
 	}
 
