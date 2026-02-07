@@ -1,5 +1,7 @@
 import { Link } from "react-router";
 import { useTitle } from "#/hooks";
+import { formatDate } from "#/utils";
+import * as dummy from "#/dummy";
 import style from "./Users.module.scss";
 
 export function Users() {
@@ -22,13 +24,15 @@ export function Users() {
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td><Link to="0">Joseph Lastname</Link></td>
-						<td>jlastname@email.com</td>
-						<td>Admin</td>
-						<td>1 day ago</td>
-						<td>1 week ago</td>
-					</tr>
+					{dummy.users.map(user =>
+						<tr>
+							<td><Link to={`${user.id}`}>{user.name}</Link></td>
+							<td>{user.email}</td>
+							<td>{user.role}</td>
+							<td>{formatDate(user.accessed * 1000)}</td>
+							<td>{formatDate(user.created * 1000)}</td>
+						</tr>
+					)}
 				</tbody>
 			</table>
 		</div>

@@ -113,3 +113,14 @@ export const moduleProgress = [
 	{ course_id: 0, module_id: 2, completed: true },
 	{ course_id: 0, module_id: 3, completed: false }
 ];
+
+export const users = [
+	{
+		id: 0,
+		name: "Joseph Lastname",
+		email: "jlastname@email.com",
+		role: "Admin",
+		accessed: 1770424743,
+		created: 1770319776
+	}
+];
