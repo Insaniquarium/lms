@@ -9,10 +9,15 @@
 	--component-bg-color: #fff;
 	--component-hover-bg-color: #f2f2f2;
 	--text-color: #222325;
+
 	--border-color: #afb6c2;
+	--border-color-hover: #c6cedc;
+
 	--link-color: #0073c4;
 	--link-visited-color: #8948c4;
+
 	--img-bg-color: #e0e0e0;
+
 	--success-color: #1b8057;
 	--neutral-color: #6a6e75;
 	--gray-color: #d5dae3;
@@ -55,7 +60,7 @@ textarea,
 select {
 	background: var(--component-bg-color);
 	border: 1px solid var(--border-color);
-	border-radius: 0.25em;
+	border-radius: 6px;
 	padding: 0.5em;
 }
 
@@ -67,7 +72,7 @@ button, .button, input[type=submit] {
 	color: #fff;
 	background: #2e2e2e;
 	border: none;
-	border-radius: 0.25em;
+	border-radius: 4px;
 	padding: 0.75em 1.5em;
 	font-size: 0.875em;
 	cursor: pointer;
@@ -86,8 +91,10 @@ table {
 	background: var(--component-bg-color);
 	border-radius: 8px;
 	border-collapse: collapse;
+
+	// Hack for how we can't use border-radius with border-collapse
 	box-shadow: 0 0 0 1px var(--border-color);
-	margin-bottom: 1px;
+	margin: -1px;
 
 	td, th {
 		padding: 1em;
