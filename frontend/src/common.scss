@@ -7,11 +7,12 @@
 :root {
 	--body-bg-color: #fafbfc;
 	--component-bg-color: #fff;
+	--component-hover-bg-color: #f2f2f2;
 	--text-color: #222325;
 	--border-color: #afb6c2;
 	--link-color: #0073c4;
 	--link-visited-color: #8948c4;
-	--img-bg-color: #e0e0e1;
+	--img-bg-color: #e0e0e0;
 	--success-color: #1b8057;
 	--neutral-color: #6a6e75;
 	--gray-color: #d5dae3;
@@ -40,7 +41,7 @@ a:visited {
 	color: var(--link-visited-color);
 }
 
-button, .button, input, textarea {
+button, .button, input, textarea, select {
 	font: inherit;
 	color: inherit;
 	background: none;
@@ -50,11 +51,16 @@ button, .button, input, textarea {
 input[type=text],
 input[type=email],
 input[type=password],
-textarea {
+textarea,
+select {
 	background: var(--component-bg-color);
 	border: 1px solid var(--border-color);
 	border-radius: 0.25em;
 	padding: 0.5em;
+}
+
+select:hover {
+	background: var(--component-hover-bg-color);
 }
 
 button, .button, input[type=submit] {

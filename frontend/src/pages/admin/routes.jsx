@@ -6,6 +6,7 @@ import { Courses } from "./Courses";
 import { NewCourse } from "./NewCourse";
 import { Course } from "./Course";
 import { Users } from "./Users";
+import { NewUser } from "./NewUser";
 import { User } from "./User";
 import { Settings } from "./Settings";
 
@@ -28,6 +29,7 @@ export const adminRoutes = [
 				path: "users",
 				children: [
 					{ index: true, Component: Users },
+					{ path: "new", Component: NewUser },
 					{ path: ":userID", Component: User }
 				]
 			},

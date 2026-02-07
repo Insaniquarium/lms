@@ -1,6 +1,7 @@
 .Courses {
 	table {
 		width: 100%;
+		white-space: nowrap;
 	}
 }
 
@@ -8,10 +9,6 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-}
-
-.created {
-	white-space: nowrap;
 }
 
 .delete {
