@@ -30,7 +30,16 @@ export const adminRoutes = [
 				children: [
 					{ index: true, Component: Users },
 					{ path: "new", Component: NewUser },
-					{ path: ":userID", Component: User }
+					{
+						path: ":userID",
+						Component: User,
+						children: [
+							{ index: true, Component: () => <Navigate to="info"/> },
+							{ path: "info", Component: () => <User.Info/> },
+							{ path: "activity", Component: () => <User.Activity/> },
+							{ path: "courses", Component: () => <User.Courses/> }
+						]
+					}
 				]
 			},
 			{ path: "settings", Component: Settings }

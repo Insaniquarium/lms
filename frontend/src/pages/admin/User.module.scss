@@ -1,5 +1,21 @@
-.tab_content {
-	background: var(--component-bg-color);
-	border: 1px solid var(--border-color);
-	border-top: none;
+.User {
+	:global(.TabContent) {
+		padding: 1rem;
+	}
+}
+
+.User_Info {
+	/* TODO: Fix margins */
+	p, input[type=submit] {
+		margin: 1rem 0;
+	}
+
+	input, select {
+		display: block;
+		margin: 0.5rem 0;
+	}
+
+	input:not([type=submit]), select {
+		width: 100%;
+	}
 }
