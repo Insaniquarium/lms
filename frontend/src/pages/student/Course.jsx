@@ -1,25 +1,29 @@
 import { useParams } from "react-router";
 import { CircularProgressbar } from "react-circular-progressbar";
-import { useTitle } from "#/hooks";
+import { useAuth } from "#/auth";
+import { useTitle, useApi } from "#/hooks";
+import { API } from "#/api";
 import { NameBox } from "#/components/NameBox";
 import { Card } from "#/components/Card";
 import { ModuleInfoRow } from "#/components/InfoRow";
-import * as dummy from "#/dummy";
 import style from "./Course.module.scss";
 
 export default function Course() {
 	const {courseID} = useParams();
-	const course = dummy.courses.find(c => c.id == courseID);
-	const progress = dummy.myCourses.find(c => c.id == course.id)?.progress;
+	const {id} = useAuth();
+	const [course, loading] = useApi(api => api.getUserCourse(id, courseID));
 
-	useTitle(() => course.name, [course]);
+	useTitle(() => course?.name ?? "Course", [course]);
+
+	if (loading)
+		return;
 
 	return (
 		<div className={`${style.Course} page`}>
 			<NameBox>
 				<img src={course.image}/>
 				<h1>{course.name}</h1>
-				<CircularProgressbar value={progress} text={progress + "%"}/>
+				<CircularProgressbar value={course.progress} text={course.progress + "%"}/>
 			</NameBox>
 
 			<div className="heading_section text_section">
