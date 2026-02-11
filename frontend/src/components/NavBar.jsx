@@ -3,18 +3,6 @@ import { NavLink, Link, useLocation } from "react-router";
 import { Menu } from "lucide-react";
 import style from "./NavBar.module.scss";
 
-export function NavBarLink(props) {
-	return <li><NavLink {...props}/></li>;
-}
-
-export function TopBar({ children }) {
-	return <ul>{ children }</ul>;
-}
-
-export function BottomBar({ children }) {
-	return <ul>{ children }</ul>;
-}
-
 export function NavBar({ children }) {
 	const [showLinks, setShowLinks] = useState(false);
 	const location = useLocation();
@@ -45,4 +33,17 @@ export function NavBar({ children }) {
 			</div>
 		</nav>
 	);
+}
+
+// I've seen some component libraries do stuff like this
+NavBar.Link = (props) => {
+	return <li><NavLink {...props}/></li>;
+}
+
+NavBar.Top = ({ children }) => {
+	return <ul>{ children }</ul>;
+}
+
+NavBar.Bottom = ({ children }) => {
+	return <ul>{ children }</ul>;
 }

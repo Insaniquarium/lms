@@ -1,22 +1,22 @@
 import { Outlet } from "react-router";
 import { House, Library, GraduationCap, MessageCircleQuestionMark, Settings, LogOut } from "lucide-react";
-import { NavBar, TopBar, BottomBar, NavBarLink } from "#/components/NavBar";
+import { NavBar } from "#/components/NavBar";
 import { BaseLayout } from "./BaseLayout";
 
 export default function StudentLayout() {
 	return (
 		<BaseLayout>
 			<NavBar>
-				<TopBar>
-					<NavBarLink to="/home"><House/> Home</NavBarLink>
-					<NavBarLink to="/courses" end><Library/> Library</NavBarLink>
-					<NavBarLink to="/my-courses"><GraduationCap/> My Courses</NavBarLink>
-				</TopBar>
-				<BottomBar>
-					<NavBarLink to="/help"><MessageCircleQuestionMark/> Help</NavBarLink>
-					<NavBarLink to="/settings"><Settings/> Settings</NavBarLink>
-					<NavBarLink to="/"><LogOut/> Log Out</NavBarLink>
-				</BottomBar>
+				<NavBar.Top>
+					<NavBar.Link to="/home"><House/> Home</NavBar.Link>
+					<NavBar.Link to="/courses" end><Library/> Library</NavBar.Link>
+					<NavBar.Link to="/my-courses"><GraduationCap/> My Courses</NavBar.Link>
+				</NavBar.Top>
+				<NavBar.Bottom>
+					<NavBar.Link to="/help"><MessageCircleQuestionMark/> Help</NavBar.Link>
+					<NavBar.Link to="/settings"><Settings/> Settings</NavBar.Link>
+					<NavBar.Link to="/"><LogOut/> Log Out</NavBar.Link>
+				</NavBar.Bottom>
 			</NavBar>
 			<main>
 				<Outlet/>

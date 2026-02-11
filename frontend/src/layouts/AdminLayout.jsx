@@ -1,21 +1,21 @@
 import { Outlet } from "react-router";
 import { Menu, House, Library, Users, Settings, LogOut } from "lucide-react";
-import { NavBar, TopBar, BottomBar, NavBarLink } from "#/components/NavBar";
+import { NavBar } from "#/components/NavBar";
 import { BaseLayout } from "./BaseLayout";
 
 export function AdminLayout() {
 	return (
 		<BaseLayout>
 			<NavBar>
-				<TopBar>
-					<NavBarLink to="/admin/home"><House/> Home</NavBarLink>
-					<NavBarLink to="/admin/courses"><Library/> Courses</NavBarLink>
-					<NavBarLink to="/admin/users"><Users/> Users</NavBarLink>
-				</TopBar>
-				<BottomBar>
-					<NavBarLink to="/admin/settings"><Settings/> Settings</NavBarLink>
-					<NavBarLink to="/"><LogOut/> Log Out</NavBarLink>
-				</BottomBar>
+				<NavBar.Top>
+					<NavBar.Link to="/admin/home"><House/> Home</NavBar.Link>
+					<NavBar.Link to="/admin/courses"><Library/> Courses</NavBar.Link>
+					<NavBar.Link to="/admin/users"><Users/> Users</NavBar.Link>
+				</NavBar.Top>
+				<NavBar.Bottom>
+					<NavBar.Link to="/admin/settings"><Settings/> Settings</NavBar.Link>
+					<NavBar.Link to="/"><LogOut/> Log Out</NavBar.Link>
+				</NavBar.Bottom>
 			</NavBar>
 			<main>
 				<Outlet/>
