@@ -76,4 +76,8 @@ export class API {
 	async getUserActivity(id) {
 		return this.#fetch(`/users/${id}/activity`);
 	}
+
+	async getCourseModule(courseId, moduleId) {
+		return this.#fetch(`/courses/${courseId}/modules/${moduleId}`);
+	}
 };

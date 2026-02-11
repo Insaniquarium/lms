@@ -2,10 +2,8 @@ import { Link } from "react-router";
 import { Activity, GraduationCap, Award } from "lucide-react";
 import { useAuth } from "#/auth";
 import { useTitle, useApi } from "#/hooks";
-import { API } from "#/api";
 import { Card } from "#/components/Card";
 import { CourseInfoRow } from "#/components/InfoRow";
-import * as dummy from "#/dummy";
 import style from "./Home.module.scss";
 
 function RecentActivityCard() {
