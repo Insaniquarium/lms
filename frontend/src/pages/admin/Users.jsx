@@ -1,11 +1,15 @@
 import { Link } from "react-router";
-import { useTitle } from "#/hooks";
-import { formatDate } from "#/utils";
-import * as dummy from "#/dummy";
+import { useTitle, useApi } from "#/hooks";
+import { formatDate, toTitleCase } from "#/utils";
 import style from "./Users.module.scss";
 
 export function Users() {
+	const [users, loading] = useApi(api => api.getUsers());
+
 	useTitle(() => "Users");
+
+	if (loading)
+		return;
 
 	return (
 		<div className={`${style.Users} page`}>
@@ -24,12 +28,12 @@ export function Users() {
 					</tr>
 				</thead>
 				<tbody>
-					{dummy.users.map(user =>
+					{users.map(user =>
 						<tr>
-							<td><Link to={`${user.id}`}>{user.name}</Link></td>
+							<td><Link to={`${user.id}`}>{user.first_name} {user.last_name}</Link></td>
 							<td>{user.email}</td>
-							<td>{user.role}</td>
-							<td>{formatDate(user.accessed * 1000)}</td>
+							<td>{toTitleCase(user.role)}</td>
+							<td>{formatDate(user.last_accessed * 1000)}</td>
 							<td>{formatDate(user.created * 1000)}</td>
 						</tr>
 					)}

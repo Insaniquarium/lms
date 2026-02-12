@@ -1,23 +1,26 @@
 import { useId } from "react";
 import { useParams, Outlet } from "react-router";
-import { useTitle } from "#/hooks";
+import { useTitle, useApi } from "#/hooks";
 import { formatDate } from "#/utils";
 import { TabBar, TabContent } from "#/components/Tabs";
-import * as dummy from "#/dummy";
+import { UserActivityTable } from "#/components/UserActivityTable";
 import style from "./User.module.scss";
 
 export function User() {
 	const { userID } = useParams();
-	const user = dummy.users.find(u => u.id == userID);
+	const [user, loading] = useApi(api => api.getUser(userID));
 
-	useTitle(() => user.name, [user]);
+	useTitle(() => user ? `${user.first_name} ${user.last_name}` : "User", [user]);
+
+	if (loading)
+		return;
 
 	return (
 		<div className={`${style.User} page`}>
-			<h1>{user.name}</h1>
+			<h1>{user.first_name} {user.last_name}</h1>
 
 			<TabBar>
-				<TabBar.Link to="">Info</TabBar.Link>
+				<TabBar.Link to="info">Info</TabBar.Link>
 				<TabBar.Link to="activity">Activity</TabBar.Link>
 				<TabBar.Link to="courses">Courses</TabBar.Link>
 			</TabBar>
@@ -29,12 +32,11 @@ export function User() {
 }
 
 User.Info = function () {
-	const nameId = useId();
-	const emailId = useId();
-	const passwordId = useId();
-	const roleId = useId();
 	const { userID } = useParams();
-	const user = dummy.users.find(u => u.id == userID);
+	const [user, loading] = useApi(api => api.getUser(userID));
+
+	if (loading)
+		return;
 
 	function modify(formData) {
 
@@ -42,26 +44,36 @@ User.Info = function () {
 
 	return (
 		<div className={style.User_Info}>
-			<p><b>Last active</b>: 1 day ago</p>
+			<p><b>Created</b>: {formatDate(user.created * 1000)}</p>
+			<p><b>Last accessed</b>: {formatDate(user.last_accessed * 1000)}</p>
 
-			{/* display: contents */}
 			<form action={modify}>
-				{/* really should be first/last name as dashboard greeting only needs first */}
-				<label htmlFor={nameId}>Name:</label>
-				<input type="text" name="name" id={nameId} defaultValue={user.name} required/> {/* value!! */}
+				<label>
+					Name:
+					<div className={style.row}>
+						<input type="text" name="first_name" placeholder="First name" defaultValue={user.first_name} required/>
+						<input type="text" name="last_name" placeholder="Last name" defaultValue={user.last_name} required/>
+					</div>
+				</label>
 
-				<label htmlFor={emailId}>Email address:</label>
-				<input type="email" name="email" id={emailId} defaultValue={user.email} required/>
+				<label>
+					Email address:
+					<input type="email" name="email" placeholder="john.doe@email.com" defaultValue={user.email} required/>
+				</label>
 
-				<label htmlFor={passwordId}>Password:</label>
-				<input type="password" name="password" placeholder="Password" id={passwordId}/>
+				<label>
+					Password:
+					<input type="password" name="password" placeholder="Password"/>
+				</label>
 
-				<label htmlFor={roleId}>Role:</label>
-				<select name="role" id={roleId}>
-					<option value="student">Student</option>
-					<option value="teacher">Teacher</option>
-					<option value="admin">Admin</option>
-				</select>
+				<label>
+					Role:
+					<select name="role">
+						<option value="student">Student</option>
+						<option value="teacher">Teacher</option>
+						<option value="admin">Admin</option>
+					</select>
+				</label>
 
 				<input type="submit" value="Modify"/>
 			</form>
@@ -70,9 +82,25 @@ User.Info = function () {
 }
 
 User.Activity = function() {
+	const { userID } = useParams();
+	const [user, loading] = useApi(api => api.getUser(userID));
 
+	if (loading)
+		return;
+
+	return (
+		<div className={style.User_Activity}>
+			<UserActivityTable/>
+		</div>
+	);
 }
 
 User.Courses = function() {
+	const { userID } = useParams();
+	const [user, loading] = useApi(api => api.getUser(userID));
+
+	if (loading)
+		return;
+
 
 }

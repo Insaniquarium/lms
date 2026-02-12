@@ -24,3 +24,7 @@ export function formatDate(timestamp) {
 
 	return new Intl.DateTimeFormat().format(timestamp);
 }
+
+export function toTitleCase(string) {
+	return string.split(" ").filter(Boolean).map(word => word[0].toUpperCase() + word.slice(1)).join(" ");
+}

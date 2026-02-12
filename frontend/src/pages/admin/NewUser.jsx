@@ -20,6 +20,7 @@ export function NewUser() {
 			<form action={create}>
 				<label htmlFor={nameId}>Name:</label>
 				<input type="text" name="name" id={nameId} placeholder="John Doe" required/>
+				{/* first/last name */}
 
 				<label htmlFor={emailId}>Email address:</label>
 				<input type="email" name="email" id={emailId} placeholder="john.doe@email.com" required/>

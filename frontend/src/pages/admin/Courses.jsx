@@ -1,11 +1,16 @@
 import { Link } from "react-router";
 import { Trash } from "lucide-react";
-import { useTitle } from "#/hooks";
-import * as dummy from "#/dummy";
+import { useTitle, useApi } from "#/hooks";
+import { formatDate, toTitleCase } from "#/utils";
 import style from "./Courses.module.scss";
 
 export function Courses() {
+	const [courses, loading] = useApi(api => api.getCourses());
+
 	useTitle(() => "Courses");
+
+	if (loading)
+		return;
 
 	return (
 		<div className={`${style.Courses} page`}>
@@ -25,13 +30,13 @@ export function Courses() {
 					</tr>
 				</thead>
 				<tbody>
-					{dummy.courses.map(course =>
+					{courses.map(course =>
 						<tr>
 							<td><Link to={`${course.id}`}>{course.name}</Link></td>
-							<td className="text_right">{course.modules.length}</td>
+							<td className="text_right">{course.modules}</td>
 							<td className="text_right">{course.enrolments}</td>
-							<td>Public</td>
-							<td className={style.created}>1 day ago</td>
+							<td>{toTitleCase(course.visibility)}</td>
+							<td className={style.created}>{formatDate(course.created * 1000)}</td>
 							<td className={style.actions}>
 								<button className={style.delete}><Trash size={16}/></button>
 							</td>

@@ -37,7 +37,7 @@ export default function Course() {
 				<ul>
 					{course.modules.map(m =>
 						<li key={`${course.id}:${m.id}`}>
-							<Card><ModuleInfoRow courseId={course.id} mod={m}/></Card>
+							<Card><ModuleInfoRow courseId={course.id} module={m}/></Card>
 						</li>
 					)}
 				</ul>

@@ -31,7 +31,7 @@ function RecentActivityCard() {
 
 					return (
 						<li key={`${a.course_id}:${a.module_id}`}>
-							<Link to={`/courses/${a.course_id}/modules/${a.module_id}`}>{a.name}</Link>
+							<Link to={`/courses/${a.course_id}/modules/${a.module_id}`}>{a.module_name}</Link>
 							<span className={statusClass}>{statusText}</span>
 						</li>
 					);

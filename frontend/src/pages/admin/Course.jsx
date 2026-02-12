@@ -1,14 +1,16 @@
 import { useParams } from "react-router";
-import { useTitle } from "#/hooks";
+import { useTitle, useApi } from "#/hooks";
 import { NameBox } from "#/components/NameBox";
-import * as dummy from "#/dummy";
 import style from "./Course.module.scss";
 
 export function Course() {
 	const {courseID} = useParams();
-	const course = dummy.courses.find(c => c.id == courseID);
+	const [course, loading] = useApi(api => api.getCourse(courseID));
 
-	useTitle(() => course.name, [course]);
+	useTitle(() => course?.name ?? "Course", [course]);
+
+	if (loading)
+		return;
 
 	return (
 		<div className={`${style.Course} page`}>

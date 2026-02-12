@@ -61,6 +61,10 @@ export class API {
 		return this.#fetch("/login", "POST", { email, password });
 	}
 
+	async getUsers() {
+		return this.#fetch("/users");
+	}
+
 	async getUser(id) {
 		return this.#fetch(`/users/${id}`);
 	}
@@ -75,6 +79,14 @@ export class API {
 
 	async getUserActivity(id) {
 		return this.#fetch(`/users/${id}/activity`);
+	}
+
+	async getCourses() {
+		return this.#fetch("/courses");
+	}
+
+	async getCourse(courseId) {
+		return this.#fetch(`/courses/${courseId}`);
 	}
 
 	async getCourseModule(courseId, moduleId) {

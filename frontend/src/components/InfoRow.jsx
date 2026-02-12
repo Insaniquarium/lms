@@ -1,8 +1,5 @@
 import { Link } from "react-router";
 import { CircularProgressbar } from "react-circular-progressbar";
-import * as dummy from "#/dummy";
-
-// This probably needs a refactor the most
 
 export function CourseInfoRow({ course }) {
 	const link = `/courses/${course.id}`;
@@ -20,20 +17,27 @@ export function CourseInfoRow({ course }) {
 }
 
 // 'module' is used by node
-export function ModuleInfoRow({ courseId, mod }) {
-	// Once an API is implemented, this data would be included as part as the response
-	const progress = dummy.moduleProgress.find(p => p.course_id == courseId && p.module_id == mod.id);
-	const progressText = progress ? (progress.completed ? "Completed" : "Started") : "Not Started";
-	const progressClass = progress ? (progress.completed ? "completed" : "started") : "";
+export function ModuleInfoRow({ courseId, module }) {
+	let progressText = "";
+	let progressClass = "";
+	const link = `/courses/${courseId}/modules/${module.id}`;
 
-	const link = `/courses/${courseId}/modules/${mod.id}`;
+	if (module.completed_when) {
+		progressText = "Completed";
+		progressClass = "completed";
+	} else if (module.started_when) {
+		progressText = "Started";
+		progressClass = "started";
+	} else {
+		progressText = "Not started";
+	}
 
 	return (
 		<div className="ModuleInfoRow details_list_row">
-			<Link className="img" to={link}><img src={mod.image}/></Link>
+			<Link className="img" to={link}><img src={module.image}/></Link>
 			<div className="content">
-				<Link to={link}>{mod.name}</Link>
-				<p>{mod.description}</p>
+				<Link to={link}>{module.name}</Link>
+				<p>{module.description}</p>
 			</div>
 			<span className={`progress ${progressClass}`}>{progressText}</span>
 		</div>
