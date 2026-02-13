@@ -13,8 +13,8 @@ export default function StudentLayout() {
 					<NavBar.Link to="/my-courses"><GraduationCap/> My Courses</NavBar.Link>
 				</NavBar.Top>
 				<NavBar.Bottom>
-					{/*<NavBar.Link to="/help"><MessageCircleQuestionMark/> Help</NavBar.Link>*/}
-					<NavBar.Link to="/settings"><Settings/> Settings</NavBar.Link>
+					{/*<NavBar.Link to="/help"><MessageCircleQuestionMark/> Help</NavBar.Link>
+					<NavBar.Link to="/settings"><Settings/> Settings</NavBar.Link>*/}
 					<NavBar.Link to="/"><LogOut/> Log Out</NavBar.Link>
 				</NavBar.Bottom>
 			</NavBar>

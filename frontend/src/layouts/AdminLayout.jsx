@@ -13,7 +13,7 @@ export function AdminLayout() {
 					<NavBar.Link to="/admin/users"><Users/> Users</NavBar.Link>
 				</NavBar.Top>
 				<NavBar.Bottom>
-					<NavBar.Link to="/admin/settings"><Settings/> Settings</NavBar.Link>
+					{/*<NavBar.Link to="/admin/settings"><Settings/> Settings</NavBar.Link>*/}
 					<NavBar.Link to="/"><LogOut/> Log Out</NavBar.Link>
 				</NavBar.Bottom>
 			</NavBar>

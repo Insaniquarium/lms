@@ -37,3 +37,13 @@
 .User_Activity table {
 	width: 100%;
 }
+
+.User_Courses {
+	ul {
+		list-style: none;
+	}
+
+	li:not(:last-child) {
+		margin-bottom: 1rem;
+	}
+}

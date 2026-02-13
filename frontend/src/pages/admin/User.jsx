@@ -3,6 +3,8 @@ import { useParams, Outlet, Link } from "react-router";
 import { useTitle, useApi } from "#/hooks";
 import { formatDate } from "#/utils";
 import { TabBar, TabContent } from "#/components/Tabs";
+import { Card } from "#/components/Card";
+import { CourseInfoRow } from "#/components/InfoRow";
 import style from "./User.module.scss";
 
 export function User() {
@@ -115,10 +117,20 @@ User.Activity = function() {
 
 User.Courses = function() {
 	const { userID } = useParams();
-	const [user, loading] = useApi(api => api.getUser(userID));
+	const [courses, loading] = useApi(api => api.getUserCourses(userID));
 
 	if (loading)
 		return;
 
-
+	return (
+		<div className={style.User_Courses}>
+			<ul>
+				{courses.map(course =>
+					<li key={course.id}>
+						<CourseInfoRow course={course}/>
+					</li>
+				)}
+			</ul>
+		</div>
+	);
 }

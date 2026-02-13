@@ -1,9 +1,7 @@
 import { Link } from "react-router";
 import { CircularProgressbar } from "react-circular-progressbar";
 
-export function CourseInfoRow({ course }) {
-	const link = `/courses/${course.id}`;
-
+export function CourseInfoRow({ course, link = `/courses/${course.id}` }) {
 	return (
 		<div className="CourseInfoRow details_list_row">
 			<Link className="img" to={link}><img src={course.image}/></Link>
