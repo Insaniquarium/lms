@@ -4,6 +4,10 @@ import { NavBar } from "#/components/NavBar";
 import { BaseLayout } from "./BaseLayout";
 
 export default function StudentLayout() {
+	function logOut() {
+
+	}
+
 	return (
 		<BaseLayout>
 			<NavBar>
@@ -15,7 +19,7 @@ export default function StudentLayout() {
 				<NavBar.Bottom>
 					{/*<NavBar.Link to="/help"><MessageCircleQuestionMark/> Help</NavBar.Link>
 					<NavBar.Link to="/settings"><Settings/> Settings</NavBar.Link>*/}
-					<NavBar.Link to="/"><LogOut/> Log Out</NavBar.Link>
+					<NavBar.Button onClick={logOut}><LogOut/> Log Out</NavBar.Button>
 				</NavBar.Bottom>
 			</NavBar>
 			<main>

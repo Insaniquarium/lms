@@ -34,21 +34,26 @@
 			list-style: none;
 		}
 
-		li a {
-			display: flex;
-			align-items: center;
-			gap: 0.5em;
-			color: inherit;
-			text-decoration: none;
-			font-weight: 500;
-			padding: 1rem;
-			border-radius: 8px;
+		li {
+			> a, > button {
+				display: flex;
+				align-items: center;
+				gap: 0.5em;
+				color: inherit;
+				background: inherit;
+				text-decoration: none;
+				font-weight: 500;
+				font-size: inherit;
+				padding: 1rem;
+				border-radius: 8px;
+				width: 100%;
 
-			&:hover {
-				background: #eee;
+				&:hover {
+					background: #eee;
+				}
 			}
 
-			&:global(.active) {
+			> a:global(.active) {
 				background: #383850;
 				color: #fff;
 			}

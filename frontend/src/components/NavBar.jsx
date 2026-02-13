@@ -36,14 +36,18 @@ export function NavBar({ children }) {
 }
 
 // I've seen some component libraries do stuff like this
-NavBar.Link = (props) => {
-	return <li><NavLink {...props}/></li>;
-}
-
 NavBar.Top = ({ children }) => {
 	return <ul>{ children }</ul>;
 }
 
 NavBar.Bottom = ({ children }) => {
 	return <ul>{ children }</ul>;
+}
+
+NavBar.Link = (props) => {
+	return <li><NavLink {...props}/></li>;
+}
+
+NavBar.Button = (props) => {
+	return <li><button {...props}/></li>;
 }
