@@ -1,4 +1,4 @@
-import { Route, Navigate } from "react-router";
+import { Navigate } from "react-router";
 import { RequireAuth } from "#/auth";
 import StudentLayout from "#/layouts/StudentLayout";
 import Home from "./Home";

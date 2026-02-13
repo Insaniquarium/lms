@@ -1,9 +1,8 @@
 import { useId } from "react";
-import { useParams, Outlet } from "react-router";
+import { useParams, Outlet, Link } from "react-router";
 import { useTitle, useApi } from "#/hooks";
 import { formatDate } from "#/utils";
 import { TabBar, TabContent } from "#/components/Tabs";
-import { UserActivityTable } from "#/components/UserActivityTable";
 import style from "./User.module.scss";
 
 export function User() {
@@ -83,14 +82,33 @@ User.Info = function () {
 
 User.Activity = function() {
 	const { userID } = useParams();
-	const [user, loading] = useApi(api => api.getUser(userID));
+	const [activity, loading] = useApi(api => api.getUserActivity(userID));
 
 	if (loading)
 		return;
 
 	return (
 		<div className={style.User_Activity}>
-			<UserActivityTable/>
+			<table>
+				<thead>
+					<tr>
+						<th>Course</th>
+						<th>Module</th>
+						<th>Started</th>
+						<th>Completed</th>
+					</tr>
+				</thead>
+				<tbody>
+					{activity.map(a =>
+						<tr>
+							<td><Link to={`/admin/courses/${a.course_id}`}>{a.course_name}</Link></td>
+							<td><Link to={`/admin/courses/${a.course_id}/modules/${a.module_id}`}>{a.module_name}</Link></td>
+							<td>{formatDate(a.started_when)}</td>
+							<td>{formatDate(a.completed_when)}</td>
+						</tr>
+					)}
+				</tbody>
+			</table>
 		</div>
 	);
 }

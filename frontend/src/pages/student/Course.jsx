@@ -2,7 +2,6 @@ import { useParams } from "react-router";
 import { CircularProgressbar } from "react-circular-progressbar";
 import { useAuth } from "#/auth";
 import { useTitle, useApi } from "#/hooks";
-import { API } from "#/api";
 import { NameBox } from "#/components/NameBox";
 import { Card } from "#/components/Card";
 import { ModuleInfoRow } from "#/components/InfoRow";

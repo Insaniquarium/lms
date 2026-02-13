@@ -26,9 +26,14 @@
 	form {
 		display: contents;
 	}
+
+	.row {
+		display: flex;
+		gap: 1rem;
+	}
 }
 
-.row {
-	display: flex;
-	gap: 1rem;
+
+.User_Activity table {
+	width: 100%;
 }

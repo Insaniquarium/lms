@@ -4,14 +4,16 @@ import style from "./Module.module.scss";
 
 export default function Module() {
 	const {courseID, moduleID} = useParams();
-	const [module_, loading] = useApi(api => api.getCourseModule(courseID, moduleID));
+	const [module, loading] = useApi(api => api.getCourseModule(courseID, moduleID));
+
+	useTitle(() => module?.name ?? "Module", [module]);
 
 	if (loading)
-		return false;
+		return;
 
 	return (
 		<div className={style.Module}>
-			<iframe src={module_.url} style={{background: "gray"}}></iframe>
+			<iframe src={module.url} style={{background: "gray"}}></iframe>
 		</div>
 	);
 }

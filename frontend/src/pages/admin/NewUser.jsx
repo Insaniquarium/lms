@@ -19,8 +19,10 @@ export function NewUser() {
 			<h1>New User</h1>
 			<form action={create}>
 				<label htmlFor={nameId}>Name:</label>
-				<input type="text" name="name" id={nameId} placeholder="John Doe" required/>
-				{/* first/last name */}
+				<div className={style.row}>
+					<input type="text" name="first_name" id={nameId} placeholder="John" required/>
+					<input type="text" name="last_name" placeholder="Doe" required/>
+				</div>
 
 				<label htmlFor={emailId}>Email address:</label>
 				<input type="email" name="email" id={emailId} placeholder="john.doe@email.com" required/>

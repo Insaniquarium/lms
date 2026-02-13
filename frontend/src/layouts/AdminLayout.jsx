@@ -1,5 +1,5 @@
 import { Outlet } from "react-router";
-import { Menu, House, Library, Users, Settings, LogOut } from "lucide-react";
+import { House, Library, Users, Settings, LogOut } from "lucide-react";
 import { NavBar } from "#/components/NavBar";
 import { BaseLayout } from "./BaseLayout";
 
