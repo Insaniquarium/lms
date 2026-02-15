@@ -8,5 +8,6 @@ router.register('courses', views.CourseViewSet)
 router.register('courses/(?P<course_id>[^/.]+)/modules', views.ModuleViewSet)
 
 urlpatterns = [
-	path('', include(router.urls))
+	path('', include(router.urls)),
+	path('login', views.AuthToken.as_view())
 ]
