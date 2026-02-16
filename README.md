@@ -24,7 +24,18 @@ The Django backend should have REST endpoints, and there should be a test suite 
 
 ## Key Features
 
+Not all of these are satisfied due to time constraints.
 
+- Students should be able to:
+	- Browse available courses
+	- Enrol onto a course
+	- Access a list of courses they are enroled in
+	- Access course content
+- Teachers should be able to:
+	- Create and manage courses
+- Admins should be able to:
+	- Create and manage courses
+	- Create and manage users
 
 ## Constraints
 
@@ -103,7 +114,7 @@ Due to time constraints, I was unable to write tests for the frontend and backen
 
 Testing with Lighthouse gives almost full scores:
 
-![Lighthouse Report](docs/lighthouse.png)
+![Lighthouse Report](docs/assets/lighthouse.png)
 
 Performance being so low doesn't wholly appear to be my fault, as a large amount of JavaScript is caused by running it in the development server, Google Fonts has latency, and Unsplash (where I source these stock images) takes a notice amount of time to load images from.
 
@@ -117,4 +128,4 @@ Unfortunately, I did not have enough time to test with screen readers. I would e
 
 ## Deployment
 
-
+Unfortunately, I have not had enough time to try setting up such a monorepo with cloud deployment services such as Netlify.
