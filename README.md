@@ -27,19 +27,19 @@ The Django backend should have REST endpoints, and there should be a test suite 
 Not all of these are satisfied due to time constraints.
 
 - Students should be able to:
-	- [ ] Browse available courses
-	- [ ] Enrol onto a course
-	- [x] Access a list of courses they are enroled in
-	- [x] Access course content
+	- ❌ Browse available courses
+	- ❌ Enrol onto a course
+	- ✅ Access a list of courses they are enroled in
+	- ✅ Access course content
 - Teachers should be able to:
-	- [ ] Create and manage courses
+	- 🚧 Create and manage courses
 - Admins should be able to:
-	- [ ] Create and manage courses
-	- [ ] Create and manage users
-- [ ] User Roles and Authentication
-- [ ] REST API
-- [ ] Automated tests
-- [ ] Wireframes in documentation
+	- 🚧 Create and manage courses
+	- 🚧 Create and manage users
+- 🚧 User Roles and Authentication
+- 🚧 REST API
+- ❌ Automated tests
+- ❌ Wireframes in documentation
 
 For creating and managing courses and users, the pages for those are functionally complete, but they are not yet wired up to an API. (Creating course *modules* however, isn't complete and doesn't have a page, but that wasn't explicitly mentioned in the brief.)
 
