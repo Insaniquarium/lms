@@ -66,7 +66,7 @@ The current usable backend is a dumb backend that returns static responses that 
 	- Course
 		- No unenrol button
 	- Module completion system
-		- Possibly easiest bet to implement this - assuming course content will be hosted on an external server - would be to make the module content iframe listen for messages posted from within it, and say it's `{"type": "completed"}`, then the page containing the iframe shall send an API request to the server saying the module has been completed. This avoids needing to pass user tokens and other relevant API data into the iframe
+		- Possibly easiest bet to implement this - assuming course content will be hosted on an external server - would be to make the module content iframe listen for messages posted from within it using `window.postMessage()`, and if for example the message is `{"type": "completed"}`, then the page containing the iframe shall send an API request to the server saying the module has been completed. This avoids needing to pass user tokens and other relevant API data into the iframe
 	- Help
 - Admin
 	- Dashboard
@@ -130,7 +130,7 @@ Testing with Lighthouse gives almost full scores:
 
 ![Lighthouse Report](docs/assets/lighthouse.png)
 
-Performance being so low doesn't wholly appear to be my fault, as a large amount of JavaScript is caused by running it in the development server, Google Fonts has latency, and Unsplash (where I source these stock images) takes a notice amount of time to load images from.
+Performance being so low doesn't wholly appear to be my fault, as a large amount of JavaScript loaded is caused by running it in the development server, Google Fonts has latency, and Unsplash (where I sourced stock images) takes a noticeable amount of time to load images from.
 
 The SEO score was not full until [2602e60](https://github.com/Insaniquarium/lms/commit/2602e60) which added a stub robots.txt and meta description tag.
 
