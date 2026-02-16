@@ -49,7 +49,7 @@ The Django backend with proper REST API is close to completion, however not yet 
 
 The Django backend can do token authentication and authorization, however there is not yet a proper role system. It only distinguishes between User and Admin, not Student, Teacher and Admin.
 
-The current usable backend is a dumb backend that returns static responses that the frontend is able to parse. The Django backend can create a SQLite database, but contains no initial data. The Django backend could *almost* be usable by changing `ORIGIN` in `api.js` had some changes in serialisation been accounted for in the frontend.
+The current usable backend is a dumb backend that returns static responses that the frontend is able to parse. The Django backend can create a SQLite database, but contains no initial data. The Django backend could *almost* be usable by changing `ORIGIN` in `api.js` had some changes in serialisation been accounted for in the frontend, and initial data for details such as enrolments and course completions were available to satisfy the dashboard, which the lack of is one of the main reasons why the dumb backend still needs to be in use.
 
 ## Constraints
 
