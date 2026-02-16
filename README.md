@@ -22,20 +22,34 @@ Courses should have a title and a description, and there should be user registra
 
 The Django backend should have REST endpoints, and there should be a test suite for both the frontend and backend.
 
-## Key Features
+## Key Elements
 
 Not all of these are satisfied due to time constraints.
 
 - Students should be able to:
-	- Browse available courses
-	- Enrol onto a course
-	- Access a list of courses they are enroled in
-	- Access course content
+	- [ ] Browse available courses
+	- [ ] Enrol onto a course
+	- [x] Access a list of courses they are enroled in
+	- [x] Access course content
 - Teachers should be able to:
-	- Create and manage courses
+	- [ ] Create and manage courses
 - Admins should be able to:
-	- Create and manage courses
-	- Create and manage users
+	- [ ] Create and manage courses
+	- [ ] Create and manage users
+- [ ] User Roles and Authentication
+- [ ] REST API
+- [ ] Automated tests
+- [ ] Wireframes in documentation
+
+For creating and managing courses and users, the pages for those are functionally complete, but they are not yet wired up to an API. (Creating course *modules* however, isn't complete and doesn't have a page, but that wasn't explicitly mentioned in the brief.)
+
+For User Roles and Authentication, frontend almost has authentication complete and lets you log in, but you cannot log out, and role-based access determined through a property in the `<RequireAuth>` component used in the router is not yet functional.
+
+The Django backend with proper REST API is close to completion, however not yet fully usable with the frontend. You can create, list and modify courses, modules and users. But you cannot create enrolments and module completions. You can however, *view* the courses a user has enroled in, module completion and a user's activity.
+
+The Django backend can do token authentication and authorization, however there is not yet a proper role system. It only distinguishes between User and Admin, not Student, Teacher and Admin.
+
+The current usable backend is a dumb backend that returns static responses that the frontend is able to parse. The Django backend can create a SQLite database, but contains no initial data. The Django backend could *almost* be usable by changing `ORIGIN` in `api.js` had some changes in serialisation been accounted for in the frontend.
 
 ## Constraints
 
@@ -92,7 +106,7 @@ Not all of these are satisfied due to time constraints.
 	- No endpoint to enrol onto a course
 	- No endpoint to submit a module completion
 - General
-	- Reformat code (for consistency)
+	- Reformat code and clean it (for consistency, and because some things were rushed and aren't as ideal as they could be)
 	- Test suite
 	- Documentation has no wireframes
 
