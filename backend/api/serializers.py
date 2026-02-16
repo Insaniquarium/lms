@@ -13,21 +13,39 @@ class ModuleSerializer(serializers.ModelSerializer):
 		fields = ['id', 'course', 'title', 'description', 'image', 'content_url', 'created_at']
 
 class CourseSerializer(serializers.ModelSerializer):
+	enrolments = serializers.SerializerMethodField()
 	modules = ModuleSerializer(many=True, read_only=True)
 
 	class Meta:
 		model = Course
-		fields = ['id', 'title', 'description', 'image', 'created_at', 'public', 'modules']
+		fields = ['id', 'title', 'description', 'image', 'created_at', 'public', 'enrolments', 'modules']
 
-class EnrolmentSerializer(serializers.ModelSerializer):
-	class Meta:
-		model = Enrolment
-		fields = ['user', 'course', 'enroled_at']
+	def get_enrolments(self, obj):
+		return obj.enrolment_set.count()
 
-class ModuleCompletionSerializer(serializers.ModelSerializer):
+class UserModuleSerializer(ModuleSerializer):
+	started_at = serializers.DateTimeField(read_only=True)
+	completed_at = serializers.DateTimeField(read_only=True)
+
+	class Meta(ModuleSerializer.Meta):
+		fields = [*ModuleSerializer.Meta.fields, 'started_at', 'completed_at']
+
+class UserCourseSerializer(CourseSerializer):
+	modules = UserModuleSerializer(many=True, read_only=True)
+	enroled_at = serializers.DateTimeField(read_only=True)
+
+	class Meta(CourseSerializer.Meta):
+		fields = [*CourseSerializer.Meta.fields, 'enroled_at']
+
+class UserActivitySerializer(serializers.ModelSerializer):
+	# Using IntegerField for this seems a bit of a hack
+	course = serializers.IntegerField(source='module.course.id', read_only=True)
+	course_title = serializers.CharField(source='module.course.title', read_only=True)
+	module_title = serializers.CharField(source='module.title', read_only=True)
+
 	class Meta:
 		model = ModuleCompletion
-		fields = ['user', 'module', 'started_at', 'completed_at']
+		fields = ['course', 'module', 'course_title', 'module_title', 'started_at', 'completed_at']
 
 class AdminCourseSerializer(CourseSerializer):
 	pass
