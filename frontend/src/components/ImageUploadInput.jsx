@@ -17,7 +17,7 @@ export function ImageUploadInput({ name, accept }) {
 		<div className="ImageUploadInput">
 			<button onClick={() => inputRef.current.click()}>
 				{ image ? (
-					<img src={image ? image : blankImage}/>
+					<img src={image ? image : blankImage} alt="Course image"/>
 				) : (
 					<span>Click to upload image</span>
 				)}

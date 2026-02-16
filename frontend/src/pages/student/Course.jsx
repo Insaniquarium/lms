@@ -20,7 +20,7 @@ export default function Course() {
 	return (
 		<div className={`${style.Course} page`}>
 			<NameBox>
-				<img src={course.image}/>
+				<img src={course.image} alt=""/>
 				<h1>{course.name}</h1>
 				<CircularProgressbar value={course.progress} text={course.progress + "%"}/>
 			</NameBox>

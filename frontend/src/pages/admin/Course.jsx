@@ -15,7 +15,7 @@ export function Course() {
 	return (
 		<div className={`${style.Course} page`}>
 			<NameBox>
-				<img src={course.image}/>
+				<img src={course.image} alt=""/>
 				<h1>{course.name}</h1>
 			</NameBox>
 		</div>

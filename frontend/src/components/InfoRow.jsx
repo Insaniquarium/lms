@@ -4,7 +4,7 @@ import { CircularProgressbar } from "react-circular-progressbar";
 export function CourseInfoRow({ course, link = `/courses/${course.id}` }) {
 	return (
 		<div className="CourseInfoRow details_list_row">
-			<Link className="img" to={link}><img src={course.image}/></Link>
+			<Link className="img" to={link} aria-label={`${course.name} image link`}><img src={course.image} alt=""/></Link>
 			<div className="content">
 				<Link to={link}>{course.name}</Link>
 				<p>{course.description}</p>
@@ -32,7 +32,7 @@ export function ModuleInfoRow({ courseId, module }) {
 
 	return (
 		<div className="ModuleInfoRow details_list_row">
-			<Link className="img" to={link}><img src={module.image}/></Link>
+			<Link className="img" to={link} aria-label={`${module.name} image link`}><img src={module.image} alt=""/></Link>
 			<div className="content">
 				<Link to={link}>{module.name}</Link>
 				<p>{module.description}</p>

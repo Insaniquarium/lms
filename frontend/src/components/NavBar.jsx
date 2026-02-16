@@ -24,8 +24,8 @@ export function NavBar({ children }) {
 	return (
 		<nav className={style.NavBar}>
 			<div className={style.top}>
-				<button onClick={handleMobileMenuClick}><Menu/></button>
-				<Link to="/home"><img src="/logo.png"/></Link>
+				<button onClick={handleMobileMenuClick} aria-label="Toggle Navigation Menu"><Menu/></button>
+				<Link to="/home" aria-label="Go Home"><img src="/logo.png" alt="Logo"/></Link>
 			</div>
 
 			<div className={`${style.links} ${showLinks ? style.active : ""}`}>

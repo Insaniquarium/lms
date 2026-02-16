@@ -38,7 +38,7 @@ export function Courses() {
 							<td>{toTitleCase(course.visibility)}</td>
 							<td className={style.created}>{formatDate(course.created * 1000)}</td>
 							<td className={style.actions}>
-								<button className={style.delete}><Trash size={16}/></button>
+								<button className={style.delete} aria-label="Delete course"><Trash size={16}/></button>
 							</td>
 						</tr>
 					)}
