@@ -39,7 +39,7 @@ export default function Login() {
 					<input type="email" name="email" id={emailId} autoComplete="off"/>
 
 					<label htmlFor={passwordId}>Password:</label>
-					<input type="password" name="password" id={passwordId}/>
+					<input type="password" name="password" id={passwordId} required/>
 
 					<input type="submit" value="Login"/>
 				</form>

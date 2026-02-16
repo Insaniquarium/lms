@@ -13,6 +13,7 @@ export function AuthProvider({ children }) {
 	const [id, setId] = useState(null);
 
 	useEffect(() => {
+		/* why request if not even logged in yet? */
 		api.getUser("me").then(user => setId(user.id));
 	}, []);
 
@@ -26,7 +27,7 @@ export function AuthProvider({ children }) {
 		localStorage.removeItem("token");
 	}
 
-	const value = { api, id, login };
+	const value = { api, id, login, logout };
 	return <AuthContext value={value}>{id && children}</AuthContext>;
 }
 

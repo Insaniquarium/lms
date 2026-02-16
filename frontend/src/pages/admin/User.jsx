@@ -122,12 +122,13 @@ User.Courses = function() {
 	if (loading)
 		return;
 
+	// TODO: Clicking on a course would instead link to a list of the modules a user has done
 	return (
 		<div className={style.User_Courses}>
 			<ul>
 				{courses.map(course =>
 					<li key={course.id}>
-						<CourseInfoRow course={course}/>
+						<CourseInfoRow course={course} link="#"/>
 					</li>
 				)}
 			</ul>
