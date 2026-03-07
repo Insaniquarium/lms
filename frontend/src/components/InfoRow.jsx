@@ -9,25 +9,27 @@ export function CourseInfoRow({ course, link = `/courses/${course.id}` }) {
 				<Link to={link}>{course.name}</Link>
 				<p>{course.description}</p>
 			</div>
-			<CircularProgressbar value={course.progress} text={course.progress + "%"}/>
+			{ course.progress != undefined && <CircularProgressbar value={course.progress} text={course.progress + "%"}/> }
 		</div>
 	);
 }
 
 // 'module' is used by node
-export function ModuleInfoRow({ courseId, module }) {
+export function ModuleInfoRow({ courseId, module, link = `/courses/${courseId}/modules/${module.id}` }) {
+	const hasProgress = module.completed_when != undefined && module.started_when != undefined;
 	let progressText = "";
 	let progressClass = "";
-	const link = `/courses/${courseId}/modules/${module.id}`;
 
-	if (module.completed_when) {
-		progressText = "Completed";
-		progressClass = "completed";
-	} else if (module.started_when) {
-		progressText = "Started";
-		progressClass = "started";
-	} else {
-		progressText = "Not started";
+	if (hasProgress) {
+		if (module.completed_when) {
+			progressText = "Completed";
+			progressClass = "completed";
+		} else if (module.started_when) {
+			progressText = "Started";
+			progressClass = "started";
+		} else {
+			progressText = "Not started";
+		}
 	}
 
 	return (
@@ -37,7 +39,7 @@ export function ModuleInfoRow({ courseId, module }) {
 				<Link to={link}>{module.name}</Link>
 				<p>{module.description}</p>
 			</div>
-			<span className={`progress ${progressClass}`}>{progressText}</span>
+			{ hasProgress && <span className={`progress ${progressClass}`}>{progressText}</span> }
 		</div>
 	);
 }
