@@ -62,34 +62,74 @@ export class API {
 	}
 
 	async getUsers() {
-		return this.#fetch("/users");
+		return this.#fetch("/users", "GET");
+	}
+
+	async createUser(data) {
+		return this.#fetch("/users", "POST", data);
 	}
 
 	async getUser(id) {
-		return this.#fetch(`/users/${id}`);
+		return this.#fetch(`/users/${id}`, "GET");
 	}
 
-	async getUserCourses(id) {
-		return this.#fetch(`/users/${id}/courses`);
+	async patchUser(id, data) {
+		return this.#fetch(`/users/${id}`, "PATCH", data);
 	}
 
-	async getUserCourse(id, courseId) {
-		return this.#fetch(`/users/${id}/courses/${courseId}`);
+	async deleteUser(id) {
+		return this.#fetch(`/users/${id}`, "DELETE");
+	}
+
+	async getUserCourses(id) { // query parameter to omit modules?
+		return this.#fetch(`/users/${id}/courses`, "GET");
+	}
+
+	async getUserCourse(id, courseId) { // query parameter to omit modules?
+		return this.#fetch(`/users/${id}/courses/${courseId}`, "GET");
 	}
 
 	async getUserActivity(id) {
-		return this.#fetch(`/users/${id}/activity`);
+		return this.#fetch(`/users/${id}/activity`, "GET");
 	}
 
 	async getCourses() {
-		return this.#fetch("/courses");
+		return this.#fetch("/courses", "GET");
 	}
 
-	async getCourse(courseId) {
-		return this.#fetch(`/courses/${courseId}`);
+	async createCourse(data) {
+		return this.#fetch("/courses", "POST", data);
 	}
 
-	async getCourseModule(courseId, moduleId) {
-		return this.#fetch(`/courses/${courseId}/modules/${moduleId}`);
+	async getCourse(id) {
+		return this.#fetch(`/courses/${id}`, "GET");
+	}
+
+	async patchCourse(id, data) {
+		return this.#fetch(`/courses/${id}`, "PATCH", data);
+	}
+
+	async deleteCourse(id) {
+		return this.#fetch(`/courses/${id}`, "DELETE");
+	}
+
+	async getCourseModules(id) {
+		return this.#fetch(`/courses/${id}/modules`, "GET");
+	}
+
+	async createCourseModule(id, data) {
+		return this.#fetch(`/courses/${id}/modules`, "POST", data);
+	}
+
+	async getCourseModule(id, moduleId) {
+		return this.#fetch(`/courses/${id}/modules/${moduleId}`, "GET");
+	}
+
+	async patchCourseModule(id, moduleId, data) {
+		return this.#fetch(`/courses/${id}/modules/${moduleId}`, "PATCH", data);
+	}
+
+	async deleteCourseModule(id, moduleId) {
+		return this.#fetch(`/courses/${id}/modules/${moduleId}`, "DELETE");
 	}
 };
