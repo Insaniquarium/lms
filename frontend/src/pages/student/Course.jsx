@@ -10,7 +10,7 @@ import style from "./Course.module.scss";
 export default function Course() {
 	const {courseID} = useParams();
 	const {id} = useAuth();
-	const [course, loading] = useApi(api => api.getUserCourse(id, courseID));
+	const [course, loading] = useApi(api => api.getUserCourse(id, courseID)); // should be different depending on if user is enroled or not
 
 	useTitle(() => course?.name ?? "Course", [course]);
 
@@ -22,7 +22,7 @@ export default function Course() {
 			<NameBox>
 				<img src={course.image} alt=""/>
 				<h1>{course.name}</h1>
-				<CircularProgressbar value={course.progress} text={course.progress + "%"}/>
+				<CircularProgressbar value={course.progress} text={course.progress + "%"}/> {/* should not be shown if user not enroled */}
 			</NameBox>
 
 			<div className="heading_section text_section">

@@ -21,3 +21,11 @@ export function Course() {
 		</div>
 	);
 }
+
+Course.Info = function () {
+
+}
+
+Course.Modules = function () {
+
+}
