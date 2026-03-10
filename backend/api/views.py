@@ -90,7 +90,7 @@ class CourseViewSet(ModelViewSet):
 		else:
 			return models.Course.objects.filter(public=True)
 
-class ModuleViewSet(ModelViewSet):
+class CourseModuleViewSet(ModelViewSet):
 	serializer_class = serializers.ModuleSerializer
 	lookup_url_kwarg = 'module_id'
 
@@ -105,3 +105,6 @@ class ModuleViewSet(ModelViewSet):
 
 	def perform_create(self, serializer):
 		serializer.save(course_id=self.kwargs['course_id'])
+
+class CourseEnrolmentViewSet(ModelViewSet):
+	pass

@@ -1,14 +1,27 @@
 import { Link } from "react-router";
 import { CircularProgressbar } from "react-circular-progressbar";
 
+function NullableLink(props) {
+	if (props.to) {
+		return <Link {...props}/>;
+	} else {
+		const {to, ...filteredProps} = props;
+		return <span {...filteredProps}/>;
+	}
+}
+
 export function CourseInfoRow({ course, link = `/courses/${course.id}` }) {
 	return (
 		<div className="CourseInfoRow details_list_row">
-			<Link className="img" to={link} aria-label={`${course.name} image link`}><img src={course.image} alt=""/></Link>
+			<NullableLink className="img" to={link} aria-label={`${course.name} image link`}>
+				<img src={course.image} alt=""/>
+			</NullableLink>
+
 			<div className="content">
-				<Link to={link}>{course.name}</Link>
+				<NullableLink className="heading" to={link}>{course.name}</NullableLink>
 				<p>{course.description}</p>
 			</div>
+
 			{ course.progress != undefined && <CircularProgressbar value={course.progress} text={course.progress + "%"}/> }
 		</div>
 	);
@@ -34,11 +47,15 @@ export function ModuleInfoRow({ courseId, module, link = `/courses/${courseId}/m
 
 	return (
 		<div className="ModuleInfoRow details_list_row">
-			<Link className="img" to={link} aria-label={`${module.name} image link`}><img src={module.image} alt=""/></Link>
+			<NullableLink className="img" to={link} aria-label={`${module.name} image link`}>
+				<img src={module.image} alt=""/>
+			</NullableLink>
+
 			<div className="content">
-				<Link to={link}>{module.name}</Link>
+				<NullableLink className="heading" to={link}>{module.name}</NullableLink>
 				<p>{module.description}</p>
 			</div>
+
 			{ hasProgress && <span className={`progress ${progressClass}`}>{progressText}</span> }
 		</div>
 	);

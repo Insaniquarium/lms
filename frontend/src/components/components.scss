@@ -119,6 +119,14 @@
 		margin: 0;
 	}
 
+	button {
+		background: var(--blue-color);
+
+		&:hover {
+			background: var(--blue-color-darker);
+		}
+	}
+
 	.CircularProgressbar {
 		width: 60px;
 	}

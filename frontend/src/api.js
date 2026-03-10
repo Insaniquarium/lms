@@ -1,6 +1,8 @@
 export class HTTPError extends Error {
-	constructor(status, message) {
-		super(`HTTP ${status}: ${message}`);
+	constructor(status, statusText) {
+		super(`HTTP ${status}: ${statusText}`);
+		this.status = status;
+		this.statusText = statusText;
 	}
 };
 
@@ -81,7 +83,7 @@ export class API {
 		return this.#fetch(`/users/${id}`, "DELETE");
 	}
 
-	async getUserCourses(id) { // query parameter to omit modules?
+	async getUserCourses(id) {
 		return this.#fetch(`/users/${id}/courses`, "GET");
 	}
 
@@ -131,5 +133,17 @@ export class API {
 
 	async deleteCourseModule(id, moduleId) {
 		return this.#fetch(`/courses/${id}/modules/${moduleId}`, "DELETE");
+	}
+
+	async getCourseEnrolments(id) {
+		return this.#fetch(`/courses/${id}/enrolments`, "GET");
+	}
+
+	async createCourseEnrolment(id, userId) {
+		return this.#fetch(`/courses/${id}/enrolments`, "POST", { user_id: userId });
+	}
+
+	async deleteCourseEnrolment(id, userId) {
+		return this.#fetch(`/courses/${id}/enrolments/${userId}`, "DELETE");
 	}
 };

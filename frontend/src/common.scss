@@ -22,6 +22,7 @@
 	--neutral-color: #6a6e75;
 	--gray-color: #d5dae3;
 	--blue-color: #0073c4;
+	--blue-color-darker: #0065ad;
 }
 
 body {
@@ -167,14 +168,20 @@ iframe {
 
 	> .content {
 		flex: 1 350px;
-		color: var(--neutral-color);
 
-		a {
+		> .heading {
 			display: block;
-			color: var(--link-color);
 			margin-bottom: 0.5em;
 			font-weight: 500;
 			text-decoration: none;
+		}
+
+		a {
+			color: var(--link-color);
+		}
+
+		p {
+			color: var(--neutral-color);
 		}
 	}
 

@@ -9,20 +9,40 @@ import style from "./Course.module.scss";
 
 export default function Course() {
 	const {courseID} = useParams();
-	const {id} = useAuth();
-	const [course, loading] = useApi(api => api.getUserCourse(id, courseID)); // should be different depending on if user is enroled or not
+	const {api, id} = useAuth();
+
+	const [course, loading] = useApi(async api => {
+		if ((await api.getUserCourses(id)).find(c => c.id == courseID)) {
+			return await api.getUserCourse(id, courseID);
+		} else {
+			return await api.getCourse(courseID);
+		}
+	}, [courseID]);
 
 	useTitle(() => course?.name ?? "Course", [course]);
 
 	if (loading)
 		return;
 
+	/**
+	 * The more proper way would be storing the result of the array find above
+	 * as a boolean in a memo, but that's more work
+	 */
+	const hasEnroled = course.progress != undefined;
+
+	function enrol() {
+		api.createCourseEnrolment(course.id, id); // Error if failed to enrol?
+	}
+
 	return (
 		<div className={`${style.Course} page`}>
 			<NameBox>
 				<img src={course.image} alt=""/>
 				<h1>{course.name}</h1>
-				<CircularProgressbar value={course.progress} text={course.progress + "%"}/> {/* should not be shown if user not enroled */}
+				{hasEnroled ?
+					<CircularProgressbar value={course.progress} text={course.progress + "%"}/> :
+					<button onClick={enrol}>Enrol</button>
+				}
 			</NameBox>
 
 			<div className="heading_section text_section">
@@ -36,7 +56,7 @@ export default function Course() {
 				<ul>
 					{course.modules.map(m =>
 						<li key={`${course.id}:${m.id}`}>
-							<Card><ModuleInfoRow courseId={course.id} module={m}/></Card>
+							<Card><ModuleInfoRow courseId={course.id} module={m} link={hasEnroled ? undefined : ""}/></Card>
 						</li>
 					)}
 				</ul>

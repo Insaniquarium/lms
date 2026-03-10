@@ -27,8 +27,8 @@ The Django backend should have REST endpoints, and there should be a test suite 
 Not all of these are satisfied due to time constraints.
 
 - Students should be able to:
-	- ❌ Browse available courses
-	- ❌ Enrol onto a course
+	- 🚧 Browse available courses
+	- 🚧 Enrol onto a course
 	- ✅ Access a list of courses they are enroled in
 	- ✅ Access course content
 - Teachers should be able to:

@@ -7,7 +7,7 @@ router.register('users', views.UserViewSet, basename='user')
 router.register('users/(?P<user_id>[^/.]+)/courses', views.UserCourseViewSet, basename='user-course')
 router.register('users/(?P<user_id>[^/.]+)/activity', views.UserActivityViewSet, basename='user-activity')
 router.register('courses', views.CourseViewSet, basename='course')
-router.register('courses/(?P<course_id>[^/.]+)/modules', views.ModuleViewSet, basename='module')
+router.register('courses/(?P<course_id>[^/.]+)/modules', views.CourseModuleViewSet, basename='module')
 
 urlpatterns = [
 	path('', include(router.urls)),
