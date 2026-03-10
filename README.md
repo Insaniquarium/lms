@@ -62,9 +62,7 @@ The current usable backend is a dumb backend that returns static responses that 
 	- Activity page
 		- Currently empty
 	- Library
-		- You cannot enrol onto a course
 		- Indicate which courses a user has already enroled on
-		- Show number of courses available
 	- Course
 		- No unenrol button
 	- Module completion system

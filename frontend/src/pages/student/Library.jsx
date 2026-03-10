@@ -14,7 +14,7 @@ export default function Library() {
 	return (
 		<div className={`${style.Library} page`}>
 			<h1>Library</h1>
-
+			<p>There are <b>{courses.length}</b> courses available.</p>
 			<ul>
 				{courses.map(course =>
 					<li key={course.id}>
