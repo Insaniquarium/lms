@@ -22,7 +22,16 @@ export const adminRoutes = [
 				children: [
 					{ index: true, Component: Courses },
 					{ path: "new", Component: NewCourse },
-					{ path: ":courseID", Component: Course },
+					{
+						path: ":courseID",
+						Component: Course,
+						children: [
+							{ index: true, Component: () => <Navigate to="info"/> },
+							{ path: "info", Component: () => <Course.Info/> },
+							{ path: "modules", Component: () => <Course.Modules/> },
+							{ path: "enrolments", Component: () => <Course.Enrolments/> }
+						]
+					}
 				]
 			},
 			{
