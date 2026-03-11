@@ -1,9 +1,7 @@
-import { useId } from "react";
 import { useParams, Outlet, Link } from "react-router";
 import { useTitle, useApi } from "#/hooks";
 import { formatDate } from "#/utils";
 import { TabBar, TabContent } from "#/components/Tabs";
-import { Card } from "#/components/Card";
 import { CourseInfoRow } from "#/components/InfoRow";
 import style from "./User.module.scss";
 
@@ -69,7 +67,7 @@ User.Info = function () {
 
 				<label>
 					Role:
-					<select name="role">
+					<select name="role" defaultValue={user.role}>
 						<option value="student">Student</option>
 						<option value="teacher">Teacher</option>
 						<option value="admin">Admin</option>
