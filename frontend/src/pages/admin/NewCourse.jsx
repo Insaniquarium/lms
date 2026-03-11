@@ -18,7 +18,7 @@ export function NewCourse() {
 			<h1>New Course</h1>
 			<form action={create}>
 				<div className={style.input_row}>
-					<ImageUploadInput name="image" accept="image/png, image/jpeg, image/webp"/>
+					<ImageUploadInput name="image" accept="image/png, image/jpeg, image/webp" alt="Course image"/>
 					<div>
 						<label htmlFor={nameId}>Name:</label>
 						<input type="text" name="name" id={nameId} placeholder="My Course" required/>

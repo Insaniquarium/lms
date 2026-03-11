@@ -1,8 +1,9 @@
 import { useRef, useState, useEffect } from "react";
 
-export function ImageUploadInput({ name, accept }) {
+export function ImageUploadInput({ name, accept, alt, defaultUrl }) {
 	const inputRef = useRef(null);
 	const [image, setImage] = useState(null);
+	const imageUrl = image ?? defaultUrl;
 
 	useEffect(() => {
 		return () => { URL.revokeObjectURL(image); };
@@ -16,8 +17,8 @@ export function ImageUploadInput({ name, accept }) {
 	return (
 		<div className="ImageUploadInput">
 			<button onClick={() => inputRef.current.click()}>
-				{ image ? (
-					<img src={image ? image : blankImage} alt="Course image"/>
+				{ imageUrl ? (
+					<img src={imageUrl} alt={alt}/>
 				) : (
 					<span>Click to upload image</span>
 				)}
