@@ -68,7 +68,7 @@ Course.Info = function () {
 						Visibility:
 						<select name="visibility" defaultValue={course.visibility}>
 							<option value="public">Public</option>
-							<option value="Private">Private</option>
+							<option value="private">Private</option>
 						</select>
 					</label>
 				</div>
