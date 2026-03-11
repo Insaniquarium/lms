@@ -3,6 +3,7 @@ import { useTitle, useApi } from "#/hooks";
 import { formatDate } from "#/utils";
 import { NameBox } from "#/components/NameBox";
 import { TabBar, TabContent } from "#/components/Tabs";
+import { ImageUploadInput } from "#/components/ImageUploadInput";
 import { ModuleInfoRow } from "#/components/InfoRow";
 import style from "./Course.module.scss";
 
@@ -50,17 +51,29 @@ Course.Info = function () {
 			<p><b>Created</b>: {formatDate(course.created * 1000)}</p>
 
 			<form action={modify}>
-				<label>
-					Name:
-					<input type="text" name="name" placeholder="My Course" defaultValue={course.name} required/>
-				</label>
+				<ImageUploadInput name="image" accept="image/png, image/jpeg, image/webp" alt="Course image" defaultUrl={course.image}/>
 
-				<label>
-					Description:
-					<textarea name="description" rows="10" placeholder="In this course, you will learn..." defaultValue={course.description} required></textarea>
-				</label>
+				<div>
+					<label>
+						Name:
+						<input type="text" name="name" placeholder="My Course" defaultValue={course.name} required/>
+					</label>
 
-				{/* TODO: visibility, image, and fix layout */}
+					<label>
+						Description:
+						<textarea name="description" rows="10" placeholder="In this course, you will learn..." defaultValue={course.description} required></textarea>
+					</label>
+
+					<label>
+						Visibility:
+						<select name="visibility" defaultValue={course.visibility}>
+							<option value="public">Public</option>
+							<option value="Private">Private</option>
+						</select>
+					</label>
+				</div>
+
+				<input type="submit" value="Modify"/>
 			</form>
 		</div>
 	);
