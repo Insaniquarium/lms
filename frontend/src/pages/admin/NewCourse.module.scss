@@ -1,7 +1,18 @@
 .NewCourse {
+	form {
+		display: flex;
+		gap: 2rem;
+		flex-wrap: wrap;
+
+		> div:last-child {
+			flex: auto;
+			flex-basis: 450px;
+		}
+	}
+
 	input, textarea {
 		display: block;
-		margin: 0.5rem 0;
+		margin: 0.5rem 0 1rem;
 	}
 
 	textarea {
@@ -14,20 +25,5 @@
 
 	p {
 		margin: 1em 0;
-	}
-
-	input[type=submit] {
-		margin-left: auto;
-	}
-}
-
-.input_row {
-	display: flex;
-	gap: 2rem;
-	flex-wrap: wrap;
-
-	> div:last-child {
-		flex: auto;
-		flex-basis: 450px;
 	}
 }
