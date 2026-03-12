@@ -71,9 +71,9 @@ Course.Info = function () {
 							<option value="private">Private</option>
 						</select>
 					</label>
-				</div>
 
-				<input type="submit" value="Modify"/>
+					<input type="submit" value="Modify"/>
+				</div>
 			</form>
 		</div>
 	);
