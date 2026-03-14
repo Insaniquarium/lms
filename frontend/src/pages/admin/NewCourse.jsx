@@ -17,7 +17,7 @@ export function NewCourse() {
 		<div className={`${style.NewCourse} page`}>
 			<h1>New Course</h1>
 			<form action={create}>
-				<ImageUploadInput name="image" accept="image/png, image/jpeg, image/webp" alt="Course image"/>
+				<ImageUploadInput name="image" alt="Course image"/>
 				<div>
 					<label htmlFor={nameId}>Name:</label>
 					<input type="text" name="name" id={nameId} placeholder="My Course" required/>

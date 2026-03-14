@@ -51,7 +51,7 @@ Course.Info = function () {
 			<p><b>Created</b>: {formatDate(course.created * 1000)}</p>
 
 			<form action={modify}>
-				<ImageUploadInput name="image" accept="image/png, image/jpeg, image/webp" alt="Course image" defaultUrl={course.image}/>
+				<ImageUploadInput name="image" alt="Course image" defaultUrl={course.image}/>
 
 				<div>
 					<label>
@@ -111,7 +111,7 @@ Course.NewModule = function () {
 		<div className={style.Course_NewModule}>
 			<h2>New Module</h2>
 			<form action={create}>
-				<ImageUploadInput name="image" accept="image/png, image/jpeg, image/webp" alt="Module image"/>
+				<ImageUploadInput name="image" alt="Module image"/>
 				<div>
 					<label>
 						Name:

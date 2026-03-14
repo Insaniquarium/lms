@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 
-export function ImageUploadInput({ name, accept, alt, defaultUrl }) {
+export function ImageUploadInput({ name, accept = "image/png, image/jpeg, image/webp", alt, defaultUrl }) {
 	const inputRef = useRef(null);
 	const [image, setImage] = useState(null);
 	const imageUrl = image ?? defaultUrl;
