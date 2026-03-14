@@ -1,4 +1,4 @@
-import { useParams, Outlet } from "react-router";
+import { useParams, Outlet, Link } from "react-router";
 import { useTitle, useApi } from "#/hooks";
 import { formatDate } from "#/utils";
 import { NameBox } from "#/components/NameBox";
@@ -88,14 +88,49 @@ Course.Modules = function () {
 
 	return (
 		<div className={style.Course_Modules}>
-			{/* TODO: 'create' button */}
+			<div className={style.top}>
+				<Link to="new" className="button">New Module</Link>
+			</div>
 			<ul>
 				{course.modules.map(module =>
 					<li key={module.id}>
-						<ModuleInfoRow module={module}/>
+						<ModuleInfoRow courseId={courseID} module={module}/>
 					</li>
 				)}
 			</ul>
+		</div>
+	);
+}
+
+Course.NewModule = function () {
+	function create(formData) {
+
+	}
+
+	return (
+		<div className={style.Course_NewModule}>
+			<h2>New Module</h2>
+			<form action={create}>
+				<ImageUploadInput name="image" accept="image/png, image/jpeg, image/webp" alt="Module image"/>
+				<div>
+					<label>
+						Name:
+						<input type="text" name="name" placeholder="My Module" required/>
+					</label>
+
+					<label>
+						Description:
+						<textarea name="description" rows="10" placeholder="In this module, we cover..." required></textarea>
+					</label>
+
+					<label>
+						Content URL:
+						<input type="url" name="content-url" placeholder="https://example.com/my-module-content" required/>
+					</label>
+
+					<input type="submit" value="Create"/>
+				</div>
+			</form>
 		</div>
 	);
 }

@@ -27,9 +27,15 @@ export const adminRoutes = [
 						Component: Course,
 						children: [
 							{ index: true, Component: () => <Navigate to="info"/> },
-							{ path: "info", Component: () => <Course.Info/> },
-							{ path: "modules", Component: () => <Course.Modules/> },
-							{ path: "enrolments", Component: () => <Course.Enrolments/> }
+							{ path: "info", Component: Course.Info },
+							{
+								path: "modules",
+								children: [
+									{ index: true, Component: Course.Modules },
+									{ path: "new", Component: Course.NewModule }
+								]
+							},
+							{ path: "enrolments", Component: Course.Enrolments }
 						]
 					}
 				]
@@ -44,9 +50,9 @@ export const adminRoutes = [
 						Component: User,
 						children: [
 							{ index: true, Component: () => <Navigate to="info"/> },
-							{ path: "info", Component: () => <User.Info/> },
-							{ path: "activity", Component: () => <User.Activity/> },
-							{ path: "courses", Component: () => <User.Courses/> }
+							{ path: "info", Component: User.Info },
+							{ path: "activity", Component: User.Activity },
+							{ path: "courses", Component: User.Courses }
 						]
 					}
 				]

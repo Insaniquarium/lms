@@ -40,11 +40,28 @@
 }
 
 .Course_Modules {
+	.top {
+		display: flex;
+		justify-content: flex-end;
+	}
+
 	ul {
 		list-style: none;
 	}
 
-	li:not(:last-child) {
+	li {
+		margin: 1rem 0;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+}
+
+.Course_NewModule {
+	h2 {
 		margin-bottom: 1rem;
 	}
+
+
 }

@@ -57,6 +57,7 @@ button, .button, input, textarea, select {
 input[type=text],
 input[type=email],
 input[type=password],
+input[type=url],
 textarea,
 select {
 	background: var(--component-bg-color);
@@ -84,8 +85,12 @@ button, .button, input[type=submit] {
 	}
 }
 
-.button:link, .button:visited {
-	color: #fff;
+.button {
+	display: inline-block;
+
+	&:link, &:visited {
+		color: #fff;
+	}
 }
 
 table {
