@@ -103,6 +103,7 @@ The current usable backend is a dumb backend that returns static responses that 
 - General
 	- TabBar tab's should wrap better on narrow viewports
 	- Reformat code and clean it (for consistency, and because some things were rushed and aren't as ideal as they could be)
+	- Invalid inputs should have red outline or similar
 	- Test suite
 	- Documentation has no wireframes
 
