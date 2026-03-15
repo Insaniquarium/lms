@@ -4,21 +4,16 @@
 	}
 }
 
-.Course_Info {
+// TODO: Refactor this, as this is a common pattern across many places
+.FormCommon {
 	display: flex;
 	gap: 1rem;
-	flex-direction: column;
+	flex-wrap: wrap;
+	align-items: flex-start;
 
-	form {
-		display: flex;
-		gap: 1rem;
-		flex-wrap: wrap;
-		align-items: flex-start;
-
-		> div:last-child {
-			flex: auto;
-			flex-basis: 450px;
-		}
+	> div:last-child {
+		flex: auto;
+		flex-basis: 450px;
 	}
 
 	label {
@@ -37,6 +32,12 @@
 	textarea {
 		resize: vertical;
 	}
+}
+
+.Course_Info {
+	display: flex;
+	gap: 1rem;
+	flex-direction: column;
 }
 
 .Course_Modules {
@@ -61,34 +62,5 @@
 .Course_NewModule {
 	h2 {
 		margin-bottom: 1rem;
-	}
-
-	form {
-		display: flex;
-		gap: 1rem;
-		flex-wrap: wrap;
-		align-items: flex-start;
-
-		> div:last-child {
-			flex: auto;
-			flex-basis: 450px;
-		}
-	}
-
-	label {
-		width: 100%;
-
-		input, textarea, select {
-			width: 100%;
-			margin: 0.5rem 0 1rem;
-		}
-	}
-
-	input, textarea, select {
-		display: block;
-	}
-
-	textarea {
-		resize: vertical;
 	}
 }

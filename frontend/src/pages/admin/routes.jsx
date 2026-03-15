@@ -32,7 +32,8 @@ export const adminRoutes = [
 								path: "modules",
 								children: [
 									{ index: true, Component: Course.Modules },
-									{ path: "new", Component: Course.NewModule }
+									{ path: "new", Component: Course.NewModule },
+									{ path: ":moduleID", Component: Course.Module }
 								]
 							},
 							{ path: "enrolments", Component: Course.Enrolments }

@@ -72,7 +72,6 @@ The current usable backend is a dumb backend that returns static responses that 
 		- Currently empty
 		- Statistics (e.g., recent enrolments and completions)
 	- Course
-		- No option to create module
 		- No way to see which users are enroled onto a course (and when, and their completion)
 		- No way to manually enrol/unenrol a user onto a course (if it's not public)
 	- User

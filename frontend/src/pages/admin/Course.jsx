@@ -50,7 +50,7 @@ Course.Info = function () {
 		<div className={style.Course_Info}>
 			<p><b>Created</b>: {formatDate(course.created * 1000)}</p>
 
-			<form action={modify}>
+			<form action={modify} className={style.FormCommon}>
 				<ImageUploadInput name="image" alt="Course image" defaultUrl={course.image}/>
 
 				<div>
@@ -94,11 +94,38 @@ Course.Modules = function () {
 			<ul>
 				{course.modules.map(module =>
 					<li key={module.id}>
-						<ModuleInfoRow courseId={courseID} module={module}/>
+						<ModuleInfoRow courseId={courseID} module={module} link={`${module.id}`}/>
 					</li>
 				)}
 			</ul>
 		</div>
+	);
+}
+
+function ModuleForm({ module, action }) {
+	return (
+		<form action={action} className={style.FormCommon}>
+			<ImageUploadInput name="image" alt="Module image" defaultUrl={module?.image}/>
+
+			<div>
+				<label>
+					Name:
+					<input type="text" name="name" placeholder="My Module" defaultValue={module?.name} required/>
+				</label>
+
+				<label>
+					Description:
+					<textarea name="description" rows="10" placeholder="In this module, we cover..." defaultValue={module?.description} required></textarea>
+				</label>
+
+				<label>
+					Content URL:
+					<input type="url" name="url" placeholder="https://example.com/my-module-content" defaultValue={module?.url} required/>
+				</label>
+
+				<input type="submit" value={module ? "Modify" : "Create"}/>
+			</div>
+		</form>
 	);
 }
 
@@ -110,27 +137,22 @@ Course.NewModule = function () {
 	return (
 		<div className={style.Course_NewModule}>
 			<h2>New Module</h2>
-			<form action={create}>
-				<ImageUploadInput name="image" alt="Module image"/>
-				<div>
-					<label>
-						Name:
-						<input type="text" name="name" placeholder="My Module" required/>
-					</label>
+			<ModuleForm action={create}/>
+		</div>
+	);
+}
 
-					<label>
-						Description:
-						<textarea name="description" rows="10" placeholder="In this module, we cover..." required></textarea>
-					</label>
+Course.Module = function () {
+	const { moduleID, courseID } = useParams();
 
-					<label>
-						Content URL:
-						<input type="url" name="content-url" placeholder="https://example.com/my-module-content" required/>
-					</label>
+	function modify(formData) {
 
-					<input type="submit" value="Create"/>
-				</div>
-			</form>
+	}
+
+	return (
+		<div className={style.Course_Module}>
+			{/* There could be another tab system here as to see stuff like statistics on completion */}
+			<ModuleForm action={modify}/>
 		</div>
 	);
 }
