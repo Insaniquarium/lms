@@ -64,3 +64,18 @@
 		margin-bottom: 1rem;
 	}
 }
+
+.Course_Module {
+	.FormCommon .button_row {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.delete {
+		background: #ad2a2a;
+
+		&:hover {
+			background: #7a1e1e;
+		}
+	}
+}

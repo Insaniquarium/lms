@@ -102,7 +102,7 @@ Course.Modules = function () {
 	);
 }
 
-function ModuleForm({ module, action }) {
+function ModuleForm({ module, action, children }) {
 	return (
 		<form action={action} className={style.FormCommon}>
 			<ImageUploadInput name="image" alt="Module image" defaultUrl={module?.image}/>
@@ -123,7 +123,7 @@ function ModuleForm({ module, action }) {
 					<input type="url" name="url" placeholder="https://example.com/my-module-content" defaultValue={module?.url} required/>
 				</label>
 
-				<input type="submit" value={module ? "Modify" : "Create"}/>
+				{children}
 			</div>
 		</form>
 	);
@@ -137,7 +137,9 @@ Course.NewModule = function () {
 	return (
 		<div className={style.Course_NewModule}>
 			<h2>New Module</h2>
-			<ModuleForm action={create}/>
+			<ModuleForm action={create}>
+				<input type="submit" value="Create"/>
+			</ModuleForm>
 		</div>
 	);
 }
@@ -156,7 +158,12 @@ Course.Module = function () {
 	return (
 		<div className={style.Course_Module}>
 			{/* There could be another tab system here as to see stuff like statistics on completion */}
-			<ModuleForm module={module} action={modify}/>
+			<ModuleForm module={module} action={modify}>
+				<div className={style.button_row}>
+					<input type="submit" value="Modify"/>
+					<button type="button" className={style.delete}>Delete</button>
+				</div>
+			</ModuleForm>
 		</div>
 	);
 }
