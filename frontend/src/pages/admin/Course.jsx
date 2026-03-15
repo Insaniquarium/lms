@@ -143,7 +143,11 @@ Course.NewModule = function () {
 }
 
 Course.Module = function () {
-	const { moduleID, courseID } = useParams();
+	const { courseID, moduleID } = useParams();
+	const [module, loading] = useApi(api => api.getCourseModule(courseID, moduleID));
+
+	if (loading)
+		return;
 
 	function modify(formData) {
 
@@ -152,7 +156,7 @@ Course.Module = function () {
 	return (
 		<div className={style.Course_Module}>
 			{/* There could be another tab system here as to see stuff like statistics on completion */}
-			<ModuleForm action={modify}/>
+			<ModuleForm module={module} action={modify}/>
 		</div>
 	);
 }
