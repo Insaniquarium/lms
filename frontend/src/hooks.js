@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { API } from "./api";
 import { useAuth } from "./auth";
 
 export function useTitle(callback, dependencies = []) {
