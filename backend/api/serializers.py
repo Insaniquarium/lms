@@ -3,18 +3,35 @@ from rest_framework import serializers
 from api.models import User, Course, Module, Enrolment, ModuleCompletion
 
 class UserSerializer(serializers.ModelSerializer):
+	"""
+	TODO: An email change should maybe be its own endpoint for security? Most
+	services send for verification first. Another endpoint could be done by
+	making a detail action in the ViewSet or something.
+
+	(Or do it with this somehow? Maybe communicate it's not done yet by sending
+	HTTP 202 Accepted?)
+
+	Some places might also not let you change first/last name without approval
+	of staff.
+	"""
+	date_joined = serializers.DateTimeField(read_only=True)
+	last_login = serializers.DateTimeField(read_only=True)	
+
 	class Meta:
 		model = User
 		fields = ['id', 'email', 'first_name', 'last_name', 'date_joined', 'last_login']
 
 class ModuleSerializer(serializers.ModelSerializer):
+	created_at = serializers.DateTimeField(read_only=True)
+
 	class Meta:
 		model = Module
 		fields = ['id', 'course', 'title', 'description', 'image', 'content_url', 'created_at']
 
 class CourseSerializer(serializers.ModelSerializer):
+	created_at = serializers.DateTimeField(read_only=True)
 	enrolments = serializers.SerializerMethodField()
-	modules = ModuleSerializer(many=True, read_only=True)
+	modules = ModuleSerializer(many=True, read_only=True) # make this its own endpoint? maybe 'modules' should just be a count here?
 
 	class Meta:
 		model = Course
@@ -31,7 +48,7 @@ class UserModuleSerializer(ModuleSerializer):
 		fields = [*ModuleSerializer.Meta.fields, 'started_at', 'completed_at']
 
 class UserCourseSerializer(CourseSerializer):
-	modules = UserModuleSerializer(many=True, read_only=True)
+	modules = UserModuleSerializer(many=True, read_only=True) # same concern as before on CourseSerializer
 	enroled_at = serializers.DateTimeField(read_only=True)
 
 	class Meta(CourseSerializer.Meta):
@@ -42,6 +59,8 @@ class UserActivitySerializer(serializers.ModelSerializer):
 	course = serializers.IntegerField(source='module.course.id', read_only=True)
 	course_title = serializers.CharField(source='module.course.title', read_only=True)
 	module_title = serializers.CharField(source='module.title', read_only=True)
+	started_at = serializers.DateTimeField(read_only=True)
+	completed_at = serializers.DateTimeField(read_only=True)
 
 	class Meta:
 		model = ModuleCompletion

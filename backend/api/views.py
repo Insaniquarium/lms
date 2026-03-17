@@ -32,7 +32,7 @@ class UserViewSet(ModelViewSet):
 	serializer_class = serializers.UserSerializer
 
 	def get_permissions(self):
-		if self.action == 'retrieve':
+		if self.action in {'retrieve', 'update', 'partial_update'}:
 			permission_classes = [permissions.IsOurUser | IsAdminUser]
 		else:
 			permission_classes = [IsAdminUser]
@@ -71,6 +71,7 @@ class UserActivityViewSet(ReadOnlyModelViewSet):
 	permission_classes = [permissions.IsOurUserFromURL | IsAdminUser]
 	serializer_class = serializers.UserActivitySerializer
 
+	# Should somehow have an option to limit (so a dashboard only listing 4 doesn't fetch all, efficiency)
 	def get_queryset(self): # pyright: ignore
 		return models.ModuleCompletion.objects.filter(user_id=self.kwargs['user_id']).order_by('completed_at')
 
@@ -79,7 +80,7 @@ class CourseViewSet(ModelViewSet):
 	lookup_url_kwarg = 'course_id'
 
 	def get_permissions(self):
-		if self.action == 'list' or self.action == 'retrieve':
+		if self.action in {'list', 'retrieve'}:
 			return [IsAuthenticated()]
 		else:
 			return [IsAdminUser()]
@@ -88,14 +89,14 @@ class CourseViewSet(ModelViewSet):
 		if self.request.user.is_staff:
 			return models.Course.objects.all()
 		else:
-			return models.Course.objects.filter(public=True)
+			return models.Course.objects.filter(public=True) # and the private ones the user is enrolled in?
 
 class CourseModuleViewSet(ModelViewSet):
 	serializer_class = serializers.ModuleSerializer
 	lookup_url_kwarg = 'module_id'
 
 	def get_permissions(self):
-		if self.action == 'list' or self.action == 'retrieve':
+		if self.action in {'list', 'retrieve'}:
 			return [IsAuthenticated()]
 		else:
 			return [IsAdminUser()]
@@ -106,5 +107,6 @@ class CourseModuleViewSet(ModelViewSet):
 	def perform_create(self, serializer):
 		serializer.save(course_id=self.kwargs['course_id'])
 
+# Should be the way a user is enrolled on a course?
 class CourseEnrolmentViewSet(ModelViewSet):
 	pass
