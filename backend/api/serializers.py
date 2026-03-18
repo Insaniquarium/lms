@@ -30,15 +30,15 @@ class ModuleSerializer(serializers.ModelSerializer):
 
 class CourseSerializer(serializers.ModelSerializer):
 	created_at = serializers.DateTimeField(read_only=True)
-	enrolments = serializers.SerializerMethodField()
-	modules = ModuleSerializer(many=True, read_only=True) # make this its own endpoint? maybe 'modules' should just be a count here?
+	modules = serializers.IntegerField(source='modules.count', read_only=True)
+	enrolments = serializers.IntegerField(source='enrolments.count', read_only=True)
 
 	class Meta:
 		model = Course
-		fields = ['id', 'title', 'description', 'image', 'created_at', 'public', 'enrolments', 'modules']
+		fields = ['id', 'title', 'description', 'image', 'created_at', 'public', 'modules', 'enrolments']
 
-	def get_enrolments(self, obj):
-		return obj.enrolment_set.count()
+class CourseDetailSerializer(CourseSerializer):
+	modules = ModuleSerializer(many=True, read_only=True)
 
 class UserModuleSerializer(ModuleSerializer):
 	started_at = serializers.DateTimeField(read_only=True)
@@ -48,11 +48,14 @@ class UserModuleSerializer(ModuleSerializer):
 		fields = [*ModuleSerializer.Meta.fields, 'started_at', 'completed_at']
 
 class UserCourseSerializer(CourseSerializer):
-	modules = UserModuleSerializer(many=True, read_only=True) # same concern as before on CourseSerializer
 	enroled_at = serializers.DateTimeField(read_only=True)
+	# progress percentage?
 
 	class Meta(CourseSerializer.Meta):
 		fields = [*CourseSerializer.Meta.fields, 'enroled_at']
+
+class UserCourseDetailSerializer(UserCourseSerializer):
+	modules = UserModuleSerializer(many=True, read_only=True)
 
 class UserActivitySerializer(serializers.ModelSerializer):
 	# Using IntegerField for this seems a bit of a hack
