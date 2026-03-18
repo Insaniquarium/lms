@@ -18,31 +18,31 @@ case "/courses":
 	[
 		{
 			"id": 0,
-			"name": "Coding Essentials",
+			"title": "Coding Essentials",
 			"image": "https://unsplash.com/photos/1IW4HQuauSU/download?w=640",
 			"description": "Learn to use HTML and CSS to create and style web pages, and utilise JavaScript to make them interactive.",
-			"visibility": "public",
-			"created": 1770761437,
+			"public": true,
+			"created_at": "2026-02-10T22:10:37.000Z" ,
 			"enrolments": 100,
 			"modules": 5
 		},
 		{
 			"id": 1,
-			"name": "Front End Development",
+			"title": "Front End Development",
 			"image": "https://unsplash.com/photos/uyfohHiTxho/download?w=640",
 			"description": "Utilise React to develop single page applications, collaborate and track changes with GitHub, and learn to manage software development projects.",
-			"visibility": "public",
-			"created": 1770761437,
+			"public": true,
+			"created_at": "2026-02-10T22:10:37.000Z" ,
 			"enrolments": 50,
 			"modules": 0
 		},
 		{
 			"id": 2,
-			"name": "Back End Development",
+			"title": "Back End Development",
 			"image": "https://unsplash.com/photos/r2_uBsnR-dY/download?w=640",
 			"description": "Study programming in Python, writing and managing a SQL database, and developing APIs.",
-			"visibility": "public",
-			"created": 1770761437,
+			"public": true,
+			"created_at": "2026-02-10T22:10:37.000Z",
 			"enrolments": 40,
 			"modules": 0
 		}		
@@ -55,47 +55,52 @@ case "/courses/0":
 	echo <<< 'EOF'
 	{
 		"id": 0,
-		"name": "Coding Essentials",
+		"title": "Coding Essentials",
 		"image": "https://unsplash.com/photos/1IW4HQuauSU/download?w=640",
 		"description": "Learn to use HTML and CSS to create and style web pages, and utilise JavaScript to make them interactive.",
-		"visibility": "public",
-		"created": 1770761437,
+		"public": true,
+		"created_at": "2026-02-10T22:10:37.000Z",
 		"enrolments": 100,
 		"modules": [
 			{
 				"id": 0,
-				"name": "Introduction to HTML",
+				"title": "Introduction to HTML",
 				"image": "https://unsplash.com/photos/uyfohHiTxho/download?w=640",
 				"description": "Discover HTML syntax, how to write elements, and set their attributes.",
-				"url": ""
+				"content_url": "",
+				"created_at": "2026-02-10T22:10:37.000Z"
 			},
 			{
 				"id": 1,
-				"name": "HTML Document Standards",
+				"title": "HTML Document Standards",
 				"image": "https://unsplash.com/photos/r2_uBsnR-dY/download?w=640",
 				"description": "Learn best practices for structuring well-organized HTML documents, how to link to other pages, and ensuring clear document formatting.",
-				"url": ""
+				"content_url": "",
+				"created_at": "2026-02-10T22:10:37.000Z"
 			},
 			{
 				"id": 2,
-				"name": "HTML Tables",
+				"title": "HTML Tables",
 				"image": "https://unsplash.com/photos/1IW4HQuauSU/download?w=640",
 				"description": "Develop the ability to efficiently organize and present tabular data in HTML.",
-				"url": ""
+				"content_url": "",
+				"created_at": "2026-02-10T22:10:37.000Z"
 			},
 			{
 				"id": 3,
-				"name": "HTML Forms",
+				"title": "HTML Forms",
 				"image": "https://unsplash.com/photos/uyfohHiTxho/download?w=640",
 				"description": "Learn how to create and utilize HTML forms, along with essential form elements.",
-				"url": ""
+				"content_url": "",
+				"created_at": "2026-02-10T22:10:37.000Z"
 			},
 			{
 				"id": 4,
-				"name": "Semantic HTML",
+				"title": "Semantic HTML",
 				"image": "https://unsplash.com/photos/r2_uBsnR-dY/download?w=640",
 				"description": "Master the use of semantic HTML elements to build websites that are understandable and easy to navigate.",
-				"url": ""
+				"content_url": "",
+				"created_at": "2026-02-10T22:10:37.000Z"
 			}
 		]
 	}
@@ -106,11 +111,11 @@ case "/courses/1":
 	echo <<< 'EOF'
 	{
 		"id": 1,
-		"name": "Front End Development",
+		"title": "Front End Development",
 		"image": "https://unsplash.com/photos/uyfohHiTxho/download?w=640",
 		"description": "Utilise React to develop single page applications, collaborate and track changes with GitHub, and learn to manage software development projects.",
-		"visibility": "public",
-		"created": 1770761437,
+		"public": true,
+		"created_at": "2026-02-10T22:10:37.000Z",
 		"enrolments": 50,
 		"modules": []
 	}
@@ -121,11 +126,11 @@ case "/courses/2":
 	echo <<< 'EOF'
 	{
 		"id": 2,
-		"name": "Back End Development",
+		"title": "Back End Development",
 		"image": "https://unsplash.com/photos/r2_uBsnR-dY/download?w=640",
 		"description": "Study programming in Python, writing and managing a SQL database, and developing APIs.",
-		"visibility": "public",
-		"created": 1770761437,
+		"public": true,
+		"created_at": "2026-02-10T22:10:37.000Z",
 		"enrolments": 40,
 		"modules": []
 	}
@@ -137,10 +142,11 @@ case "/courses/0/modules/0":
 	echo <<< 'EOF'
 	{
 		"id": 0,
-		"name": "Introduction to HTML",
+		"title": "Introduction to HTML",
 		"image": "https://unsplash.com/photos/uyfohHiTxho/download?w=640",
 		"description": "Discover HTML syntax, how to write elements, and set their attributes.",
-		"url": ""
+		"content_url": "",
+		"created_at": "2026-02-10T22:10:37.000Z"
 	}
 	EOF;
 	break;
@@ -149,10 +155,11 @@ case "/courses/0/modules/1":
 	echo <<< 'EOF'
 	{
 		"id": 1,
-		"name": "HTML Document Standards",
+		"title": "HTML Document Standards",
 		"image": "https://unsplash.com/photos/r2_uBsnR-dY/download?w=640",
 		"description": "Learn best practices for structuring well-organized HTML documents, how to link to other pages, and ensuring clear document formatting.",
-		"url": ""
+		"content_url": "",
+		"created_at": "2026-02-10T22:10:37.000Z"
 	}
 	EOF;
 	break;
@@ -161,10 +168,11 @@ case "/courses/0/modules/2":
 	echo <<< 'EOF'
 	{
 		"id": 2,
-		"name": "HTML Tables",
+		"title": "HTML Tables",
 		"image": "https://unsplash.com/photos/1IW4HQuauSU/download?w=640",
 		"description": "Develop the ability to efficiently organize and present tabular data in HTML.",
-		"url": ""
+		"content_url": "",
+		"created_at": "2026-02-10T22:10:37.000Z"
 	}
 	EOF;
 	break;
@@ -173,10 +181,11 @@ case "/courses/0/modules/3":
 	echo <<< 'EOF'
 	{
 		"id": 3,
-		"name": "HTML Forms",
+		"title": "HTML Forms",
 		"image": "https://unsplash.com/photos/uyfohHiTxho/download?w=640",
 		"description": "Learn how to create and utilize HTML forms, along with essential form elements.",
-		"url": ""
+		"content_url": "",
+		"created_at": "2026-02-10T22:10:37.000Z"
 	}
 	EOF;
 	break;
@@ -185,10 +194,11 @@ case "/courses/0/modules/4":
 	echo <<< 'EOF'
 	{
 		"id": 4,
-		"name": "Semantic HTML",
+		"title": "Semantic HTML",
 		"image": "https://unsplash.com/photos/r2_uBsnR-dY/download?w=640",
 		"description": "Master the use of semantic HTML elements to build websites that are understandable and easy to navigate.",
-		"url": ""
+		"content_url": "",
+		"created_at": "2026-02-10T22:10:37.000Z"
 	}
 	EOF;
 	break;
@@ -202,8 +212,8 @@ case "/users":
 			"first_name": "Joseph",
 			"last_name": "Lastname",
 			"role": "admin",
-			"last_accessed": 1770757304,
-			"created": 1770757304
+			"last_login": "2026-02-10T21:01:44.000Z",
+			"date_joined": "2026-02-10T21:01:44.000Z"
 		},
 		{
 			"id": "1",
@@ -211,8 +221,8 @@ case "/users":
 			"first_name": "John",
 			"last_name": "Doe",
 			"role": "admin",
-			"last_accessed": 1770848345,
-			"created": 1770848345
+			"last_login": "2026-02-11T22:19:05.000Z",
+			"date_joined": "2026-02-11T22:19:05.000Z"
 		}
 	]
 	EOF;	
@@ -228,8 +238,8 @@ case "/users/me":
 		"first_name": "Joseph",
 		"last_name": "Lastname",
 		"role": "admin",
-		"last_accessed": 1770757304,
-		"created": 1770757304
+		"last_login": "2026-02-10T21:01:44.000Z",
+		"date_joined": "2026-02-10T21:01:44.000Z"
 	}
 	EOF;
 	break;
@@ -242,8 +252,8 @@ case "/users/1":
 		"first_name": "John",
 		"last_name": "Doe",
 		"role": "admin",
-		"last_accessed": 1770848345,
-		"created": 1770848345
+		"last_login": "2026-02-11T22:19:05.000Z",
+		"date_joined": "2026-02-11T22:19:05.000Z"
 	}
 	EOF;
 	break;
@@ -254,23 +264,35 @@ case "/users/0/courses":
 	[
 		{
 			"id": 0,
-			"name": "Coding Essentials",
+			"title": "Coding Essentials",
 			"image": "https://unsplash.com/photos/1IW4HQuauSU/download?w=640",
 			"description": "Learn to use HTML and CSS to create and style web pages, and utilise JavaScript to make them interactive.",
+			"public": true,
+			"created_at": "2026-02-10T22:10:37.000Z",
+			"enrolments": 100,
+			"modules": 5,
 			"progress": 75
 		},
 		{
 			"id": 1,
-			"name": "Front End Development",
+			"title": "Front End Development",
 			"image": "https://unsplash.com/photos/uyfohHiTxho/download?w=640",
 			"description": "Utilise React to develop single page applications, collaborate and track changes with GitHub, and learn to manage software development projects.",
+			"public": true,
+			"created_at": "2026-02-10T22:10:37.000Z",
+			"enrolments": 50,
+			"modules": 0,
 			"progress": 0
 		},
 		{
 			"id": 2,
-			"name": "Back End Development",
+			"title": "Back End Development",
 			"image": "https://unsplash.com/photos/r2_uBsnR-dY/download?w=640",
 			"description": "Study programming in Python, writing and managing a SQL database, and developing APIs.",
+			"public": true,
+			"created_at": "2026-02-10T22:10:37.000Z",
+			"enrolments": 40,
+			"modules": 0,
 			"progress": 0
 		}
 	]
@@ -282,58 +304,63 @@ case "/users/0/courses/0":
 	echo <<< 'EOF'
 	{
 		"id": 0,
-		"name": "Coding Essentials",
+		"title": "Coding Essentials",
 		"image": "https://unsplash.com/photos/1IW4HQuauSU/download?w=640",
 		"description": "Learn to use HTML and CSS to create and style web pages, and utilise JavaScript to make them interactive.",
-		"visibility": "public",
-		"created": 0,
+		"public": true,
+		"created_at": "2026-02-10T22:10:37.000Z",
 		"enrolments": 100,
 		"progress": 75,
 		"modules": [
 			{
 				"id": 0,
-				"name": "Introduction to HTML",
+				"title": "Introduction to HTML",
 				"image": "https://unsplash.com/photos/uyfohHiTxho/download?w=640",
 				"description": "Discover HTML syntax, how to write elements, and set their attributes.",
-				"url": "",
-				"started_when": 1,
-				"completed_when": 1
+				"content_url": "",
+				"created_at": "2026-02-10T22:10:37.000Z",
+				"started_at": null,
+				"completed_at": null
 			},
 			{
 				"id": 1,
-				"name": "HTML Document Standards",
+				"title": "HTML Document Standards",
 				"image": "https://unsplash.com/photos/r2_uBsnR-dY/download?w=640",
 				"description": "Learn best practices for structuring well-organized HTML documents, how to link to other pages, and ensuring clear document formatting.",
-				"url": "",
-				"started_when": 1,
-				"completed_when": 1
+				"content_url": "",
+				"created_at": "2026-02-10T22:10:37.000Z",
+				"started_at": null,
+				"completed_at": null
 			},
 			{
 				"id": 2,
-				"name": "HTML Tables",
+				"title": "HTML Tables",
 				"image": "https://unsplash.com/photos/1IW4HQuauSU/download?w=640",
 				"description": "Develop the ability to efficiently organize and present tabular data in HTML.",
-				"url": "",
-				"started_when": 1,
-				"completed_when": 0
+				"content_url": "",
+				"created_at": "2026-02-10T22:10:37.000Z",
+				"started_at": null,
+				"completed_at": null
 			},
 			{
 				"id": 3,
-				"name": "HTML Forms",
+				"title": "HTML Forms",
 				"image": "https://unsplash.com/photos/uyfohHiTxho/download?w=640",
 				"description": "Learn how to create and utilize HTML forms, along with essential form elements.",
-				"url": "",
-				"started_when": 1,
-				"completed_when": 1
+				"content_url": "",
+				"created_at": "2026-02-10T22:10:37.000Z",
+				"started_at": null,
+				"completed_at": null
 			},
 			{
 				"id": 4,
-				"name": "Semantic HTML",
+				"title": "Semantic HTML",
 				"image": "https://unsplash.com/photos/r2_uBsnR-dY/download?w=640",
 				"description": "Master the use of semantic HTML elements to build websites that are understandable and easy to navigate.",
-				"url": "",
-				"started_when": 0,
-				"completed_when": 0
+				"content_url": "",
+				"created_at": "2026-02-10T22:10:37.000Z",
+				"started_at": null,
+				"completed_at": null
 			}
 		]
 	}
@@ -344,11 +371,11 @@ case "/users/0/courses/1":
 	echo <<< 'EOF'
 	{
 		"id": 1,
-		"name": "Front End Development",
+		"title": "Front End Development",
 		"image": "https://unsplash.com/photos/uyfohHiTxho/download?w=640",
 		"description": "Utilise React to develop single page applications, collaborate and track changes with GitHub, and learn to manage software development projects.",
-		"visibility": "public",
-		"created": 0,
+		"public": true,
+		"created_at": "2026-02-10T22:10:37.000Z",
 		"enrolments": 50,
 		"progress": 0,
 		"modules": []
@@ -360,11 +387,11 @@ case "/users/0/courses/2":
 	echo <<< 'EOF'
 	{
 		"id": 2,
-		"name": "Back End Development",
+		"title": "Back End Development",
 		"image": "https://unsplash.com/photos/r2_uBsnR-dY/download?w=640",
 		"description": "Study programming in Python, writing and managing a SQL database, and developing APIs.",
-		"visibility": "public",
-		"created": 0,
+		"public": true,
+		"created_at": "2026-02-10T22:10:37.000Z",
 		"enrolments": 40,
 		"progress": 0,
 		"modules": []
@@ -384,36 +411,36 @@ case "/users/0/activity":
 	echo <<< 'EOF'
 	[
 		{
-			"course_id": 0,
-			"module_id": 3,
-			"course_name": "Coding Essentials",
-			"module_name": "HTML Forms",
-			"started_when": 1,
-			"completed_when": 1
+			"course": 0,
+			"module": 3,
+			"course_title": "Coding Essentials",
+			"module_title": "HTML Forms",
+			"started_at": 1,
+			"completed_at": 1
 		},
 		{
-			"course_id": 0,
-			"module_id": 2,
-			"course_name": "Coding Essentials",
-			"module_name": "HTML Tables",
-			"started_when": 1,
-			"completed_when": 0
+			"course": 0,
+			"module": 2,
+			"course_title": "Coding Essentials",
+			"module_title": "HTML Tables",
+			"started_at": 1,
+			"completed_at": 0
 		},
 		{
-			"course_id": 0,
-			"module_id": 1,
-			"course_name": "Coding Essentials",
-			"module_name": "HTML Document Standards",
-			"started_when": 1,
-			"completed_when": 1
+			"course": 0,
+			"module": 1,
+			"course_title": "Coding Essentials",
+			"module_title": "HTML Document Standards",
+			"started_at": 1,
+			"completed_at": 1
 		},
 		{
-			"course_id": 0,
-			"module_id": 0,
-			"course_name": "Coding Essentials",
-			"module_name": "Introduction to HTML",
-			"started_when": 1,
-			"completed_when": 1
+			"course": 0,
+			"module": 0,
+			"course_title": "Coding Essentials",
+			"module_title": "Introduction to HTML",
+			"started_at": 1,
+			"completed_at": 1
 		}
 	]
 	EOF;
