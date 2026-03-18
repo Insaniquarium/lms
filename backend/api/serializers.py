@@ -58,8 +58,7 @@ class UserCourseDetailSerializer(UserCourseSerializer):
 	modules = UserModuleSerializer(many=True, read_only=True)
 
 class UserActivitySerializer(serializers.ModelSerializer):
-	# Using IntegerField for this seems a bit of a hack
-	course = serializers.IntegerField(source='module.course.id', read_only=True)
+	course = serializers.PrimaryKeyRelatedField(source='module.course.id', read_only=True)
 	course_title = serializers.CharField(source='module.course.title', read_only=True)
 	module_title = serializers.CharField(source='module.title', read_only=True)
 	started_at = serializers.DateTimeField(read_only=True)
