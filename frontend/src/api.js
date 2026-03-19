@@ -141,10 +141,11 @@ export class API {
 	}
 
 	async createCourseEnrolment(id, userId) {
-		return this.#fetch(`/courses/${id}/enrolments/`, "POST", { user_id: userId });
+		return this.#fetch(`/courses/${id}/enrolments/`, "POST", { user: userId });
 	}
 
-	async deleteCourseEnrolment(id, userId) {
+	// TODO: Enrolment IDs are not user IDs
+	/*async deleteCourseEnrolment(id, userId) {
 		return this.#fetch(`/courses/${id}/enrolments/${userId}`, "DELETE");
-	}
+	}*/
 };
