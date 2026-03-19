@@ -1,11 +1,17 @@
-import { Outlet } from "react-router";
+import { useNavigate, Outlet } from "react-router";
 import { House, Library, Users, Settings, LogOut } from "lucide-react";
 import { NavBar } from "#/components/NavBar";
+import { useAuth } from "#/auth";
 import { BaseLayout } from "./BaseLayout";
 
 export function AdminLayout() {
-	function logOut() {
+	const auth = useAuth();
+	const navigate = useNavigate();
 
+	// TODO: Likewise, see StudentLayout.jsx
+	function logOut() {
+		auth.logout();
+		navigate("/");
 	}
 
 	return (
