@@ -1,8 +1,12 @@
 import { useId } from "react";
+import { useNavigate } from "react-router";
+import { useAuth } from "#/auth";
 import { useTitle } from "#/hooks";
 import style from "./NewUser.module.scss";
 
 export function NewUser() {
+	const {api} = useAuth();
+	const navigate = useNavigate();
 	const nameId = useId();
 	const emailId = useId();
 	const passwordId = useId();
@@ -11,7 +15,18 @@ export function NewUser() {
 	useTitle(() => "New User");
 
 	function create(formData) {
-
+		// TODO: Disable inputs while waiting for response?
+		// (We really need a throbber too)
+		api.createUser({
+			first_name: formData.get("first_name"),
+			last_name: formData.get("last_name"),
+			email: formData.get("email"),
+			password: formData.get("password")
+			// TODO: Role
+		}).then(() => {
+			navigate("../");
+		});
+		// TODO: Present errors
 	}
 
 	return (
