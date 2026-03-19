@@ -78,11 +78,12 @@ class UserActivitySerializer(serializers.ModelSerializer):
 
 class EnrolmentSerializer(serializers.ModelSerializer):
 	# TODO: I don't think this is approached well
-	user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), required=False)
+	user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), required=True)
+	# TODO: The result of a POST shows course as a string, but subsequent responses are numeric?
 
 	class Meta:
 		model = Enrolment
-		fields = ['id', 'user', 'course', 'enroled_at']
+		fields = ['user', 'course', 'enroled_at']
 		read_only_fields = ['course', 'enroled_at']
 
 class AdminCourseSerializer(CourseSerializer):

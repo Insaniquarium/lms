@@ -9,6 +9,7 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.permissions import IsAdminUser, IsAuthenticated
 from rest_framework.generics import get_object_or_404
+from rest_framework.exceptions import PermissionDenied
 from rest_framework.authtoken.models import Token
 from rest_framework.authtoken.views import ObtainAuthToken
 
@@ -134,10 +135,10 @@ class CourseModuleViewSet(ModelViewSet):
 
 class CourseEnrolmentViewSet(ModelViewSet):
 	serializer_class = serializers.EnrolmentSerializer
-	lookup_url_kwarg = 'enrolment_id'
+	lookup_url_kwarg = 'user_id'
 
 	def get_permissions(self):
-		if self.action == 'create':
+		if self.action in {'create', 'destroy'}:
 			return [IsAuthenticated()]
 		return [IsAdminUser()]
 
@@ -145,8 +146,20 @@ class CourseEnrolmentViewSet(ModelViewSet):
 		get_object_or_404(models.Course, pk=self.kwargs['course_id'])
 		return models.Enrolment.objects.filter(course_id=self.kwargs['course_id'])
 
+	def get_object(self):
+		return get_object_or_404(
+			models.Enrolment,
+			course_id=self.kwargs['course_id'],
+			user_id=self.kwargs['user_id']
+		)
+
+	# TODO: Non-admins should not be allowed to enrol on non-public courses themselves
 	def perform_create(self, serializer):
-		if self.request.user.is_staff: # !!!!
-			serializer.save(course_id=self.kwargs['course_id'])
-		else:
-			serializer.save(user=self.request.user, course_id=self.kwargs['course_id'])
+		if not self.request.user.is_staff and serializer.validated_data['user'] != self.request.user:
+			raise PermissionDenied()
+		serializer.save(course_id=self.kwargs['course_id'])
+
+	def perform_destroy(self, instance):
+		if not self.request.user.is_staff and instance.user != self.request.user:
+			raise PermissionDenied()
+		instance.delete()
