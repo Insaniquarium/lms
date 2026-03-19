@@ -79,7 +79,7 @@ export class API {
 	}
 
 	async deleteUser(id) {
-		return this.#fetch(`/users/${id}`, "DELETE");
+		return this.#fetch(`/users/${id}/`, "DELETE");
 	}
 
 	async getUserCourses(id) {
@@ -113,7 +113,7 @@ export class API {
 	}
 
 	async deleteCourse(id) {
-		return this.#fetch(`/courses/${id}`, "DELETE");
+		return this.#fetch(`/courses/${id}/`, "DELETE");
 	}
 
 	async getCourseModules(id) {
@@ -133,7 +133,7 @@ export class API {
 	}
 
 	async deleteCourseModule(id, moduleId) {
-		return this.#fetch(`/courses/${id}/modules/${moduleId}`, "DELETE");
+		return this.#fetch(`/courses/${id}/modules/${moduleId}/`, "DELETE");
 	}
 
 	async getCourseEnrolments(id) {
@@ -144,8 +144,7 @@ export class API {
 		return this.#fetch(`/courses/${id}/enrolments/`, "POST", { user: userId });
 	}
 
-	// TODO: Enrolment IDs are not user IDs
-	/*async deleteCourseEnrolment(id, userId) {
-		return this.#fetch(`/courses/${id}/enrolments/${userId}`, "DELETE");
-	}*/
+	async deleteCourseEnrolment(id, userId) {
+		return this.#fetch(`/courses/${id}/enrolments/${userId}/`, "DELETE");
+	}
 };
