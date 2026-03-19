@@ -27,8 +27,8 @@ The Django backend should have REST endpoints, and there should be a test suite 
 Not all of these are satisfied due to time constraints.
 
 - Students should be able to:
-	- 🚧 Browse available courses
-	- 🚧 Enrol onto a course
+	- ✅ Browse available courses
+	- ✅ Enrol onto a course
 	- ✅ Access a list of courses they are enroled in
 	- ✅ Access course content
 - Teachers should be able to:
@@ -41,11 +41,11 @@ Not all of these are satisfied due to time constraints.
 - ❌ Automated tests
 - ❌ Wireframes in documentation
 
-For creating and managing courses and users, the pages for those are functionally complete, but they are not yet wired up to an API.
+For creating and managing courses and users, while you can *create* them, the pages for modifying them are not yet fully wired up to an API.
 
 For User Roles and Authentication, role-based access determined through a property in the `<RequireAuth>` component used in the router is not yet functional.
 
-The Django backend with proper REST API is close to completion, however not yet fully usable with the frontend. You can create, list and modify courses, modules and users. But you cannot create enrolments and module completions. You can however, *view* the courses a user has enroled in, module completion and a user's activity.
+The Django backend with proper REST API is close to completion. You can create and list courses, modules, users, enrolments, and activity. However, you cannot create enrolments, module completions, or modify already existant users/courses/modules.
 
 The Django backend can do token authentication and authorization, however there is not yet a proper role system. It only distinguishes between User and Admin, not Student, Teacher and Admin.
 
@@ -79,12 +79,10 @@ The Django backend can do token authentication and authorization, however there 
 - Frontend
 	- Pagination
 	- Error pages & handling
-		- Only page that exists so far is a 404 page, but if anything else happens, you'd be left with a blank page
+		- I implemented an ErrorBoundary at some point but it doesn't look like it's working fully, especially because I remembered React Router seems to have its own functionality I should be using for it instead.
 	- Ability to sort table columns
 	- `RequireAuth`'s `role` property does not yet check roles
-		- It should show a 403 Forbidden page if the user visiting does not have any allowed role
-	- Log out does not work
-		- You need to manually remove `token` from `localStorage`
+		- Perhaps it should show a 403 Forbidden page if the user visiting does not have any allowed role
 	- Make circular progress bar green when 100%
 	- Revamp CSS colours: As to be more consistent, move more colours to variables, or also move to SCSS variables?
 		- Would allow adjusting brightness etc from code
@@ -95,7 +93,6 @@ The Django backend can do token authentication and authorization, however there 
 	- No proper concept of student/teacher/admin roles
 	- No token expiry
 	- Responses aren't as optimised as they could be (contain data that likely isn't going to be shown)
-	- No endpoint to enrol onto a course
 	- No endpoint to submit a module completion
 - General
 	- TabBar tab's should wrap better on narrow viewports
