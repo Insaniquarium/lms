@@ -10,13 +10,20 @@ export function useTitle(callback, dependencies = []) {
 export function useApi(callback, dependencies = []) {
 	const [response, setResponse] = useState(null);
 	const [loading, setLoading] = useState(true);
+	const [error, setError] = useState(null);
 	const {api} = useAuth();
 
 	useEffect(() => {
+		let cancelled = false;
+		setLoading(true); // otherwise if dependencies change it could still be false, no?
+		setError(null);
+
 		callback(api)
-			.then(value => { setResponse(value); setLoading(false); })
-			.catch(error => { throw error; });
+			.then(value => { if (!cancelled) { setResponse(value); setLoading(false); }})
+			.catch(error => { if (!cancelled) { setError(error); setLoading(false); }});
+
+		return () => { cancelled = true; };
 	}, dependencies);
 
-	return [response, loading];
+	return [response, loading, error];
 }

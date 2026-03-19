@@ -7,12 +7,12 @@ import style from "./MyCourses.module.scss";
 
 export default function MyCourses() {
 	const {id} = useAuth();
-	const [courses, loading] = useApi(api => api.getUserCourses(id));
+	const [courses, loading, error] = useApi(api => api.getUserCourses(id));
 
 	useTitle(() => "My Courses");
 
-	if (loading)
-		return;
+	if (loading) return;
+	if (error) throw error;
 
 	return (
 		<div className={`${style.MyCourses} page`}>

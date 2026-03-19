@@ -9,18 +9,18 @@ import style from "./Course.module.scss";
 
 export function Course() {
 	const {courseID} = useParams();
-	const [course, loading] = useApi(api => api.getCourse(courseID));
+	const [course, loading, error] = useApi(api => api.getCourse(courseID));
 
-	useTitle(() => course?.name ?? "Course", [course]);
+	useTitle(() => course?.title ?? "Course", [course]);
 
-	if (loading)
-		return;
+	if (loading) return;
+	if (error) throw error;
 
 	return (
 		<div className={`${style.Course} page`}>
 			<NameBox>
 				<img src={course.image} alt=""/>
-				<h1>{course.name}</h1>
+				<h1>{course.title}</h1>
 			</NameBox>
 
 			<TabBar>
@@ -37,10 +37,10 @@ export function Course() {
 
 Course.Info = function () {
 	const { courseID } = useParams();
-	const [course, loading] = useApi(api => api.getCourse(courseID));
+	const [course, loading, error] = useApi(api => api.getCourse(courseID));
 
-	if (loading)
-		return;
+	if (loading) return;
+	if (error) throw error;
 
 	function modify(formData) {
 
@@ -48,15 +48,15 @@ Course.Info = function () {
 
 	return (
 		<div className={style.Course_Info}>
-			<p><b>Created</b>: {formatDate(course.created * 1000)}</p>
+			<p><b>Created</b>: {formatDate(course.created_at)}</p>
 
 			<form action={modify} className={style.FormCommon}>
 				<ImageUploadInput name="image" alt="Course image" defaultUrl={course.image}/>
 
 				<div>
 					<label>
-						Name:
-						<input type="text" name="name" placeholder="My Course" defaultValue={course.name} required/>
+						Title:
+						<input type="text" name="title" placeholder="My Course" defaultValue={course.title} required/>
 					</label>
 
 					<label>
@@ -64,6 +64,7 @@ Course.Info = function () {
 						<textarea name="description" rows="10" placeholder="In this course, you will learn..." defaultValue={course.description} required></textarea>
 					</label>
 
+					{/* I could make this a checkbox now that publicity is just a boolean */}
 					<label>
 						Visibility:
 						<select name="visibility" defaultValue={course.visibility}>
@@ -81,10 +82,33 @@ Course.Info = function () {
 
 Course.Modules = function () {
 	const { courseID } = useParams();
-	const [course, loading] = useApi(api => api.getCourse(courseID)); // TODO: getCourseModules
+	const [course, loading, error] = useApi(api => api.getCourse(courseID)); // TODO: getCourseModules
 
-	if (loading)
-		return;
+	if (loading) return;
+	if (error) throw error;
+
+	return (
+		<div className={style.Course_Modules}>
+			<div className={style.top}>
+				<Link to="new" className="button">New Module</Link>
+			</div>
+			<ul>
+				{course.modules.map(module =>
+					<li key={module.id}>
+						<ModuleInfoRow courseId={courseID} module={module} link={`${module.id}`}/>
+					</li>
+				)}
+			</ul>
+		</div>
+	);
+}
+
+Course.Modules = function () {
+	const { courseID } = useParams();
+	const [course, loading, error] = useApi(api => api.getCourse(courseID)); // TODO: getCourseModules
+
+	if (loading) return;
+	if (error) throw error;
 
 	return (
 		<div className={style.Course_Modules}>
@@ -109,8 +133,8 @@ function ModuleForm({ module, action, children }) {
 
 			<div>
 				<label>
-					Name:
-					<input type="text" name="name" placeholder="My Module" defaultValue={module?.name} required/>
+					Title:
+					<input type="text" name="title" placeholder="My Module" defaultValue={module?.title} required/>
 				</label>
 
 				<label>
@@ -120,7 +144,7 @@ function ModuleForm({ module, action, children }) {
 
 				<label>
 					Content URL:
-					<input type="url" name="url" placeholder="https://example.com/my-module-content" defaultValue={module?.url} required/>
+					<input type="url" name="content_url" placeholder="https://example.com/my-module-content" defaultValue={module?.content_url} required/>
 				</label>
 
 				{children}
@@ -146,10 +170,10 @@ Course.NewModule = function () {
 
 Course.Module = function () {
 	const { courseID, moduleID } = useParams();
-	const [module, loading] = useApi(api => api.getCourseModule(courseID, moduleID));
+	const [module, loading, error] = useApi(api => api.getCourseModule(courseID, moduleID));
 
-	if (loading)
-		return;
+	if (loading) return;
+	if (error) throw error;
 
 	function modify(formData) {
 
@@ -170,10 +194,10 @@ Course.Module = function () {
 
 Course.Enrolments = function () {
 	const { courseID } = useParams();
-	const [enrolments, loading] = useApi(api => api.getCourseEnrolments(courseID));
+	const [enrolments, loading, error] = useApi(api => api.getCourseEnrolments(courseID));
 
-	if (loading)
-		return;
+	if (loading) return;
+	if (error) throw error;
 
 	return (
 		<div className={style.Course_Enrolments}>

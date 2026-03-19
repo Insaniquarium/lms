@@ -8,10 +8,10 @@ import style from "./Home.module.scss";
 
 function RecentActivityCard() {
 	const {id} = useAuth();
-	const [activity, loading] = useApi(api => api.getUserActivity(id));
+	const [activity, loading, error] = useApi(api => api.getUserActivity(id));
 
-	if (loading)
-		return;
+	if (loading) return;
+	if (error) throw error;
 
 	function formatStatus(activityData) {
 		if (activityData.completed_when)
@@ -30,8 +30,8 @@ function RecentActivityCard() {
 					const [statusText, statusClass] = formatStatus(a);
 
 					return (
-						<li key={`${a.course_id}:${a.module_id}`}>
-							<Link to={`/courses/${a.course_id}/modules/${a.module_id}`}>{a.module_name}</Link>
+						<li key={`${a.course}:${a.module}`}>
+							<Link to={`/courses/${a.course}/modules/${a.module}`}>{a.module_title}</Link>
 							<span className={statusClass}>{statusText}</span>
 						</li>
 					);
@@ -46,10 +46,10 @@ function RecentActivityCard() {
 
 function MyCoursesCard() {
 	const {id} = useAuth();
-	const [courses, loading] = useApi(api => api.getUserCourses(id));
+	const [courses, loading, error] = useApi(api => api.getUserCourses(id));
 
-	if (loading)
-		return;
+	if (loading) return;
+	if (error) throw error;
 
 	return (
 		<Card className={style.MyCoursesCard}>
@@ -78,12 +78,12 @@ function AchievementsCard() {
 
 export default function Home() {
 	const {id} = useAuth();
-	const [user, loading] = useApi(api => api.getUser(id));
+	const [user, loading, error] = useApi(api => api.getUser(id));
 
 	useTitle(() => "Home");
 
-	if (loading)
-		return;
+	if (loading) return;
+	if (error) throw error;
 
 	return (
 		<div className={`${style.Home} page`}>

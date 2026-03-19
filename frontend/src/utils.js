@@ -1,9 +1,10 @@
 /**
- * Formats a millisecond-precision timestamp into a relative date if difference
- * is less than a week, otherwise shows absolute date.
+ * Formats a timestamp into a relative date if difference is less than a week,
+ * otherwise shows absolute date.
  */
 export function formatDate(timestamp) {
-	const difference = Date.now() - timestamp;
+	const then = new Date(timestamp);
+	const difference = new Date() - then;
 	const secondsPassed = Math.trunc(difference / 1000);
 	const minutesPassed = Math.trunc(secondsPassed / 60);
 	const hoursPassed = Math.trunc(minutesPassed / 60);
@@ -22,7 +23,7 @@ export function formatDate(timestamp) {
 	if (Math.abs(daysPassed) < 7)
 		return relativeFormat.format(-daysPassed, "day");
 
-	return new Intl.DateTimeFormat().format(timestamp);
+	return new Intl.DateTimeFormat().format(then);
 }
 
 export function toTitleCase(string) {

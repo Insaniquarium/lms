@@ -13,12 +13,12 @@ function NullableLink(props) {
 export function CourseInfoRow({ course, link = `/courses/${course.id}` }) {
 	return (
 		<div className="CourseInfoRow details_list_row">
-			<NullableLink className="img" to={link} aria-label={`${course.name} image link`}>
+			<NullableLink className="img" to={link} aria-label={`${course.title} image link`}>
 				<img src={course.image} alt=""/>
 			</NullableLink>
 
 			<div className="content">
-				<NullableLink className="heading" to={link}>{course.name}</NullableLink>
+				<NullableLink className="heading" to={link}>{course.title}</NullableLink>
 				<p>{course.description}</p>
 			</div>
 
@@ -29,15 +29,15 @@ export function CourseInfoRow({ course, link = `/courses/${course.id}` }) {
 
 // 'module' is used by node
 export function ModuleInfoRow({ courseId, module, link = `/courses/${courseId}/modules/${module.id}` }) {
-	const hasProgress = module.completed_when != undefined && module.started_when != undefined;
+	const hasProgress = module.completed_at != undefined && module.started_at != undefined;
 	let progressText = "";
 	let progressClass = "";
 
 	if (hasProgress) {
-		if (module.completed_when) {
+		if (module.completed_at) {
 			progressText = "Completed";
 			progressClass = "completed";
-		} else if (module.started_when) {
+		} else if (module.started_at) {
 			progressText = "Started";
 			progressClass = "started";
 		} else {
@@ -47,12 +47,12 @@ export function ModuleInfoRow({ courseId, module, link = `/courses/${courseId}/m
 
 	return (
 		<div className="ModuleInfoRow details_list_row">
-			<NullableLink className="img" to={link} aria-label={`${module.name} image link`}>
+			<NullableLink className="img" to={link} aria-label={`${module.title} image link`}>
 				<img src={module.image} alt=""/>
 			</NullableLink>
 
 			<div className="content">
-				<NullableLink className="heading" to={link}>{module.name}</NullableLink>
+				<NullableLink className="heading" to={link}>{module.title}</NullableLink>
 				<p>{module.description}</p>
 			</div>
 

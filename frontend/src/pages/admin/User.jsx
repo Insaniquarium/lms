@@ -7,12 +7,12 @@ import style from "./User.module.scss";
 
 export function User() {
 	const { userID } = useParams();
-	const [user, loading] = useApi(api => api.getUser(userID));
+	const [user, loading, error] = useApi(api => api.getUser(userID));
 
 	useTitle(() => user ? `${user.first_name} ${user.last_name}` : "User", [user]);
 
-	if (loading)
-		return;
+	if (loading) return;
+	if (error) throw error;
 
 	return (
 		<div className={`${style.User} page`}>
@@ -32,10 +32,10 @@ export function User() {
 
 User.Info = function () {
 	const { userID } = useParams();
-	const [user, loading] = useApi(api => api.getUser(userID));
+	const [user, loading, error] = useApi(api => api.getUser(userID));
 
-	if (loading)
-		return;
+	if (loading) return;
+	if (error) throw error;
 
 	function modify(formData) {
 
@@ -43,8 +43,8 @@ User.Info = function () {
 
 	return (
 		<div className={style.User_Info}>
-			<p><b>Created</b>: {formatDate(user.created * 1000)}</p>
-			<p><b>Last accessed</b>: {formatDate(user.last_accessed * 1000)}</p>
+			<p><b>Created</b>: {formatDate(user.date_joined)}</p>
+			<p><b>Last login</b>: {formatDate(user.last_login)}</p>
 
 			<form action={modify}>
 				<label>
@@ -60,6 +60,7 @@ User.Info = function () {
 					<input type="email" name="email" placeholder="john.doe@email.com" defaultValue={user.email} required/>
 				</label>
 
+				{/* TODO: Mention somewhere that password won't be changed if the box is empty?*/}
 				<label>
 					Password:
 					<input type="password" name="password" placeholder="Password"/>
@@ -82,10 +83,10 @@ User.Info = function () {
 
 User.Activity = function() {
 	const { userID } = useParams();
-	const [activity, loading] = useApi(api => api.getUserActivity(userID));
+	const [activity, loading, error] = useApi(api => api.getUserActivity(userID));
 
-	if (loading)
-		return;
+	if (loading) return;
+	if (error) throw error;
 
 	return (
 		<div className={style.User_Activity}>
@@ -101,10 +102,10 @@ User.Activity = function() {
 				<tbody>
 					{activity.map(a =>
 						<tr>
-							<td><Link to={`/admin/courses/${a.course_id}`}>{a.course_name}</Link></td>
-							<td><Link to={`/admin/courses/${a.course_id}/modules/${a.module_id}`}>{a.module_name}</Link></td>
-							<td>{formatDate(a.started_when)}</td>
-							<td>{formatDate(a.completed_when)}</td>
+							<td><Link to={`/admin/courses/${a.course}`}>{a.course_title}</Link></td>
+							<td><Link to={`/admin/courses/${a.course}/modules/${a.module}`}>{a.module_title}</Link></td>
+							<td>{formatDate(a.started_at)}</td>
+							<td>{formatDate(a.completed_at)}</td>
 						</tr>
 					)}
 				</tbody>
@@ -115,10 +116,10 @@ User.Activity = function() {
 
 User.Courses = function() {
 	const { userID } = useParams();
-	const [courses, loading] = useApi(api => api.getUserCourses(userID));
+	const [courses, loading, error] = useApi(api => api.getUserCourses(userID));
 
-	if (loading)
-		return;
+	if (loading) return;
+	if (error) throw error;
 
 	// TODO: Clicking on a course would instead link to a list of the modules a user has done
 	return (

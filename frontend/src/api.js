@@ -11,7 +11,7 @@ export class HTTPUnauthorisedError extends HTTPError {
 };
 
 export class API {
-	static ORIGIN = "http://localhost:1234/api/v1";
+	static ORIGIN = "http://localhost:8000/api/v1";
 	#token;
 
 	constructor(token = null) {
@@ -27,7 +27,7 @@ export class API {
 		}
 
 		if (this.#token !== null) {
-			options.headers["Authorization"] = `Bearer ${this.#token}`;
+			options.headers["Authorization"] = `Token ${this.#token}`;
 		}
 
 		const response = await fetch(this.constructor.ORIGIN + path, {
@@ -39,6 +39,7 @@ export class API {
 			}
 		});
 
+		// TODO: Should provide response JSON/Text to exception
 		if (response.status === 401)
 			throw new HTTPUnauthorisedError(response.status, response.statusText);
 
@@ -49,10 +50,6 @@ export class API {
 			return await response.json();
 
 		return await response.text();
-	}
-
-	authenticated() {
-		return this.#token !== null;
 	}
 
 	token() {
@@ -87,9 +84,11 @@ export class API {
 		return this.#fetch(`/users/${id}/courses`, "GET");
 	}
 
-	async getUserCourse(id, courseId) { // query parameter to omit modules?
+	async getUserCourse(id, courseId) {
 		return this.#fetch(`/users/${id}/courses/${courseId}`, "GET");
 	}
+
+	// But no /users/${id}/courses/${courseId}/modules?
 
 	async getUserActivity(id) {
 		return this.#fetch(`/users/${id}/activity`, "GET");

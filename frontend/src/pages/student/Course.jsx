@@ -11,7 +11,8 @@ export default function Course() {
 	const {courseID} = useParams();
 	const {api, id} = useAuth();
 
-	const [course, loading] = useApi(async api => {
+	const [course, loading, error] = useApi(async api => {
+		// TODO: What happens to the error if getUserCourses throws though?
 		if ((await api.getUserCourses(id)).find(c => c.id == courseID)) {
 			return await api.getUserCourse(id, courseID);
 		} else {
@@ -19,10 +20,10 @@ export default function Course() {
 		}
 	}, [courseID]);
 
-	useTitle(() => course?.name ?? "Course", [course]);
+	useTitle(() => course?.title ?? "Course", [course]);
 
-	if (loading)
-		return;
+	if (loading) return;
+	if (error) throw error;
 
 	/**
 	 * The more proper way would be storing the result of the array find above
@@ -38,7 +39,7 @@ export default function Course() {
 		<div className={`${style.Course} page`}>
 			<NameBox>
 				<img src={course.image} alt=""/>
-				<h1>{course.name}</h1>
+				<h1>{course.title}</h1>
 				{hasEnroled ?
 					<CircularProgressbar value={course.progress} text={course.progress + "%"}/> :
 					<button onClick={enrol}>Enrol</button>

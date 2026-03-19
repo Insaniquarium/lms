@@ -5,12 +5,12 @@ import { formatDate, toTitleCase } from "#/utils";
 import style from "./Courses.module.scss";
 
 export function Courses() {
-	const [courses, loading] = useApi(api => api.getCourses());
+	const [courses, loading, error] = useApi(api => api.getCourses());
 
 	useTitle(() => "Courses");
 
-	if (loading)
-		return;
+	if (loading) return;
+	if (error) throw error;
 
 	return (
 		<div className={`${style.Courses} page`}>
@@ -21,7 +21,7 @@ export function Courses() {
 			<table>
 				<thead>
 					<tr>
-						<th style={{width: "90%"}}>Name</th>
+						<th style={{width: "90%"}}>Title</th>
 						<th>Modules</th>
 						<th>Enrolments</th>
 						<th>Visibility</th>
@@ -32,11 +32,11 @@ export function Courses() {
 				<tbody>
 					{courses.map(course =>
 						<tr>
-							<td><Link to={`${course.id}`}>{course.name}</Link></td>
+							<td><Link to={`${course.id}`}>{course.title}</Link></td>
 							<td className="text_right">{course.modules}</td>
 							<td className="text_right">{course.enrolments}</td>
-							<td>{toTitleCase(course.visibility)}</td>
-							<td className={style.created}>{formatDate(course.created * 1000)}</td>
+							<td>{course.public ? "Public" : "Private"}</td>
+							<td>{formatDate(course.created_at)}</td>
 							<td className={style.actions}>
 								<button className={style.delete} aria-label="Delete course"><Trash size={16}/></button>
 							</td>

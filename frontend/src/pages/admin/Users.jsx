@@ -4,12 +4,12 @@ import { formatDate, toTitleCase } from "#/utils";
 import style from "./Users.module.scss";
 
 export function Users() {
-	const [users, loading] = useApi(api => api.getUsers());
+	const [users, loading, error] = useApi(api => api.getUsers());
 
 	useTitle(() => "Users");
 
-	if (loading)
-		return;
+	if (loading) return;
+	if (error) throw error;
 
 	return (
 		<div className={`${style.Users} page`}>
@@ -23,7 +23,7 @@ export function Users() {
 						<th style={{width: "35%"}}>Name</th>
 						<th style={{width: "30%"}}>Email address</th>
 						<th>Role</th>
-						<th>Accessed</th>
+						<th>Last Login</th>
 						<th>Created</th>
 					</tr>
 				</thead>
@@ -32,9 +32,9 @@ export function Users() {
 						<tr>
 							<td><Link to={`${user.id}`}>{user.first_name} {user.last_name}</Link></td>
 							<td>{user.email}</td>
-							<td>{toTitleCase(user.role)}</td>
-							<td>{formatDate(user.last_accessed * 1000)}</td>
-							<td>{formatDate(user.created * 1000)}</td>
+							<td>{/*toTitleCase(user.role)*/}</td>
+							<td>{formatDate(user.last_login)}</td>
+							<td>{formatDate(user.date_joined)}</td>
 						</tr>
 					)}
 				</tbody>
