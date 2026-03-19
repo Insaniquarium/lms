@@ -8,7 +8,8 @@ import { AuthProvider } from "#/auth";
 import { studentRoutes } from "#/pages/student/routes";
 import { adminRoutes } from "#/pages/admin/routes";
 import Login from "#/pages/Login";
-import NotFound from "#/pages/NotFound";
+import { ErrorFallback, NotFound } from "#/pages/Errors";
+import { ErrorBoundary } from "#/components/ErrorBoundary";
 
 const router = createBrowserRouter([
 	{ path: "/login", Component: Login },
@@ -17,10 +18,13 @@ const router = createBrowserRouter([
 	{ path: "*", Component: NotFound }
 ]);
 
+// You're probably getting double the API requests in dev builds because of strict mode
 createRoot(document.getElementById("root")).render(
 	<StrictMode>
-		<AuthProvider>
-			<RouterProvider router={router}/>
-		</AuthProvider>
+		<ErrorBoundary fallback={<ErrorFallback/>}>
+			<AuthProvider>
+				<RouterProvider router={router}/>
+			</AuthProvider>
+		</ErrorBoundary>
 	</StrictMode>
 );
