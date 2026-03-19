@@ -9,7 +9,7 @@ $url = parse_url($_SERVER["REQUEST_URI"])["path"];
 
 switch (str_replace("/api/v1", "", $url)) {
 case "/login":
-	echo '{ "token": "real", "id": "0" }';
+	echo '{ "token": "real", "user_id": "0" }';
 	break;
 
 case "/courses":

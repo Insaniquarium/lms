@@ -24,7 +24,8 @@ class AuthToken(ObtainAuthToken):
 		user = serializer.validated_data['user'] # pyright: ignore
 		token, created = Token.objects.get_or_create(user=user)
 		return Response({
-			'token': token.key
+			'token': token.key,
+			'user_id': user.id
 		})
 
 class UserViewSet(ModelViewSet):
