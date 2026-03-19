@@ -17,15 +17,7 @@ export function NewUser() {
 	function create(formData) {
 		// TODO: Disable inputs while waiting for response?
 		// (We really need a throbber too)
-		api.createUser({
-			first_name: formData.get("first_name"),
-			last_name: formData.get("last_name"),
-			email: formData.get("email"),
-			password: formData.get("password")
-			// TODO: Role
-		}).then(() => {
-			navigate("../");
-		});
+		api.createUser(formData).then(() => navigate("../"));
 		// TODO: Present errors
 	}
 

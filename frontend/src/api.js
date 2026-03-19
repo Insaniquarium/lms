@@ -18,10 +18,12 @@ export class API {
 		this.#token = token;
 	}
 
-	async #fetch(path, method = "GET", body = null, options = {}) {
+	async #fetch(path, method = "GET", body, options = {}) {
 		options.headers ??= {};
 
-		if (body !== null) {
+		if (body instanceof FormData) {
+			options.body = body;
+		} else if (body !== undefined) {
 			options.headers["Content-Type"] = "application/json";
 			options.body = JSON.stringify(body);
 		}
