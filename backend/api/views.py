@@ -89,7 +89,7 @@ class UserActivityViewSet(ReadOnlyModelViewSet):
 	permission_classes = [permissions.IsOurUserFromURL | IsAdminUser]
 	serializer_class = serializers.UserActivitySerializer
 
-	# Should somehow have an option to limit (so a dashboard only listing 4 doesn't fetch all, efficiency)
+	# TODO: Should somehow have an option to limit (so a dashboard only listing 4 doesn't fetch all, efficiency)
 	def get_queryset(self): # pyright: ignore
 		get_object_or_404(models.User, pk=self.kwargs['user_id'])
 		return models.ModuleCompletion.objects.filter(user_id=self.kwargs['user_id']).order_by('completed_at')
@@ -107,7 +107,7 @@ class CourseViewSet(ModelViewSet):
 		if self.request.user.is_staff:
 			return models.Course.objects.all()
 		else:
-			return models.Course.objects.filter(public=True) # and the private ones the user is enrolled in?
+			return models.Course.objects.filter(public=True) # TODO: and the private ones the user is enrolled in?
 
 	def get_serializer_class(self):
 		if self.action == 'retrieve':

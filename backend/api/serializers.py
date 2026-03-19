@@ -34,7 +34,7 @@ class ModuleSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = Module
-		fields = ['id', 'course', 'title', 'description', 'image', 'content_url', 'created_at']
+		fields = ['id', 'title', 'description', 'image', 'content_url', 'created_at']
 
 class CourseSerializer(serializers.ModelSerializer):
 	created_at = serializers.DateTimeField(read_only=True)
