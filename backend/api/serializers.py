@@ -76,6 +76,15 @@ class UserActivitySerializer(serializers.ModelSerializer):
 		model = ModuleCompletion
 		fields = ['course', 'module', 'course_title', 'module_title', 'started_at', 'completed_at']
 
+class EnrolmentSerializer(serializers.ModelSerializer):
+	# TODO: I don't think this is approached well
+	user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), required=False)
+
+	class Meta:
+		model = Enrolment
+		fields = ['id', 'user', 'course', 'enroled_at']
+		read_only_fields = ['course', 'enroled_at']
+
 class AdminCourseSerializer(CourseSerializer):
 	pass
 

@@ -132,6 +132,21 @@ class CourseModuleViewSet(ModelViewSet):
 	def perform_create(self, serializer):
 		serializer.save(course_id=self.kwargs['course_id'])
 
-# Should be the way a user is enrolled on a course?
 class CourseEnrolmentViewSet(ModelViewSet):
-	pass
+	serializer_class = serializers.EnrolmentSerializer
+	lookup_url_kwarg = 'enrolment_id'
+
+	def get_permissions(self):
+		if self.action == 'create':
+			return [IsAuthenticated()]
+		return [IsAdminUser()]
+
+	def get_queryset(self):
+		get_object_or_404(models.Course, pk=self.kwargs['course_id'])
+		return models.Enrolment.objects.filter(course_id=self.kwargs['course_id'])
+
+	def perform_create(self, serializer):
+		if self.request.user.is_staff: # !!!!
+			serializer.save(course_id=self.kwargs['course_id'])
+		else:
+			serializer.save(user=self.request.user, course_id=self.kwargs['course_id'])
