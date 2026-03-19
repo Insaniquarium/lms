@@ -34,6 +34,8 @@ class UserViewSet(ModelViewSet):
 	def get_permissions(self):
 		if self.action in {'retrieve', 'update', 'partial_update'}:
 			permission_classes = [permissions.IsOurUser | IsAdminUser]
+		elif self.action == 'me':
+			permission_classes = [IsAuthenticated]
 		else:
 			permission_classes = [IsAdminUser]
 		return [permission() for permission in permission_classes]

@@ -11,6 +11,6 @@ router.register('courses/(?P<course_id>[^/.]+)/modules', views.CourseModuleViewS
 router.register('courses/(?P<course_id>[^/.]+)/enrolments', views.CourseEnrolmentViewSet, basename='course-enrolment')
 
 urlpatterns = [
-	path('', include(router.urls)),
-	path('login', views.AuthToken.as_view())
+	path('v1/', include(router.urls)),
+	path('v1/login', views.AuthToken.as_view())
 ]
