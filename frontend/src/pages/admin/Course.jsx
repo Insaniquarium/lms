@@ -82,7 +82,7 @@ Course.Info = function () {
 
 Course.Modules = function () {
 	const { courseID } = useParams();
-	const [course, loading, error] = useApi(api => api.getCourse(courseID)); // TODO: getCourseModules
+	const [modules, loading, error] = useApi(api => api.getCourseModules(courseID));
 
 	if (loading) return;
 	if (error) throw error;
@@ -93,7 +93,7 @@ Course.Modules = function () {
 				<Link to="new" className="button">New Module</Link>
 			</div>
 			<ul>
-				{course.modules.map(module =>
+				{modules.map(module =>
 					<li key={module.id}>
 						<ModuleInfoRow courseId={courseID} module={module} link={`${module.id}`}/>
 					</li>
@@ -105,7 +105,7 @@ Course.Modules = function () {
 
 Course.Modules = function () {
 	const { courseID } = useParams();
-	const [course, loading, error] = useApi(api => api.getCourse(courseID)); // TODO: getCourseModules
+	const [modules, loading, error] = useApi(api => api.getCourseModules(courseID));
 
 	if (loading) return;
 	if (error) throw error;
@@ -116,7 +116,7 @@ Course.Modules = function () {
 				<Link to="new" className="button">New Module</Link>
 			</div>
 			<ul>
-				{course.modules.map(module =>
+				{modules.map(module =>
 					<li key={module.id}>
 						<ModuleInfoRow courseId={courseID} module={module} link={`${module.id}`}/>
 					</li>
