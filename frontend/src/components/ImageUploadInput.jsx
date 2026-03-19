@@ -16,7 +16,7 @@ export function ImageUploadInput({ name, accept = "image/png, image/jpeg, image/
 
 	return (
 		<div className="ImageUploadInput">
-			<button onClick={() => inputRef.current.click()}>
+			<button type="button" onClick={() => inputRef.current.click()}>
 				{ imageUrl ? (
 					<img src={imageUrl} alt={alt}/>
 				) : (
