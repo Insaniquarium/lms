@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useParams } from "react-router";
 import { CircularProgressbar } from "react-circular-progressbar";
 import { useAuth } from "#/auth";
@@ -10,12 +11,15 @@ import style from "./Course.module.scss";
 export default function Course() {
 	const {courseID} = useParams();
 	const {api, id} = useAuth();
+	const [enroled, setEnroled] = useState(false);
 
 	const [course, loading, error] = useApi(async api => {
 		// TODO: What happens to the error if getUserCourses throws though?
 		if ((await api.getUserCourses(id)).find(c => c.id == courseID)) {
+			setEnroled(true);
 			return await api.getUserCourse(id, courseID);
 		} else {
+			setEnroled(false);
 			return await api.getCourse(courseID);
 		}
 	}, [courseID]);
@@ -24,12 +28,6 @@ export default function Course() {
 
 	if (loading) return;
 	if (error) throw error;
-
-	/**
-	 * The more proper way would be storing the result of the array find above
-	 * as a boolean in a memo, but that's more work
-	 */
-	const hasEnroled = course.progress != undefined;
 
 	function enrol() {
 		api.createCourseEnrolment(course.id, id); // Error if failed to enrol?
@@ -40,7 +38,7 @@ export default function Course() {
 			<NameBox>
 				<img src={course.image} alt=""/>
 				<h1>{course.title}</h1>
-				{hasEnroled ?
+				{enroled ?
 					<CircularProgressbar value={course.progress} text={course.progress + "%"}/> :
 					<button onClick={enrol}>Enrol</button>
 				}
@@ -57,7 +55,7 @@ export default function Course() {
 				<ul>
 					{course.modules.map(m =>
 						<li key={`${course.id}:${m.id}`}>
-							<Card><ModuleInfoRow courseId={course.id} module={m} link={hasEnroled ? undefined : ""}/></Card>
+							<Card><ModuleInfoRow courseId={course.id} module={m} link={enroled ? undefined : ""}/></Card>
 						</li>
 					)}
 				</ul>
