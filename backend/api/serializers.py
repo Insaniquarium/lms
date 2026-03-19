@@ -1,6 +1,13 @@
 from django.contrib.auth import authenticate
+from django.contrib.auth.hashers import make_password
 from rest_framework import serializers
 from api.models import User, Course, Module, Enrolment, ModuleCompletion
+
+# Could be better. Django has validation right? This should integrate with that.
+class PasswordField(serializers.CharField):
+	def to_internal_value(self, data):
+		value = super().to_internal_value(data)
+		return make_password(value)
 
 class UserSerializer(serializers.ModelSerializer):
 	"""
@@ -14,12 +21,13 @@ class UserSerializer(serializers.ModelSerializer):
 	Some places might also not let you change first/last name without approval
 	of staff.
 	"""
+	password = PasswordField(write_only=True) # TODO: Changing password should need approval
 	date_joined = serializers.DateTimeField(read_only=True)
 	last_login = serializers.DateTimeField(read_only=True)	
 
 	class Meta:
 		model = User
-		fields = ['id', 'email', 'first_name', 'last_name', 'date_joined', 'last_login']
+		fields = ['id', 'email', 'first_name', 'last_name', 'password', 'date_joined', 'last_login']
 
 class ModuleSerializer(serializers.ModelSerializer):
 	created_at = serializers.DateTimeField(read_only=True)

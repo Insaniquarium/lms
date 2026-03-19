@@ -41,15 +41,13 @@ Not all of these are satisfied due to time constraints.
 - ❌ Automated tests
 - ❌ Wireframes in documentation
 
-For creating and managing courses and users, the pages for those are functionally complete, but they are not yet wired up to an API. (Creating course *modules* however, isn't complete and doesn't have a page, but that wasn't explicitly mentioned in the brief.)
+For creating and managing courses and users, the pages for those are functionally complete, but they are not yet wired up to an API.
 
-For User Roles and Authentication, frontend almost has authentication complete and lets you log in, but you cannot log out, and role-based access determined through a property in the `<RequireAuth>` component used in the router is not yet functional.
+For User Roles and Authentication, role-based access determined through a property in the `<RequireAuth>` component used in the router is not yet functional.
 
 The Django backend with proper REST API is close to completion, however not yet fully usable with the frontend. You can create, list and modify courses, modules and users. But you cannot create enrolments and module completions. You can however, *view* the courses a user has enroled in, module completion and a user's activity.
 
 The Django backend can do token authentication and authorization, however there is not yet a proper role system. It only distinguishes between User and Admin, not Student, Teacher and Admin.
-
-The current usable backend is a dumb backend that returns static responses that the frontend is able to parse. The Django backend can create a SQLite database, but contains no initial data. The Django backend could *almost* be usable by changing `ORIGIN` in `api.js` had some changes in serialisation been accounted for in the frontend, and initial data for details such as enrolments and course completions were available to satisfy the dashboard, which the lack of is one of the main reasons why the dumb backend still needs to be in use.
 
 ## Constraints
 
