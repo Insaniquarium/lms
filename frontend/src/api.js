@@ -65,7 +65,7 @@ export class API {
 	}
 
 	async createUser(data) {
-		return this.#fetch("/users", "POST", data);
+		return this.#fetch("/users/", "POST", data);
 	}
 
 	async getUser(id) {
@@ -99,7 +99,7 @@ export class API {
 	}
 
 	async createCourse(data) {
-		return this.#fetch("/courses", "POST", data);
+		return this.#fetch("/courses/", "POST", data);
 	}
 
 	async getCourse(id) {
@@ -119,7 +119,7 @@ export class API {
 	}
 
 	async createCourseModule(id, data) {
-		return this.#fetch(`/courses/${id}/modules`, "POST", data);
+		return this.#fetch(`/courses/${id}/modules/`, "POST", data);
 	}
 
 	async getCourseModule(id, moduleId) {
@@ -139,7 +139,7 @@ export class API {
 	}
 
 	async createCourseEnrolment(id, userId) {
-		return this.#fetch(`/courses/${id}/enrolments`, "POST", { user_id: userId });
+		return this.#fetch(`/courses/${id}/enrolments/`, "POST", { user_id: userId });
 	}
 
 	async deleteCourseEnrolment(id, userId) {
