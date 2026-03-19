@@ -9,7 +9,14 @@ export function ImageUploadInput({ name, accept = "image/png, image/jpeg, image/
 		return () => { URL.revokeObjectURL(image); };
 	}, [image]);
 
-	// Perhaps the image shall be removed on image cancellation, but React still doesn't support onCancel
+	/**
+	 * TODO: Perhaps the image shall be removed on image cancellation, but
+	 * React still doesn't support onCancel
+	 *
+	 * TODO: image gets out of sync with file input when form is cleared, as
+	 * change is not fired in that case. All other ways to determine this seem
+	 * abysmal to do
+	 */
 	function change(event) {
 		setImage(URL.createObjectURL(event.target.files[0]));
 	}

@@ -1,16 +1,24 @@
 import { Link } from "react-router";
 import { Trash } from "lucide-react";
+import { useAuth } from "#/auth";
 import { useTitle, useApi } from "#/hooks";
-import { formatDate, toTitleCase } from "#/utils";
+import { formatDate } from "#/utils";
 import style from "./Courses.module.scss";
 
 export function Courses() {
+	const {api} = useAuth();
 	const [courses, loading, error] = useApi(api => api.getCourses());
 
 	useTitle(() => "Courses");
 
 	if (loading) return;
 	if (error) throw error;
+
+	// TODO: Should this really be here, and not on each Course's page?
+	// TODO: We really need confirmation using a modal or something!
+	function deleteCourse(id) {
+		//api.deleteCourse(id).then(() => /* reload list, somehow */0);
+	}
 
 	return (
 		<div className={`${style.Courses} page`}>
@@ -38,7 +46,13 @@ export function Courses() {
 							<td>{course.public ? "Public" : "Private"}</td>
 							<td>{formatDate(course.created_at)}</td>
 							<td className={style.actions}>
-								<button className={style.delete} aria-label="Delete course"><Trash size={16}/></button>
+								<button
+									className={style.delete}
+									aria-label="Delete course"
+									onClick={() => deleteCourse(course.id)}
+								>
+									<Trash size={16}/>
+								</button>
 							</td>
 						</tr>
 					)}

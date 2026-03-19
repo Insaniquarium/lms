@@ -1,4 +1,5 @@
-import { useParams, Outlet, Link } from "react-router";
+import { useParams, Outlet, Link, useNavigate } from "react-router";
+import { useAuth } from "#/auth";
 import { useTitle, useApi } from "#/hooks";
 import { formatDate } from "#/utils";
 import { NameBox } from "#/components/NameBox";
@@ -154,8 +155,13 @@ function ModuleForm({ module, action, children }) {
 }
 
 Course.NewModule = function () {
-	function create(formData) {
+	const { api } = useAuth();
+	const { courseID } = useParams();
+	const navigate = useNavigate();
 
+	function create(formData) {
+		// TODO: See comments on NewUser.jsx!
+		api.createCourseModule(courseID, formData).then(() => navigate("../"));
 	}
 
 	return (

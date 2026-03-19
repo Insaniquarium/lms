@@ -1,16 +1,21 @@
 import { useId } from "react";
+import { useNavigate } from "react-router";
+import { useAuth } from "#/auth";
 import { useTitle } from "#/hooks";
 import { ImageUploadInput } from "#/components/ImageUploadInput";
 import style from "./NewCourse.module.scss";
 
 export function NewCourse() {
+	const {api} = useAuth();
+	const navigate = useNavigate();
 	const titleId = useId();
 	const descriptionId = useId();
 
 	useTitle(() => "New Course");
 
 	function create(formData) {
-
+		// TODO: See comments on NewUser.jsx!
+		api.createCourse(formData).then(() => navigate("../"));
 	}
 
 	return (
