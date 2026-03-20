@@ -17,7 +17,7 @@ export function Courses() {
 	// TODO: Should this really be here, and not on each Course's page?
 	// TODO: We really need confirmation using a modal or something!
 	function deleteCourse(id) {
-		//api.deleteCourse(id).then(() => /* reload list, somehow */0);
+		api.deleteCourse(id).then(() => req.refetch());
 	}
 
 	return (

@@ -101,6 +101,8 @@ The Django backend can do token authentication and authorization, however there 
 	- Test suite
 	- Documentation has no wireframes
 
+(List is no longer as comprehensive, there's a lot of notes prefixed with TODO around the codebase that aren't here.)
+
 Had I had more time, I feel I could have got this done to a really good standard.
 
 ## Validation
