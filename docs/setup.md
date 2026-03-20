@@ -21,8 +21,6 @@ As in the frontend's current state there's no proper error handler page, you wil
 
 ## Backend
 
-Due to not meeting time constraints, the Django backend is currently not in a state where it can be fully used. For something that can be used with the frontend (albeit it being "dumb" and doing no actual processing), you will need to use the dumb backend.
-
 ### Django Backend
 
 You must have [Python 3](https://python.org) installed.
