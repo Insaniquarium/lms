@@ -17,7 +17,7 @@ npm run build
 npm run preview
 ```
 
-As in the frontend's current state there's no proper error handler page, you will be left with a blank page unless you start the backend under `http://localhost:1234/api/v1`.
+As in the frontend's current state there's no proper error handler page, you will be left with a blank page unless you start the backend under `http://localhost:8000/api/v1`.
 
 ## Backend
 
