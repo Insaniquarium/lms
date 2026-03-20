@@ -7,12 +7,12 @@ import style from "./User.module.scss";
 
 export function User() {
 	const { userID } = useParams();
-	const [user, loading, error] = useApi(api => api.getUser(userID));
+	const [user, req] = useApi(api => api.getUser(userID));
 
 	useTitle(() => user ? `${user.first_name} ${user.last_name}` : "User", [user]);
 
-	if (loading) return;
-	if (error) throw error;
+	if (req.pending) return;
+	if (req.error) throw req.error;
 
 	return (
 		<div className={`${style.User} page`}>
@@ -32,10 +32,10 @@ export function User() {
 
 User.Info = function () {
 	const { userID } = useParams();
-	const [user, loading, error] = useApi(api => api.getUser(userID));
+	const [user, req] = useApi(api => api.getUser(userID));
 
-	if (loading) return;
-	if (error) throw error;
+	if (req.pending) return;
+	if (req.error) throw req.error;
 
 	function modify(formData) {
 
@@ -83,10 +83,10 @@ User.Info = function () {
 
 User.Activity = function() {
 	const { userID } = useParams();
-	const [activity, loading, error] = useApi(api => api.getUserActivity(userID));
+	const [activity, req] = useApi(api => api.getUserActivity(userID));
 
-	if (loading) return;
-	if (error) throw error;
+	if (req.pending) return;
+	if (req.error) throw req.error;
 
 	return (
 		<div className={style.User_Activity}>
@@ -116,10 +116,10 @@ User.Activity = function() {
 
 User.Courses = function() {
 	const { userID } = useParams();
-	const [courses, loading, error] = useApi(api => api.getUserCourses(userID));
+	const [courses, req] = useApi(api => api.getUserCourses(userID));
 
-	if (loading) return;
-	if (error) throw error;
+	if (req.pending) return;
+	if (req.error) throw req.error;
 
 	// TODO: Clicking on a course would instead link to a list of the modules a user has done
 	return (

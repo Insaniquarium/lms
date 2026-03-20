@@ -8,10 +8,10 @@ import style from "./Home.module.scss";
 
 function RecentActivityCard() {
 	const {id} = useAuth();
-	const [activity, loading, error] = useApi(api => api.getUserActivity(id));
+	const [activity, req] = useApi(api => api.getUserActivity(id));
 
-	if (loading) return;
-	if (error) throw error;
+	if (req.pending) return;
+	if (req.error) throw req.error;
 
 	function formatStatus(activityData) {
 		if (activityData.completed_when)
@@ -46,10 +46,10 @@ function RecentActivityCard() {
 
 function MyCoursesCard() {
 	const {id} = useAuth();
-	const [courses, loading, error] = useApi(api => api.getUserCourses(id));
+	const [courses, req] = useApi(api => api.getUserCourses(id));
 
-	if (loading) return;
-	if (error) throw error;
+	if (req.pending) return;
+	if (req.error) throw req.error;
 
 	return (
 		<Card className={style.MyCoursesCard}>
@@ -78,12 +78,12 @@ function AchievementsCard() {
 
 export default function Home() {
 	const {id} = useAuth();
-	const [user, loading, error] = useApi(api => api.getUser(id));
+	const [user, req] = useApi(api => api.getUser(id));
 
 	useTitle(() => "Home");
 
-	if (loading) return;
-	if (error) throw error;
+	if (req.pending) return;
+	if (req.error) throw req.error;
 
 	return (
 		<div className={`${style.Home} page`}>

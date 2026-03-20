@@ -7,12 +7,12 @@ import style from "./Courses.module.scss";
 
 export function Courses() {
 	const {api} = useAuth();
-	const [courses, loading, error] = useApi(api => api.getCourses());
+	const [courses, req] = useApi(api => api.getCourses());
 
 	useTitle(() => "Courses");
 
-	if (loading) return;
-	if (error) throw error;
+	if (req.pending) return;
+	if (req.error) throw req.error;
 
 	// TODO: Should this really be here, and not on each Course's page?
 	// TODO: We really need confirmation using a modal or something!

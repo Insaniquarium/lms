@@ -4,12 +4,12 @@ import style from "./Module.module.scss";
 
 export default function Module() {
 	const {courseID, moduleID} = useParams();
-	const [module, loading, error] = useApi(api => api.getCourseModule(courseID, moduleID));
+	const [module, req] = useApi(api => api.getCourseModule(courseID, moduleID));
 
 	useTitle(() => module?.title ?? "Module", [module]);
 
-	if (loading) return;
-	if (error) throw error;
+	if (req.pending) return;
+	if (req.error) throw req.error;
 
 	return (
 		<div className={style.Module}>

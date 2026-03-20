@@ -8,22 +8,24 @@ export function useTitle(callback, dependencies = []) {
 }
 
 export function useApi(callback, dependencies = []) {
-	const [response, setResponse] = useState(null);
-	const [loading, setLoading] = useState(true);
+	const [data, setData] = useState(null);
+	const [pending, setPending] = useState(true);
 	const [error, setError] = useState(null);
 	const {api} = useAuth();
 
-	useEffect(() => {
+	function execute() {
 		let cancelled = false;
-		setLoading(true); // otherwise if dependencies change it could still be false, no?
+		setPending(true); // otherwise if dependencies change it could still be false, no?
 		setError(null);
 
 		callback(api)
-			.then(value => { if (!cancelled) { setResponse(value); setLoading(false); }})
-			.catch(error => { if (!cancelled) { setError(error); setLoading(false); }});
+			.then(value => { if (!cancelled) { setData(value); setPending(false); }})
+			.catch(error => { if (!cancelled) { setError(error); setPending(false); }});
 
 		return () => { cancelled = true; };
-	}, dependencies);
+	}
 
-	return [response, loading, error];
+	useEffect(execute, dependencies);
+
+	return [data, { pending, error, refetch: execute }];
 }

@@ -4,12 +4,12 @@ import { CourseInfoRow } from "#/components/InfoRow";
 import style from "./Library.module.scss";
 
 export default function Library() {
-	const [courses, loading, error] = useApi(api => api.getCourses());
+	const [courses, req] = useApi(api => api.getCourses());
 
 	useTitle(() => "Library");
 
-	if (loading) return;
-	if (error) throw error;
+	if (req.pending) return;
+	if (req.error) throw req.error;
 
 	return (
 		<div className={`${style.Library} page`}>

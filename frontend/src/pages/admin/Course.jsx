@@ -10,12 +10,12 @@ import style from "./Course.module.scss";
 
 export function Course() {
 	const {courseID} = useParams();
-	const [course, loading, error] = useApi(api => api.getCourse(courseID));
+	const [course, req] = useApi(api => api.getCourse(courseID));
 
 	useTitle(() => course?.title ?? "Course", [course]);
 
-	if (loading) return;
-	if (error) throw error;
+	if (req.pending) return;
+	if (req.error) throw req.error;
 
 	return (
 		<div className={`${style.Course} page`}>
@@ -30,7 +30,7 @@ export function Course() {
 				<TabBar.Link to="enrolments">Enrolments</TabBar.Link>
 			</TabBar>
 			<TabContent>
-				<Outlet/>
+				<Outlet/> {/* course and req.refetch as context? */}
 			</TabContent>
 		</div>
 	);
@@ -38,10 +38,10 @@ export function Course() {
 
 Course.Info = function () {
 	const { courseID } = useParams();
-	const [course, loading, error] = useApi(api => api.getCourse(courseID));
+	const [course, req] = useApi(api => api.getCourse(courseID));
 
-	if (loading) return;
-	if (error) throw error;
+	if (req.pending) return;
+	if (req.error) throw req.error;
 
 	function modify(formData) {
 
@@ -83,33 +83,10 @@ Course.Info = function () {
 
 Course.Modules = function () {
 	const { courseID } = useParams();
-	const [modules, loading, error] = useApi(api => api.getCourseModules(courseID));
+	const [modules, req] = useApi(api => api.getCourseModules(courseID));
 
-	if (loading) return;
-	if (error) throw error;
-
-	return (
-		<div className={style.Course_Modules}>
-			<div className={style.top}>
-				<Link to="new" className="button">New Module</Link>
-			</div>
-			<ul>
-				{modules.map(module =>
-					<li key={module.id}>
-						<ModuleInfoRow courseId={courseID} module={module} link={`${module.id}`}/>
-					</li>
-				)}
-			</ul>
-		</div>
-	);
-}
-
-Course.Modules = function () {
-	const { courseID } = useParams();
-	const [modules, loading, error] = useApi(api => api.getCourseModules(courseID));
-
-	if (loading) return;
-	if (error) throw error;
+	if (req.pending) return;
+	if (req.error) throw req.error;
 
 	return (
 		<div className={style.Course_Modules}>
@@ -176,10 +153,10 @@ Course.NewModule = function () {
 
 Course.Module = function () {
 	const { courseID, moduleID } = useParams();
-	const [module, loading, error] = useApi(api => api.getCourseModule(courseID, moduleID));
+	const [module, req] = useApi(api => api.getCourseModule(courseID, moduleID));
 
-	if (loading) return;
-	if (error) throw error;
+	if (req.pending) return;
+	if (req.error) throw req.error;
 
 	function modify(formData) {
 
@@ -200,10 +177,10 @@ Course.Module = function () {
 
 Course.Enrolments = function () {
 	const { courseID } = useParams();
-	const [enrolments, loading, error] = useApi(api => api.getCourseEnrolments(courseID));
+	const [enrolments, req] = useApi(api => api.getCourseEnrolments(courseID));
 
-	if (loading) return;
-	if (error) throw error;
+	if (req.pending) return;
+	if (req.error) throw req.error;
 
 	return (
 		<div className={style.Course_Enrolments}>

@@ -4,12 +4,12 @@ import { formatDate, toTitleCase } from "#/utils";
 import style from "./Users.module.scss";
 
 export function Users() {
-	const [users, loading, error] = useApi(api => api.getUsers());
+	const [users, req] = useApi(api => api.getUsers());
 
 	useTitle(() => "Users");
 
-	if (loading) return;
-	if (error) throw error;
+	if (req.pending) return;
+	if (req.error) throw req.error;
 
 	return (
 		<div className={`${style.Users} page`}>

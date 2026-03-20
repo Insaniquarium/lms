@@ -13,7 +13,7 @@ export default function Course() {
 	const {api, id} = useAuth();
 	const [enroled, setEnroled] = useState(false);
 
-	const [course, loading, error] = useApi(async api => {
+	const [course, req] = useApi(async api => {
 		// TODO: What happens to the error if getUserCourses throws though?
 		if ((await api.getUserCourses(id)).find(c => c.id == courseID)) {
 			setEnroled(true);
@@ -26,8 +26,8 @@ export default function Course() {
 
 	useTitle(() => course?.title ?? "Course", [course]);
 
-	if (loading) return;
-	if (error) throw error;
+	if (req.pending) return;
+	if (req.error) throw req.error;
 
 	function enrol() {
 		api.createCourseEnrolment(course.id, id); // Error if failed to enrol?

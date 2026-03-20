@@ -1,11 +1,11 @@
 import { useTitle, useApi } from "#/hooks";
 
 export function Home() {
-	const [user, loading] = useApi(api => api.getUser("me"));
+	const [user, req] = useApi(api => api.getUser("me"));
 
 	useTitle(() => "Home");
 
-	if (loading)
+	if (req.pending)
 		return;
 
 	return (
