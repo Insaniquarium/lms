@@ -35,15 +35,28 @@ export default function Course() {
 		req.refetch(); // TODO: Avoid the flicker from reloading the whole page?
 	}
 
+	/**
+	 * TODO: Ask for confirmation
+	 * TODO: Put this somewhere better and present it somewhere better? Like
+	 * have a red background as it's a destructive operation
+	 */
+	async function unenrol() {
+		await api.deleteCourseEnrolment(course.id, id);
+		req.refetch();
+	}
+
 	return (
 		<div className={`${style.Course} page`}>
 			<NameBox>
 				<img src={course.image} alt=""/>
 				<h1>{course.title}</h1>
-				{enroled ?
-					<CircularProgressbar value={course.progress} text={course.progress + "%"}/> :
+
+				{enroled ? <>
+					<button onClick={unenrol}>Unenrol</button>
+					<CircularProgressbar value={course.progress} text={course.progress + "%"}/>
+				</> : (
 					<button onClick={enrol}>Enrol</button>
-				}
+				)}
 			</NameBox>
 
 			<div className="heading_section text_section">
