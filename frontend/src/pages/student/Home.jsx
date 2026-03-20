@@ -62,7 +62,7 @@ function MyCoursesCard() {
 				)}
 			</ul>
 			<div className="text_right">
-				<Link to="/my-courses">See all courses</Link>
+				<Link to="/my-courses">See all my courses</Link>
 			</div>
 		</Card>
 	);
