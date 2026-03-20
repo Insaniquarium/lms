@@ -57,10 +57,10 @@ class UserModuleSerializer(ModuleSerializer):
 
 class UserCourseSerializer(CourseSerializer):
 	enroled_at = serializers.DateTimeField(read_only=True)
-	# progress percentage?
+	progress = serializers.ReadOnlyField(default=25) # TODO: Actually calculate this
 
 	class Meta(CourseSerializer.Meta):
-		fields = [*CourseSerializer.Meta.fields, 'enroled_at']
+		fields = [*CourseSerializer.Meta.fields, 'enroled_at', 'progress']
 
 class UserCourseDetailSerializer(UserCourseSerializer):
 	modules = UserModuleSerializer(many=True, read_only=True)
