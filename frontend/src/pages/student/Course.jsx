@@ -29,8 +29,10 @@ export default function Course() {
 	if (req.pending) return;
 	if (req.error) throw req.error;
 
-	function enrol() {
-		api.createCourseEnrolment(course.id, id); // Error if failed to enrol?
+	async function enrol() {
+		// TODO: Error if failed to enrol?
+		await api.createCourseEnrolment(course.id, id);
+		req.refetch(); // TODO: Avoid the flicker from reloading the whole page?
 	}
 
 	return (
