@@ -43,7 +43,7 @@ Not all of these are satisfied due to time constraints.
 
 For creating and managing courses and users, while you can *create* them, the pages for modifying them are not yet fully wired up to an API.
 
-For User Roles and Authentication, role-based access determined through a property in the `<RequireAuth>` component used in the router is not yet functional.
+For User Roles and Authentication, role-based access to pages should be determined through a property in the `<RequireAuth>` component used by the router, however this is not yet functional. This means you are able to visit the admin page as a normal user (but it will hardly function, since API requests will fail). The Django backend is rather well prepared for this, as each view restricts which operations can be done depending on if you're logged in, or an admin.
 
 The Django backend with proper REST API is close to completion. You can create and list courses, modules, users, enrolments, and activity. However, you cannot create enrolments, module completions, or modify already existant users/courses/modules.
 
